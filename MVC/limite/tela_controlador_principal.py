@@ -1,7 +1,17 @@
 class TelaControladorPrincipal:
+    print ('hesad')
+
+    def tela_inicial(self):
+        option = input("Comprador ou organizador? (c/o)")
+        if option == 'c':
+            self.abrir_tela_comprador()
+        elif option == 'o':
+            self.abrir_tela_organizador()
+        else:
+            print ('Error')
 
     def abrir_tela_comprador(self):
-        pass
+        print ('Abrir tela compr.')
 
     def abrir_tela_organizador(self):
-        pass
+        print ('Abrir tela orgn.')

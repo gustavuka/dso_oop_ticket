@@ -1,6 +1,9 @@
-from limite import tela_controlador_principal
+from limite.tela_controlador_principal import TelaControladorPrincipal
 
 class ControladorPrincipal:
+
+    def inicia(self):
+        TelaControladorPrincipal().tela_inicial()
 
     def abrir_tela_comprador(self):
         pass
