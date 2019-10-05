@@ -38,5 +38,5 @@ class Cliente(ABC):
         self.__endereco = novo_endereco
 
     @endereco.setter
-    def endereco(self, novo_endereco):
-        self.__endereco = __email
+    def email(self, novo_email):
+        self.__email = novo_email
