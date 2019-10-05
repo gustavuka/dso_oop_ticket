@@ -9,37 +9,34 @@ class Cliente(ABC):
         self.__telefone = telefone
         self.__email = email
 
-    @abstractmethod
     @property
     def nome(self):
         return self.__nome
 
-    @abstractmethod
     @property
     def endereco(self):
         return self.__endereco
-    
-    @abstractmethod
-    @endereco.setter
-    def endereco(self, novo_endereco):
-        self.__endereco = novo_endereco
-    
-    @abstractmethod
+
     @property
     def telefone(self):
         return self.__telefone
-    
-    @abstractmethod
-    @telefone.setter
-    def telefone(self, novo_telefone):
-        self.__telefone = novo_telefone
-    
-    @abstractmethod
+
     @property
-    def endereco(self):
-        return self.__endereco
-    
-    @abstractmethod
+    def email(self):
+        return self.__email
+
     @endereco.setter
     def endereco(self, novo_endereco):
         self.__endereco = novo_endereco
+
+    @telefone.setter
+    def telefone(self, novo_telefone):
+        self.__telefone = novo_telefone
+
+    @endereco.setter
+    def endereco(self, novo_endereco):
+        self.__endereco = novo_endereco
+
+    @endereco.setter
+    def endereco(self, novo_endereco):
+        self.__endereco = __email
