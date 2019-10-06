@@ -1,4 +1,4 @@
-
+from Local import *
 
 
 class Evento:
@@ -11,17 +11,17 @@ class Evento:
         self.__classificacao_indicativa = classificacao_indicativa
         self.__valor_ingresso = valor_ingresso
     
-    @property
+    @propertyK
     def titulo(self):
         return self.__titulo
     
     @property
     def categoria(self):
-        self.__categoria = categoria
+        return self.__categoria
     
     @property
     def data(self):
-        self.__data = data
+        return self.__data
     
     @data.setter
     def data(self, nova_data):
