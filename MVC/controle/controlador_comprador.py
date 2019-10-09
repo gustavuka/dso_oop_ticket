@@ -1,4 +1,4 @@
-
+from MVC.entidade.comprador import *
 
 class ControladorComprador:
 
@@ -13,7 +13,7 @@ class ControladorComprador:
             'i': 'Idade'
         }
 
-    def adicionar_comprador(self, novo_comprador):
+    def adicionar_comprador(self, novo_comprador: Comprador):
         self.__lista_compradores.append(novo_comprador)
 
     @property
