@@ -1,9 +1,9 @@
 from local import Local
-
+from datetime import datetime
 
 class Evento:
 
-    def __init__(self, titulo: str, categoria: str, data: Date, local: Local, classificacao_indicativa: int, valor_ingresso: float):
+    def __init__(self, titulo: str, categoria: str, data: datetime, local: Local, classificacao_indicativa: int, valor_ingresso: float):
         self.__titulo = titulo
         self.__categoria = categoria
         self.__data = data
