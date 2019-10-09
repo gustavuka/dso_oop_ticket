@@ -1,4 +1,4 @@
-from limite.tela_controlador_principal import TelaControladorPrincipal
+from MVC.limite.tela_controlador_principal import TelaControladorPrincipal
 
 class ControladorPrincipal:
 
