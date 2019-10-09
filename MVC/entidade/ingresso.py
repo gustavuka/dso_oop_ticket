@@ -1,9 +1,10 @@
-
+from evento import Evento
+from datetime import datetime
 
 
 class Ingresso:
 
-    def __init__(self, evento: evento, tipo: str, data_compra: Date):
+    def __init__(self, evento: evento, tipo: str, data_compra: datetime):
         self.__evento = evento
         self.__tipo = tipo
         self.__data_compra = data_compra
