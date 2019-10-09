@@ -1,5 +1,5 @@
-from local import Local
-from evento import Evento
+from MVC.entidade.local import Local
+from MVC.entidade.evento import Evento
 from datetime import datetime
 
 
