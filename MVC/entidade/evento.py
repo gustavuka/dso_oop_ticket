@@ -1,4 +1,4 @@
-from Local import *
+from local import Local
 
 
 class Evento:
