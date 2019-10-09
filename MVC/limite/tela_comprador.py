@@ -1,5 +1,5 @@
-from entidade.comprador import Comprador
-from controle.controlador_comprador import ControladorComprador
+from MVC.entidade.comprador import *
+from MVC.controle.controlador_comprador import *
 
 class TelaComprador:
 
