@@ -1,11 +1,13 @@
 from MVC.entidade.local import Local
 from MVC.entidade.evento import Evento
 from datetime import datetime
+from MVC.limite.tela_evento import *
 
 
 class ControladorEvento:
 
     def __init__(self):
+        self.tela_evento = TelaEvento(self)
         self.__eventos = []
         self.__locais = []
 
@@ -16,7 +18,13 @@ class ControladorEvento:
     @property
     def locais(self):
         return self.__locais
-
+    
+    def buscar_evento(self, codigo_evento: str):
+        for evento in self.eventos:
+            if evento.codigo == codigo_evento:
+                return evento
+        return False
+    
     def cadastrar_local(self, local: Local):
         if local not in self.locais:
             self.__locais.append(local)
