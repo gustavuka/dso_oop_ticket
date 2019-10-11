@@ -1,5 +1,4 @@
-from controlador_evento import ControladorEvento
-
+from date import datetime
 
 class TelaEvento:
 
@@ -10,23 +9,28 @@ class TelaEvento:
     def controlador(self):
         return self.__controlador
     
-    def ler_codigo_evento(self):
-        pass
+    def buscar_evento(self):
+        while True:
+            codigo_evento = input("Digite o código do evento: ")
+            evento = self.controlador.busca_evento(codigo_evento)
+            if isinstance(evento, Evento):
+                return evento
+        return False
     
     def cadastrar_evento(self):
         pass
     
-    def alterar_local_evento(self, codigo_evento: str):
+    def alterar_local_evento(self):
+        evento = 
+    
+    def alterar_categoria_evento(self):
         pass
     
-    def alterar_categoria_evento(self, codigo_evento: str):
+    def alterar_titulo_evento(self):
         pass
     
-    def alterar_titulo_evento(self, codigo_evento: str):
+    def alterar_valor_evento(self):
         pass
     
-    def alterar_valor_evento(self, codigo_evento: str):
-        pass
-    
-    def alterar_data_evento(self, codigo_evento: str):
+    def alterar_data_evento(self):
         pass
