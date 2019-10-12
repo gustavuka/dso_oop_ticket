@@ -1,7 +1,7 @@
-from MVC.entidade.local import Local
 from MVC.entidade.evento import Evento
+from MVC.entidade.local import Local
 from datetime import datetime
-from MVC.limite.tela_evento import *
+from MVC.limite.tela_evento import TelaEvento
 
 
 class ControladorEvento:

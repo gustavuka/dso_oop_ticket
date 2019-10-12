@@ -1,4 +1,6 @@
-from date import datetime
+from MVC.controle.controlador_evento import ControladorEvento
+from MVC.entidade.evento import Evento
+
 
 class TelaEvento:
 
@@ -21,7 +23,7 @@ class TelaEvento:
         pass
     
     def alterar_local_evento(self):
-        evento = 
+        pass
     
     def alterar_categoria_evento(self):
         pass
