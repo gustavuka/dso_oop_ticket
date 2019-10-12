@@ -25,9 +25,9 @@ class Cliente(ABC):
     def email(self):
         return self.__email
 
-    @endereco.setter
-    def endereco(self, novo_endereco):
-        self.__endereco = novo_endereco
+    @nome.setter
+    def nome(self, novo_nome):
+        self.__nome = novo_nome
 
     @telefone.setter
     def telefone(self, novo_telefone):

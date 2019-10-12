@@ -2,31 +2,26 @@
 # from controle.controlador_comprador import ControladorComprador
 
 class TelaComprador:
-
     # self.controlador = ControladorComprador()
+    def __init__(self):
+        self.__info_cadastro = {
+            'Nome': 'n',
+            'Endereco': 'e',
+            'Telefone': 't',
+            'Email': '@',
+            'cpf': 'c',
+            'Idade': 'i'
+        }
 
     def novo_comprador(self):
-        info_cadastro = {
-            'Nome': 'Nome',
-            'Endereco': 'Endereco',
-            'Telefone': 'Telefone',
-            'Email': 'Email',
-            'cpf': 'cpf',
-            'Idade': 'Idade'
-        }
-        for item in info_cadastro:
-            info_cadastro[item] = input(item + ": ")
+        for item in self.__info_cadastro:
+            self.__info_cadastro[item] = input(item + ": ")
         
-        return info_cadastro
+        return self.__info_cadastro
 
-    def alterar_dados(self, cpf):
-        #precisa ser feito >
-        #acessar lista de compradores e selecionar comprador pelo cpf
+    def alterar_dados(self):
+        cpf = input('Qual o cpf do comprador a ser editado?')
+        for item in self.__info_cadastro:
+            self.__info_cadastro[item] = input(item + ": ")
 
-        opcao = input('Qual item você gostaria de editar? Nome(n), Endereco(e), \
-        Telefone(t), Email(@), cpf(c), Idade(i).')
-        selecionado = controlador.opcoes[opcao]
-
-        novo_valor = input('Qual o novo valor?')
-
-        comprador.selecionado = novo_valor
+        return (cpf, self.__info_cadastro)
