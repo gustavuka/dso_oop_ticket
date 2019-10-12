@@ -1,7 +1,7 @@
 from limite.tela_controlador_principal import TelaControladorPrincipal
 from entidade.comprador import Comprador
 from controle.controlador_comprador import ControladorComprador
-from controle.controlador_organizador import ControladorOrganizador
+# from controle.controlador_organizador import ControladorOrganizador
 
 class ControladorPrincipal:
 

@@ -1,3 +1,6 @@
+from entidade.organizador import Organizador
+from limite.tela_organizador import TelaOrganizador
+
 class ControladorComprador:
     def __init__(self):
         self.__lista_organizadores = []
@@ -13,14 +16,14 @@ class ControladorComprador:
     def adicionar_organizador(self):
         info_organizador = (TelaOrganizador().novo_organizador())
 
-        # novo_organizador = Organizador(
-        #     info_comprador["Nome"],
-        #     info_comprador["Endereco"],
-        #     info_comprador["Telefone"],
-        #     info_comprador["Email"],
-        #     info_comprador["cpf"],
-        #     info_comprador["Idade"],
-        # )
+        novo_organizador = Organizador(
+            info_comprador["Nome"],
+            info_comprador["Endereco"],
+            info_comprador["Telefone"],
+            info_comprador["Email"],
+            info_comprador["cnpj"],
+            info_comprador["Idade"],
+        )
         self.lista_organizadores.append(novo_organizador)
         print ("Novo orgnizador cadastrado! Bem vindo " + novo_organizador.nome + "!")
         print (self.lista_organizadores)

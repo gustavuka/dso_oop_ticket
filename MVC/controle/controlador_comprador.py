@@ -43,4 +43,3 @@ class ControladorComprador:
                 print ("Atualizacao de dados completa!")
                 print (item.nome, item.idade)
                 print (self.lista_compradores)
-        

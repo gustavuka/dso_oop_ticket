@@ -2,7 +2,7 @@ class TelaControladorPrincipal:
     def __init__(self):
         self.__menu_table = [
             'Entrar com um usuário existente: (x)',
-            'Cadastrar novo usuário: (r)',
+            'Cadastrar novo usuário: (n)',
             'Editar usuário: (e)',
         ]
     
