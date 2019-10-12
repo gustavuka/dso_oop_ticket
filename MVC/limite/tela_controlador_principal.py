@@ -1,20 +1,31 @@
 class TelaControladorPrincipal:
-    def __init__(self):
-        self.__menu_table = [
-            'Entrar com um usuário existente: (x)',
-            'Cadastrar novo usuário: (n)',
-            'Editar usuário: (e)',
-        ]
-    
-    @property
-    def menu_table(self):
-        return self.__menu_table
+    print ('Bem vindo ao dso ticket!')
+
+    def menu_inicial(self):
+        print ("Como gostaria de utilizar o sistema?")
+        menu_inicial = [
+            'Comprador - 1',
+            'Organizador - 2',
+            'Sair - 3',
+            '-------------------------------------']
+        for item in menu_inicial:
+            print (item)       
+
+        opcao_ini = input()
+        return (opcao_ini)
 
     def menu_principal(self):
-        print ('Bem vindo ao dso ticket!')
-        opcao_ini = input('Gostaria de utilizar o sistema como comprador(c) ou organizador(o)?')
-        for item in self.menu_table:
+        menu_table = [
+            '-------------------------------------',
+            'Entrar com um usuário existente - 1',
+            'Cadastrar novo usuário - 2',
+            'Editar usuário - 3',
+            'Listar usuários - 4',
+            'Sair - 5',
+            '-------------------------------------'
+        ]
+        for item in menu_table:
             print (item)
 
         opcao_sec = input()
-        return (opcao_ini, opcao_sec)
+        return opcao_sec

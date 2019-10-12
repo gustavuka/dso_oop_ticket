@@ -7,10 +7,15 @@ class Comprador(Cliente):
         super().__init__(nome, endereco, telefone, email)
         self.__cpf = cpf
         self.__idade = idade
+        self.__lista_ingressos = []
 
     @property
     def cpf(self):
         return self.__cpf
+
+    @property
+    def lista_ingressos(self):
+        return self.__lista_ingressos
 
     @property
     def idade(self):
@@ -23,3 +28,7 @@ class Comprador(Cliente):
     @idade.setter
     def idade(self, nova_idade):
         self.__idade = nova_idade
+
+    @lista_ingressos.setter
+    def lista_ingressos(self, nova_lista_ingressos):
+        self.__lista_ingressos = nova_lista_ingressos

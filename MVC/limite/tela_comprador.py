@@ -13,22 +13,26 @@ class TelaComprador:
             'Idade': 'i'
         }
 
+
     def novo_comprador(self):
-        for item in self.info_cadastro:
-            self.info_cadastro[item] = input(item + ": ")
+        for item in self.__info_cadastro:
+            self.__info_cadastro[item] = input(item + ": ")
         
         return self.__info_cadastro
 
-    def alterar_dados(self):
+    def pede_cpf(self):
         cpf = input('Qual o cpf do comprador a ser editado?')
-        for item in self.info_cadastro:
-            self.info_cadastro[item] = input(item + ": ")
+        return cpf
 
-        return (cpf, self.info_cadastro)
+    def alterar_dados(self):
+        for item in self.__info_cadastro:
+            self.__info_cadastro[item] = input(item + ": ")
+
+        return (cpf, self.__info_cadastro)
 
     def mostrar_dados(self, cpf, lista_compradores):
         for item in lista_compradores:
             if item.cpf == cpf:
                 for key, value in item.items():
-                    print (key + ': ' + value) 
-            
+                    print (key + ': ' + value)
+       
