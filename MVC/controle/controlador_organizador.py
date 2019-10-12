@@ -38,4 +38,21 @@ class ControladorComprador:
                 # print ("Atualizacao de dados completa!")
                 print (item.nome)
                 print (self.lista_organizadores)
-        
+
+    def cadastra_organizador(self, nome: str, endereco: str, telefone: str, email: str, cnpj: str):
+        pass
+
+    def lista_eventos_organizados(self, cnpj: str):
+        pass
+
+    def cria_evento(self):
+        pass
+
+    def lista_eventos_organizados(self):
+        pass
+
+    def mostra_relatorio_compras(self):
+        pass
+
+    def mostra_informacoes_evento(self, titulo_evento: str):
+        pass

@@ -1,15 +1,11 @@
 from MVC.controle.controlador_evento import ControladorEvento
-from MVC.entidade.evento import Evento
-from MVC.entidade.local import Local
 from MVC.excecoes.comando_invalido import ComandoInvalido
-from MVC.excecoes.evento_ja_cadastrado import EventoJaCadastrado
-from MVC.excecoes.evento_nao_encontrado import EventoNaoEncontrado
 
 
 class TelaEvento:
 
-    def __init__(self, controlador: ControladorEvento):
-        self.__controlador = controlador
+    def __init__(self):
+        self.__controlador = ControladorEvento()
 
     @property
     def controlador(self):
