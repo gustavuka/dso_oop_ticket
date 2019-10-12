@@ -1,20 +1,23 @@
-from MVC.entidade.comprador import *
-from MVC.controle.controlador_comprador import *
+
+# from controle.controlador_comprador import ControladorComprador
 
 class TelaComprador:
 
-    controlador = ControladorComprador()
+    # self.controlador = ControladorComprador()
 
     def novo_comprador(self):
-        nome = input("Nome: ")
-        endereco = input("Endereco: ")
-        telefone = input("Telefone: ")
-        email = input("Email: ")
-        cpf = input("cpf: ")
-        idade = input("Idade: ")
-
-        novo_comprador = Comprador(nome, endereco, telefone, email, cpf, idade)
-        controlador.adicionar_comprador(novo_comprador)
+        info_cadastro = {
+            'Nome': 'Nome',
+            'Endereco': 'Endereco',
+            'Telefone': 'Telefone',
+            'Email': 'Email',
+            'cpf': 'cpf',
+            'Idade': 'Idade'
+        }
+        for item in info_cadastro:
+            info_cadastro[item] = input(item + ": ")
+        
+        return info_cadastro
 
     def alterar_dados(self, cpf):
         #precisa ser feito >

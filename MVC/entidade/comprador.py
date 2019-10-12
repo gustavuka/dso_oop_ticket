@@ -1,4 +1,4 @@
-from cliente import Cliente
+from entidade.cliente import Cliente
 
 
 class Comprador(Cliente):
