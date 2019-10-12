@@ -23,15 +23,15 @@ class ControladorEvento:
     def busca_evento(self, titulo_evento: str):
         for evento in self.eventos:
             if evento.titulo == titulo_evento:
-                return evento
+                return True
         return False
     
     def cadastra_local(self, nome_local: str, endereco_local: str, capacidade_local: int):
-        local = Local(nome_local, endereco_local, capacidade_local)
-        if local not in self.locais:
-            self.__locais.append(local)
-        else:
-            raise LocalJaCadastrado()
+        novo_local = Local(nome_local, endereco_local, capacidade_local)
+        for local in self.locais:
+            if novo_local.nome == local.nome:
+                raise LocalJaCadastrado
+        self.locais.append(novo_local)
 
     def cadastra_evento(self, titulo_evento: str,
                                          categoria_evento: str,
@@ -41,46 +41,51 @@ class ControladorEvento:
                                          capacidade_local: int,
                                          classificacao_indicativa: int,
                                          valor_ingresso: float):
-        evento = Evento(titulo_evento,
+        novo_evento = Evento(titulo_evento,
                         categoria_evento,
                         data_evento,
                         Local(nome_local, endereco_local, capacidade_local),
                         classificacao_indicativa,
                         valor_ingresso)
-        if evento not in self.eventos and isinstance(evento, Evento):
-            self.eventos.append(evento)
-        else:
-            raise EventoJaCadastrado()
+        for evento in self.eventos:
+            if evento.titulo == titulo_evento:
+                raise EventoJaCadastrado()
+        self.eventos.append(novo_evento)
 
-    def altera_local_evento(self, evento: Evento,
+    def altera_local_evento(self, titulo_evento: str,
                             novo_nome_local: str,
                             novo_endereco_local: str,
                             nova_capacidade_local: int):
-        if evento in self.eventos:
-            evento.local = Local(novo_nome_local, novo_endereco_local, nova_capacidade_local)
-        else:
-            raise EventoNaoEncontrado()
+        for evento in self.eventos:
+            if evento.titulo == titulo_evento:
+                evento.local = Local(novo_nome_local, novo_endereco_local, nova_capacidade_local)
+            else:
+                raise EventoNaoEncontrado()
 
-    def altera_categoria_evento(self, evento: Evento, nova_categoria: str):
-        if evento in self.eventos:
-            evento.categoria = nova_categoria
-        else:
-            raise EventoNaoEncontrado()
+    def altera_categoria_evento(self, titulo_evento: str, nova_categoria: str):
+        for evento in self.eventos:
+            if evento.titulo == titulo_evento:
+                evento.categoria = nova_categoria
+            else:
+                raise EventoNaoEncontrado()
 
-    def altera_titulo_evento(self, evento: Evento, novo_titulo: str):
-        if evento in self.eventos:
-            evento.titulo = novo_titulo
-        else:
-            raise EventoNaoEncontrado()
+    def altera_titulo_evento(self, titulo_evento: str, novo_titulo: str):
+        for evento in self.eventos:
+            if evento.titulo == titulo_evento:
+                evento.titulo = novo_titulo
+            else:
+                raise EventoNaoEncontrado()
 
-    def altera_valor_evento(self, evento: Evento, novo_valor: float):
-        if evento in self.eventos:
-            evento.valor = novo_valor
-        else:
-            raise EventoNaoEncontrado
+    def altera_valor_evento(self, titulo_evento: str, novo_valor: float):
+        for evento in self.eventos:
+            if evento.titulo == titulo_evento:
+                evento.valor = novo_valor
+            else:
+                raise EventoNaoEncontrado
 
-    def altera_data_evento(self, evento: Evento, nova_data: str):
-        if evento in self.eventos:
-            evento.data = nova_data
-        else:
-            raise EventoNaoEncontrado
+    def altera_data_evento(self, titulo_evento: str, nova_data: str):
+        for evento in self.eventos:
+            if evento.titulo == titulo_evento:
+                evento.data = nova_data
+            else:
+                raise EventoNaoEncontrado
