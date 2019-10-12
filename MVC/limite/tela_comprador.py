@@ -28,11 +28,15 @@ class TelaComprador:
         for item in self.__info_cadastro:
             self.__info_cadastro[item] = input(item + ": ")
 
-        return (cpf, self.__info_cadastro)
+        return (self.__info_cadastro)
 
     def mostrar_dados(self, cpf, lista_compradores):
         for item in lista_compradores:
             if item.cpf == cpf:
                 for key, value in item.items():
                     print (key + ': ' + value)
-       
+
+    def print_lista(self, lista):
+        print (lista)
+        for item in lista:
+            print (item.nome)

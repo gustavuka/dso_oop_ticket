@@ -6,7 +6,8 @@ from controle.controlador_comprador import ControladorComprador
 class ControladorPrincipal:
     def __init__(self):
         self.tela_principal = TelaControladorPrincipal()
-        self.controlador = ControladorComprador()
+        self.controlador_comprador = ControladorComprador()
+        # self.controlador_eventos = ControladorEventos()
 
     def inicia(self):
         while True:
@@ -27,12 +28,14 @@ class ControladorPrincipal:
 
 
     def abrir_tela_comprador(self, opcao):
-        if opcao == '2':
-            self.controlador.adicionar_comprador()
+        if opcao == '1':
+            self.controlador_eventos.comprar_ingresso()
+        elif opcao == '2':
+            self.controlador_comprador.adicionar_comprador()
         elif opcao == '3':
-            self.controlador.alterar_dados()
+            self.controlador_comprador.alterar_dados()
         elif opcao == "4":
-            self.controlador.print_lista()
+            self.controlador_comprador.mostrar_usuarios_cadastrados()
 
 
     def abrir_tela_organizador(self, opcao):

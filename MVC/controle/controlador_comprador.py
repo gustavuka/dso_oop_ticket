@@ -59,7 +59,5 @@ class ControladorComprador:
         else:
             print ("deu ruim")
 
-    def print_lista(self):
-        print (self.lista_compradores)
-        for item in self.lista_compradores:
-            print (item.nome)
+    def mostrar_usuarios_cadastrados(self):
+        self.tela_comprador.print_lista(self.lista_compradores)

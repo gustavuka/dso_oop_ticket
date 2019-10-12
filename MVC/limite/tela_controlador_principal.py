@@ -4,6 +4,7 @@ class TelaControladorPrincipal:
     def menu_inicial(self):
         print ("Como gostaria de utilizar o sistema?")
         menu_inicial = [
+            '-------------------------------------',
             'Comprador - 1',
             'Organizador - 2',
             'Sair - 3',
