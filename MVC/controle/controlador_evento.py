@@ -1,5 +1,6 @@
 from entidade.evento import Evento
 from entidade.local import Local
+from limite.tela_evento import TelaEvento
 from datetime import datetime
 from excecoes.evento_ja_cadastrado import EventoJaCadastrado
 # from excecoes.evento_nao_encontrado import EventoNaoEncontrado
@@ -11,6 +12,7 @@ class ControladorEvento:
     def __init__(self):
         self.__eventos = []
         self.__locais = []
+        self.__tela_evento = TelaEvento()
         eventoteste = Evento(
             'eventoteste',
             'categoria_evento',
@@ -34,7 +36,11 @@ class ControladorEvento:
     @property
     def eventos(self):
         return self.__eventos
-    
+
+    @property
+    def tela_evento(self):
+        return self.__tela_evento
+       
     @property
     def locais(self):
         return self.__locais
@@ -50,9 +56,10 @@ class ControladorEvento:
         for local in self.locais:
             if novo_local.nome == local.nome:
                 raise LocalJaCadastrado
-        self.locais.append(novo_local)
+        self.locais.append(novo_local) 
 
-    def cadastra_evento(self, dados_evento):
+    def criar_evento(self):
+        dados_evento = self.tela_evento.cadastrar_evento()
         novo_evento = Evento(
             dados_evento['titulo_evento'],
             dados_evento['categoria_evento'],
@@ -62,9 +69,11 @@ class ControladorEvento:
             dados_evento['valor_ingresso'],
         )
         for evento in self.eventos:
-            if evento.titulo == titulo_evento:
+            if evento.titulo == novo_evento.titulo:
                 raise EventoJaCadastrado()
         self.eventos.append(novo_evento)
+        print ("evento criado com sucesso")
+        return novo_evento
 
     def altera_local_evento(self, titulo_evento: str,
                             novo_nome_local: str,

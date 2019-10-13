@@ -16,6 +16,10 @@ class ControladorOrganizador:
     def tela_organizador(self):
         return self.__tela_organizador
 
+    @property
+    def controlador_evento(self):
+        return self.__controlador_evento
+
     @lista_organizadores.setter
     def lista_organizadores(self, lista_organizadores):
         self.__lista_organizadores = lista_organizadores
@@ -61,15 +65,14 @@ class ControladorOrganizador:
     def mostrar_organizadores_cadastrados(self):
         self.tela_organizador.print_lista(self.lista_organizadores)
 
-    def cria_evento(self):
+    def cadastrar_evento(self):
         cnpj = self.tela_organizador.pede_cnpj()
         usuario = self.confere_cnpj_existe(cnpj)
 
         if usuario:
             novo_evento = self.controlador_evento.criar_evento()
-            self.controlador_evento.cadastra_evento(novo_evento)
             usuario.lista_eventos.append(novo_evento)
-
+            print ("evento criado com sucesso2")
 
     def lista_eventos_organizados(self, cnpj: str):
         pass

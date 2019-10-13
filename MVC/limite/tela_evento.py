@@ -1,11 +1,10 @@
-from controle.controlador_evento import ControladorEvento
 from excecoes.comando_invalido import ComandoInvalido
 
 
 class TelaEvento:
 
     def __init__(self):
-        self.__controlador = ControladorEvento()
+        pass
 
     @property
     def controlador(self):
@@ -15,31 +14,21 @@ class TelaEvento:
         return self.controlador.busca_evento(titulo_evento)
     
     def ler_titulo_evento(self):
-        titulo_evento = input("Digite o título do evento: ")
+        titulo_evento = input("Digite o nome do evento: ")
         return titulo_evento
     
     def cadastrar_evento(self):
-        titulo_evento = self.ler_titulo_evento()
-        categoria_evento = input("Digite a categoria do evento: ")
-        data_evento = input("Digite a data do evento: ")
-        nome_local = input("Digite o nome do local: ")
-        endereco_local = input("Digite o endereço do local: ")
-        while False:
-            capacidade_local = int(input("Digite a capacidade do local: "))
-            classificacao_indicativa = int(input("Digite a classificação indicativa: "))
-            valor_ingresso = float(input("Digite o valor do ingresso: "))
-            if not isinstance(capacidade_local, int) or not isinstance(classificacao_indicativa, int) or not isinstance((valor_ingresso, float)):
-                raise ComandoInvalido.numero_invalido()
-            else:
-                self.controlador.cadastra_evento(titulo_evento,
-                                                 categoria_evento,
-                                                 data_evento,
-                                                 nome_local,
-                                                 endereco_local,
-                                                 capacidade_local,
-                                                 classificacao_indicativa,
-                                                 valor_ingresso)
-                return True
+        info_evento = {}
+        info_evento['titulo_evento'] = self.ler_titulo_evento()
+        info_evento['categoria_evento'] = input("Digite a categoria do evento: ")
+        info_evento['data_evento'] = input("Digite a data do evento: ")
+        info_evento['local'] = input("Digite o nome do local: ")
+        info_evento['classificacao_indicativa'] = (input("Digite a classificação indicativa: "))
+        info_evento['valor_ingresso'] = (input("Digite o valor do ingresso: "))
+        # if not isinstance(capacidade_local, int) or not isinstance(classificacao_indicativa, int) or not isinstance((valor_ingresso, float)):
+        #     raise ComandoInvalido.numero_invalido()
+        # else:
+        return info_evento
 
     def alterar_local_evento(self):
         titulo_evento = self.ler_titulo_evento()
