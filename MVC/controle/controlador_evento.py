@@ -1,9 +1,9 @@
-from MVC.entidade.evento import Evento
-from MVC.entidade.local import Local
+from entidade.evento import Evento
+from entidade.local import Local
 from datetime import datetime
-from MVC.excecoes.evento_ja_cadastrado import EventoJaCadastrado
-from MVC.excecoes.evento_nao_encontrado import EventoNaoEncontrado
-from MVC.excecoes.local_ja_cadastrado import LocalJaCadastrado
+from excecoes.evento_ja_cadastrado import EventoJaCadastrado
+# from excecoes.evento_nao_encontrado import EventoNaoEncontrado
+from excecoes.local_ja_cadastrado import LocalJaCadastrado
 
 
 class ControladorEvento:
@@ -11,6 +11,29 @@ class ControladorEvento:
     def __init__(self):
         self.__eventos = []
         self.__locais = []
+        eventoteste = Evento(
+            'eventoteste',
+            'categoria_evento',
+            'data_evento',
+            'nome_local',
+            'endereco_local',
+            'capacidade_local',
+            'classificacao_indicativa',
+            'valor_ingresso'
+        )
+        self.__eventos.append(eventoteste)
+        eventoteste2 = Evento(
+            'eventoteste2',
+            'categoria_evento',
+            'data_evento',
+            'nome_local',
+            'endereco_local',
+            'capacidade_local',
+            'classificacao_indicativa',
+            'valor_ingresso'
+        )
+        self.__eventos.append(eventoteste2)
+
 
     @property
     def eventos(self):
@@ -33,20 +56,25 @@ class ControladorEvento:
                 raise LocalJaCadastrado
         self.locais.append(novo_local)
 
-    def cadastra_evento(self, titulo_evento: str,
-                                         categoria_evento: str,
-                                         data_evento: str,
-                                         nome_local: str,
-                                         endereco_local: str,
-                                         capacidade_local: int,
-                                         classificacao_indicativa: int,
-                                         valor_ingresso: float):
-        novo_evento = Evento(titulo_evento,
-                        categoria_evento,
-                        data_evento,
-                        Local(nome_local, endereco_local, capacidade_local),
-                        classificacao_indicativa,
-                        valor_ingresso)
+    def cadastra_evento(
+        self,
+        titulo_evento: str,
+        categoria_evento: str,
+        data_evento: str,
+        nome_local: str,
+        endereco_local: str,
+        capacidade_local: int,
+        classificacao_indicativa: int,
+        valor_ingresso: float,
+    ):
+        novo_evento = Evento(
+            titulo_evento,
+            categoria_evento,
+            data_evento,
+            Local(nome_local, endereco_local, capacidade_local),
+            classificacao_indicativa,
+            valor_ingresso,
+        )
         for evento in self.eventos:
             if evento.titulo == titulo_evento:
                 raise EventoJaCadastrado()
@@ -89,3 +117,4 @@ class ControladorEvento:
                 evento.data = nova_data
             else:
                 raise EventoNaoEncontrado
+

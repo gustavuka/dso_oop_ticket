@@ -1,5 +1,5 @@
-from MVC.controle.controlador_evento import ControladorEvento
-from MVC.excecoes.comando_invalido import ComandoInvalido
+from controle.controlador_evento import ControladorEvento
+from excecoes.comando_invalido import ComandoInvalido
 
 
 class TelaEvento:
@@ -82,3 +82,7 @@ class TelaEvento:
         titulo_evento = self.ler_titulo_evento()
         nova_data_evento = input("Digite a nova data: ")
         self.controlador.altera_data_evento(titulo_evento, nova_data_evento)
+
+    def mostrar_eventos(self):
+        for item in self.controlador.eventos:
+            return item.titulo_evento

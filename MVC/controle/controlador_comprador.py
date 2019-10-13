@@ -1,15 +1,21 @@
 from entidade.comprador import Comprador
 from limite.tela_comprador import TelaComprador
+from limite.tela_evento import TelaEvento
 
 
 class ControladorComprador:
     def __init__(self):
         self.__tela_comprador = TelaComprador()
         self.__lista_compradores = []
+        self.__tela_evento = TelaEvento()
 
     @property
     def tela_comprador(self):
         return self.__tela_comprador
+
+    @property
+    def tela_evento(self):
+        return self.__tela_evento
     
     @property
     def lista_compradores(self):
@@ -66,7 +72,7 @@ class ControladorComprador:
         cpf = self.tela_comprador.pede_cpf()
         usuario = self.confere_cpf_existe(cpf)
         if usuario:
-            # evento_selecionado = tela_comprador.mostrar_eventos()
+            self.tela_evento.mostrar_eventos()
             evento_selecionado = "showzao maneiro"
             confirmacao = self.tela_comprador.confirmacao_de_compra(evento_selecionado)
             if confirmacao:

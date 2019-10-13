@@ -1,4 +1,4 @@
-from local import Local
+from entidade.local import Local
 from datetime import datetime
 
 class Evento:
