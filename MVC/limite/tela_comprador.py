@@ -5,12 +5,12 @@ from limite.tela_controlador_principal import TelaControladorPrincipal
 class TelaComprador:
     def __init__(self):
         self.__info_cadastro = {
-            'Nome': 'n',
-            'Endereco': 'e',
-            'Telefone': 't',
-            'Email': '@',
-            'cpf': 'c',
-            'Idade': 'i'
+            'Nome': '',
+            'Endereco': '',
+            'Telefone': '',
+            'Email': '',
+            'cpf': '',
+            'Idade': ''
         }
 
 

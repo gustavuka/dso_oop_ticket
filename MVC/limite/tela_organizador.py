@@ -1,4 +1,3 @@
-from controle.controlador_organizador import ControladorOrganizador
 from entidade.organizador import Organizador
 from excecoes.comando_invalido import ComandoInvalido
 
@@ -6,15 +5,34 @@ from excecoes.comando_invalido import ComandoInvalido
 class TelaOrganizador:
 
     def __init__(self):
-        self.__controlador = ControladorOrganizador()
+        self.__info_cadastro = {
+            'Nome': '',
+            'Endereco': '',
+            'Telefone': '',
+            'Email': '',
+            'cnpj': ''
+        }
+
+    def novo_organizador(self):
+        for item in self.__info_cadastro:
+            self.__info_cadastro[item] = input(item + ": ")
+        
+        return self.__info_cadastro
+    
+    def alterar_dados(self):
+        for item in self.__info_cadastro:
+            self.__info_cadastro[item] = input(item + ": ")
+
+        return (self.__info_cadastro)
+
+    def print_lista(self, lista):
+        print (lista)
+        for item in lista:
+            print (item.nome)
 
     def ler_titulo_evento(self):
         titulo = input("Digite o título do evento: ")
         return titulo
-
-    @property
-    def controlador(self):
-        return self.__controlador
 
     def cadastrar_organizador(self):
         nome = input("Digite o nome do organizador: ")
@@ -27,13 +45,7 @@ class TelaOrganizador:
 
     def pede_cnpj(self):
         cnpj = input('Qual o cnpj do organizador?\n')
-        return cnpj
-
-    def alterar_dados(self):
-        for item in self.__info_cadastro:
-            self.__info_cadastro[item] = input(item + ": ")
-
-        return (self.__info_cadastro)   
+        return cnpj  
 
     def criar_evento(self):
         titulo_evento = self.ler_titulo_evento()

@@ -1,7 +1,7 @@
 from entidade.organizador import Organizador
 from limite.tela_organizador import TelaOrganizador
 
-class ControladorComprador:
+class ControladorOrganizador:
     def __init__(self):
         self.__tela_organizador = TelaOrganizador()
         self.__lista_organizadores = []        
@@ -51,24 +51,18 @@ class ControladorComprador:
             usuario.email = nova_info_organizador["Email"]
             usuario.cnpj = nova_info_organizador["cnpj"]
             print ("Atualizacao de dados completa!")
-            print (item.nome)
+            print (usuario.nome)
             print (self.lista_organizadores)
         else:
             print ("deu ruim")
     
     def mostrar_organizadores_cadastrados(self):
-        self.tela_comprador.print_lista(self.lista_compradores)
-
-    def cadastra_organizador(self, nome: str, endereco: str, telefone: str, email: str, cnpj: str):
-        pass
-
-    def lista_eventos_organizados(self, cnpj: str):
-        pass
+        self.tela_organizador.print_lista(self.lista_organizadores)
 
     def cria_evento(self):
         pass
 
-    def lista_eventos_organizados(self):
+    def lista_eventos_organizados(self, cnpj: str):
         pass
 
     def mostra_relatorio_compras(self):
