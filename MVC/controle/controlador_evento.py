@@ -52,24 +52,14 @@ class ControladorEvento:
                 raise LocalJaCadastrado
         self.locais.append(novo_local)
 
-    def cadastra_evento(
-        self,
-        titulo_evento: str,
-        categoria_evento: str,
-        data_evento: str,
-        nome_local: str,
-        endereco_local: str,
-        capacidade_local: int,
-        classificacao_indicativa: int,
-        valor_ingresso: float,
-    ):
+    def cadastra_evento(self, dados_evento):
         novo_evento = Evento(
-            titulo_evento,
-            categoria_evento,
-            data_evento,
-            Local(nome_local, endereco_local, capacidade_local),
-            classificacao_indicativa,
-            valor_ingresso,
+            dados_evento['titulo_evento'],
+            dados_evento['categoria_evento'],
+            dados_evento['data_evento'],
+            dados_evento['local'],
+            dados_evento['classificacao_indicativa'],
+            dados_evento['valor_ingresso'],
         )
         for evento in self.eventos:
             if evento.titulo == titulo_evento:

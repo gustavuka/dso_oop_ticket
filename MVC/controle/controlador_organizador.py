@@ -1,10 +1,12 @@
 from entidade.organizador import Organizador
 from limite.tela_organizador import TelaOrganizador
+from controle.controlador_evento import ControladorEvento
 
 class ControladorOrganizador:
     def __init__(self):
         self.__tela_organizador = TelaOrganizador()
-        self.__lista_organizadores = []        
+        self.__controlador_evento = ControladorEvento()
+        self.__lista_organizadores = []      
 
     @property
     def lista_organizadores(self):
@@ -60,7 +62,14 @@ class ControladorOrganizador:
         self.tela_organizador.print_lista(self.lista_organizadores)
 
     def cria_evento(self):
-        pass
+        cnpj = self.tela_organizador.pede_cnpj()
+        usuario = self.confere_cnpj_existe(cnpj)
+
+        if usuario:
+            novo_evento = self.controlador_evento.criar_evento()
+            self.controlador_evento.cadastra_evento(novo_evento)
+            usuario.lista_eventos.append(novo_evento)
+
 
     def lista_eventos_organizados(self, cnpj: str):
         pass
