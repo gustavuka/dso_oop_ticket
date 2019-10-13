@@ -3,44 +3,61 @@ from limite.tela_organizador import TelaOrganizador
 
 class ControladorComprador:
     def __init__(self):
-        self.__lista_organizadores = []
+        self.__tela_organizador = TelaOrganizador()
+        self.__lista_organizadores = []        
 
     @property
     def lista_organizadores(self):
         return self.__lista_organizadores
+    
+    @property
+    def tela_organizador(self):
+        return self.__tela_organizador
 
     @lista_organizadores.setter
     def lista_organizadores(self, lista_organizadores):
-        self.__lista_organizadores = lista_organizadores    
+        self.__lista_organizadores = lista_organizadores
+    
+    def confere_cnpj_existe(self, cnpj):
+        for item in self.lista_organizadores:
+            if item.cnpj == cnpj:
+                return item
+            else:
+                return False  
 
     def adicionar_organizador(self):
-        info_organizador = (TelaOrganizador().novo_organizador())
+        info_organizador = (self.tela_organizador.novo_organizador())
 
         novo_organizador = Organizador(
-            info_comprador["Nome"],
-            info_comprador["Endereco"],
-            info_comprador["Telefone"],
-            info_comprador["Email"],
-            info_comprador["cnpj"],
-            info_comprador["Idade"],
+            info_organizador["Nome"],
+            info_organizador["Endereco"],
+            info_organizador["Telefone"],
+            info_organizador["Email"],
+            info_organizador["cnpj"],
         )
         self.lista_organizadores.append(novo_organizador)
         print ("Novo orgnizador cadastrado! Bem vindo " + novo_organizador.nome + "!")
         print (self.lista_organizadores)
 
     def alterar_dados(self):
-        cnpj, nova_info_organizador = (TelaOrganizador().alterar_dados())
+        cnpj = self.tela_organizador.pede_cnpj() 
+        usuario = self.tela_organizador.confere_cnpj_existe(cnpj)
         
-        for item in self.lista_organizadores:
-            if item.cnpj == cnpj:
-                # item.nome = nova_info_organizador["Nome"]
-                # item.endereco = nova_info_organizador["Endereco"]
-                # item.telefone = nova_info_organizador["Telefone"]
-                # item.email = nova_info_organizador["Email"]
-                # item.cnpj = nova_info_organizador["cnpj"]
-                # print ("Atualizacao de dados completa!")
-                print (item.nome)
-                print (self.lista_organizadores)
+        if usuario:
+            nova_info_organizador = self.tela_organizador.alterar_dados()
+            usuario.nome = nova_info_organizador["Nome"]
+            usuario.endereco = nova_info_organizador["Endereco"]
+            usuario.telefone = nova_info_organizador["Telefone"]
+            usuario.email = nova_info_organizador["Email"]
+            usuario.cnpj = nova_info_organizador["cnpj"]
+            print ("Atualizacao de dados completa!")
+            print (item.nome)
+            print (self.lista_organizadores)
+        else:
+            print ("deu ruim")
+    
+    def mostrar_organizadores_cadastrados(self):
+        self.tela_comprador.print_lista(self.lista_compradores)
 
     def cadastra_organizador(self, nome: str, endereco: str, telefone: str, email: str, cnpj: str):
         pass

@@ -1,8 +1,8 @@
 
 # from controle.controlador_comprador import ControladorComprador
+from limite.tela_controlador_principal import TelaControladorPrincipal
 
 class TelaComprador:
-    # self.controlador = ControladorComprador()
     def __init__(self):
         self.__info_cadastro = {
             'Nome': 'n',
@@ -19,16 +19,16 @@ class TelaComprador:
             self.__info_cadastro[item] = input(item + ": ")
         
         return self.__info_cadastro
-
-    def pede_cpf(self):
-        cpf = input('Qual o cpf do comprador a ser editado?\n')
-        return cpf
-
+    
     def alterar_dados(self):
         for item in self.__info_cadastro:
             self.__info_cadastro[item] = input(item + ": ")
 
         return (self.__info_cadastro)
+
+    def pede_cpf(self):
+        cpf = input('Qual o cpf do comprador?\n')
+        return cpf
 
     def mostrar_dados(self, cpf, lista_compradores):
         for item in lista_compradores:
@@ -45,7 +45,9 @@ class TelaComprador:
         print ("Usuario inexistente, por favor verfique o cpf.")
 
     def confirmacao_de_compra(self, evento):
-        print ("Confirmar a compra para o evento: " + evento + " (s/n)")
-        confirmacao = input()
-        if confirmacao == "s":
+        print ("Confirmar a compra para o evento: " + evento)
+        print ("Confirmar - 1")
+        print ("Cancelar - 2")
+        confirmacao = TelaControladorPrincipal.le_numero_inteiro([1,2])
+        if confirmacao == 1:
             return True
