@@ -16,8 +16,6 @@ class ControladorEvento:
             'categoria_evento',
             'data_evento',
             'nome_local',
-            'endereco_local',
-            'capacidade_local',
             'classificacao_indicativa',
             'valor_ingresso'
         )
@@ -27,8 +25,6 @@ class ControladorEvento:
             'categoria_evento',
             'data_evento',
             'nome_local',
-            'endereco_local',
-            'capacidade_local',
             'classificacao_indicativa',
             'valor_ingresso'
         )

@@ -6,15 +6,17 @@ class Evento:
     def __init__(self, titulo: str,
                  categoria: str,
                  data: str,
-                 nome_local: str,
-                 endereco_local: str,
-                 capacidade_local: str,
+                 local: str,
+                #  nome_local: str,
+                #  endereco_local: str,
+                #  capacidade_local: str,
                  classificacao_indicativa: int,
                  valor_ingresso: float):
         self.__titulo = titulo
         self.__categoria = categoria
         self.__data = data
-        self.__local = Local(nome_local, endereco_local, capacidade_local)
+        self.__local = local
+        # self.__local = Local(nome_local, endereco_local, capacidade_local)
         self.__classificacao_indicativa = classificacao_indicativa
         self.__valor_ingresso = valor_ingresso
     
