@@ -12,8 +12,8 @@ class TelaControladorPrincipal:
         for item in menu_inicial:
             print (item)       
 
-        opcao_ini = input()
-        return (opcao_ini)
+        opcao = input()
+        return opcao
 
     def menu_principal(self):
         menu_table = [
@@ -28,5 +28,18 @@ class TelaControladorPrincipal:
         for item in menu_table:
             print (item)
 
-        opcao_sec = input()
-        return opcao_sec
+        opcao = input()
+        return opcao
+    
+    def menu_usuario_cadastrado(self):
+        menu_castrado = [
+            '-------------------------------------',
+            'Comprar ingresso - 1',
+            'Mostrar histórico de ingressos - 2',
+            '-------------------------------------'
+        ]
+        for item in menu_castrado:
+            print (item)
+        
+        opcao = input()
+        return opcao

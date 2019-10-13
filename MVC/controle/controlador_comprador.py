@@ -61,3 +61,22 @@ class ControladorComprador:
 
     def mostrar_usuarios_cadastrados(self):
         self.tela_comprador.print_lista(self.lista_compradores)
+
+    def comprar_ingressos(self):
+        cpf = self.tela_comprador.pede_cpf()
+        usuario = self.confere_cpf_existe(cpf)
+        if usuario:
+            # evento_selecionado = tela_comprador.mostrar_eventos()
+            evento_selecionado = "showzao maneiro"
+            confirmacao = self.tela_comprador.confirmacao_de_compra(evento_selecionado)
+            if confirmacao:
+                usuario.lista_ingressos.append(evento_selecionado)
+        else:
+            self.tela_comprador.usuario_inexistente()
+
+    def mostrar_ingressos(self):
+        cpf = self.tela_comprador.pede_cpf()
+        usuario = self.confere_cpf_existe(cpf)
+        if usuario:
+            for item in usuario.lista_ingressos:
+                print (item)

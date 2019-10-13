@@ -21,7 +21,7 @@ class TelaComprador:
         return self.__info_cadastro
 
     def pede_cpf(self):
-        cpf = input('Qual o cpf do comprador a ser editado?')
+        cpf = input('Qual o cpf do comprador a ser editado?\n')
         return cpf
 
     def alterar_dados(self):
@@ -40,3 +40,12 @@ class TelaComprador:
         print (lista)
         for item in lista:
             print (item.nome)
+    
+    def usuario_inexistente(self):
+        print ("Usuario inexistente, por favor verfique o cpf.")
+
+    def confirmacao_de_compra(self, evento):
+        print ("Confirmar a compra para o evento: " + evento + " (s/n)")
+        confirmacao = input()
+        if confirmacao == "s":
+            return True

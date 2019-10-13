@@ -29,7 +29,11 @@ class ControladorPrincipal:
 
     def abrir_tela_comprador(self, opcao):
         if opcao == '1':
-            self.controlador_eventos.comprar_ingresso()
+            opcao_cadastrado = self.tela_principal.menu_usuario_cadastrado()
+            if opcao_cadastrado == "1":
+                self.controlador_comprador.comprar_ingressos()
+            elif opcao_cadastrado == "2":
+                self.controlador_comprador.mostrar_ingressos()
         elif opcao == '2':
             self.controlador_comprador.adicionar_comprador()
         elif opcao == '3':
