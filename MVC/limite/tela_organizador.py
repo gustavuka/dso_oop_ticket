@@ -1,6 +1,6 @@
-from MVC.controle.controlador_organizador import ControladorOrganizador
-from MVC.entidade.organizador import Organizador
-from MVC.excecoes.comando_invalido import ComandoInvalido
+from controle.controlador_organizador import ControladorOrganizador
+from entidade.organizador import Organizador
+from excecoes.comando_invalido import ComandoInvalido
 
 
 class TelaOrganizador:
@@ -23,6 +23,17 @@ class TelaOrganizador:
         email = input("Digite o email: ")
         cnpj = input("Digite o cnpj: ")
         organizador = Organizador(nome, endereco, telefone, email, cnpj)
+        return organizador
+
+    def pede_cnpj(self):
+        cnpj = input('Qual o cnpj do organizador?\n')
+        return cnpj
+
+    def alterar_dados(self):
+        for item in self.__info_cadastro:
+            self.__info_cadastro[item] = input(item + ": ")
+
+        return (self.__info_cadastro)   
 
     def criar_evento(self):
         titulo_evento = self.ler_titulo_evento()

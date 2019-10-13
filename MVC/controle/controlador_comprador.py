@@ -65,7 +65,7 @@ class ControladorComprador:
         else:
             print ("deu ruim")
 
-    def mostrar_usuarios_cadastrados(self):
+    def mostrar_compradores_cadastrados(self):
         self.tela_comprador.print_lista(self.lista_compradores)
 
     def comprar_ingressos(self):
@@ -73,6 +73,8 @@ class ControladorComprador:
         usuario = self.confere_cpf_existe(cpf)
         if usuario:
             self.tela_evento.mostrar_eventos()
+            #alterar para selecionar os eventos da lista
+            #validar input
             evento_selecionado = "showzao maneiro"
             confirmacao = self.tela_comprador.confirmacao_de_compra(evento_selecionado)
             if confirmacao:

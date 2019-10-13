@@ -84,8 +84,5 @@ class TelaEvento:
         self.controlador.altera_data_evento(titulo_evento, nova_data_evento)
 
     def mostrar_eventos(self):
-        print (self.controlador)
-        print (self.controlador.eventos)
-        print ("hello-----------")
         for item in self.controlador.eventos:
             print (item.titulo)
