@@ -6,7 +6,7 @@ class ControladorOrganizador:
     def __init__(self):
         self.__tela_organizador = TelaOrganizador()
         self.__controlador_evento = ControladorEvento()
-        self.__lista_organizadores = []      
+        self.__lista_organizadores = []
 
     @property
     def lista_organizadores(self):

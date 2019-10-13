@@ -13,24 +13,6 @@ class ControladorEvento:
         self.__eventos = []
         self.__locais = []
         self.__tela_evento = TelaEvento()
-        eventoteste = Evento(
-            'eventoteste',
-            'categoria_evento',
-            'data_evento',
-            'nome_local',
-            'classificacao_indicativa',
-            'valor_ingresso'
-        )
-        self.__eventos.append(eventoteste)
-        eventoteste2 = Evento(
-            'eventoteste2',
-            'categoria_evento',
-            'data_evento',
-            'nome_local',
-            'classificacao_indicativa',
-            'valor_ingresso'
-        )
-        self.__eventos.append(eventoteste2)
 
 
     @property

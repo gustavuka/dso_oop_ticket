@@ -1,13 +1,14 @@
 from entidade.comprador import Comprador
 from limite.tela_comprador import TelaComprador
 from controle.controlador_evento import ControladorEvento
-
+from inicia_for_tests import IniciaForTests
 
 class ControladorComprador:
     def __init__(self):
         self.__tela_comprador = TelaComprador()
         self.__lista_compradores = []
         self.__controlado_evento = ControladorEvento()
+        self.inicia_for_tests = IniciaForTests().comprador_teste(Comprador)
 
     @property
     def tela_comprador(self):
