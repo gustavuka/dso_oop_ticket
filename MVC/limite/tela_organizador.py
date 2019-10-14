@@ -30,7 +30,7 @@ class TelaOrganizador:
         
         return info_cadastro
 
-    def print_lista(self, lista):
+    def lista_organizadores_cadastrados(self, lista):
         print (lista)
         for item in lista:
             print (item.nome)
@@ -72,9 +72,6 @@ class TelaOrganizador:
     #                                              classificacao_indicativa,
     #                                              valor_ingresso)
     #             return True
-
-    def listar_eventos_organizados(self):
-        pass
 
     def mostrar_relatorio_compras(self):
         pass

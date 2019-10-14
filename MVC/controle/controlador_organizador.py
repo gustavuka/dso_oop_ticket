@@ -67,7 +67,7 @@ class ControladorOrganizador:
             print ("deu ruim")
     
     def mostrar_organizadores_cadastrados(self):
-        self.tela_organizador.print_lista(self.lista_organizadores)
+        self.tela_organizador.lista_organizadores_cadastrados(self.lista_organizadores)
 
     def cadastrar_evento(self):
         cnpj = self.tela_organizador.pede_cnpj()
