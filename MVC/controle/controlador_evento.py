@@ -43,11 +43,12 @@ class ControladorEvento:
                 raise LocalJaCadastrado
         self.locais.append(novo_local) 
 
-    def criar_evento(self):
-        dados_evento = self.tela_evento.cadastrar_evento()
+    def criar_evento(self, cnpj: str):
+        dados_evento = self.tela_evento.cadastrar_evento(cnpj)
         local = self.tela_evento.selecionar_locais(self.locais)
         if local:
             novo_evento = Evento(
+                dados_evento['cnpj_organizador'],
                 dados_evento['titulo_evento'],
                 dados_evento['categoria_evento'],
                 dados_evento['data_evento'],

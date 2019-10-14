@@ -11,8 +11,9 @@ class TelaEvento:
         titulo_evento = input("Digite o titulo do evento: ")
         return titulo_evento
     
-    def cadastrar_evento(self):
+    def cadastrar_evento(self, cnpj: str):
         info_evento = {}
+        info_evento['cnpj_organizador'] = cnpj
         info_evento['titulo_evento'] = self.ler_titulo_evento()
         info_evento['categoria_evento'] = input("Digite a categoria do evento: ")
         info_evento['data_evento'] = input("Digite a data do evento: ")

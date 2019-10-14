@@ -39,6 +39,7 @@ class IniciaForTests:
 
     def eventos_teste(self, Evento, eventos):
         eventoteste = Evento(
+            '98.765.432/0002',
             'Super Show Pirotécnico',
             'Gratuito',
             '01/01/2020',
@@ -48,6 +49,7 @@ class IniciaForTests:
         )
         eventos.append(eventoteste)
         eventoteste2 = Evento(
+            '12.345.678/0001',
             'Ratos de Porão',
             'Show',
             '06/11/2019',

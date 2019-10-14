@@ -3,7 +3,8 @@ from datetime import datetime
 
 class Evento:
     #arrumar isso com o local correto
-    def __init__(self, titulo: str,
+    def __init__(self, cnpj_organizador: str,
+                 titulo: str,
                  categoria: str,
                  data: str,
                  local: str,
@@ -12,6 +13,7 @@ class Evento:
                 #  capacidade_local: str,
                  classificacao_indicativa: int,
                  valor_ingresso: float):
+        self.__cnpj_organizador = cnpj_organizador
         self.__titulo = titulo
         self.__categoria = categoria
         self.__data = data
@@ -19,7 +21,11 @@ class Evento:
         # self.__local = Local(nome_local, endereco_local, capacidade_local)
         self.__classificacao_indicativa = classificacao_indicativa
         self.__valor_ingresso = valor_ingresso
-    
+
+    @property
+    def cnpj_organizador(self):
+        return self.__cnpj_organizador
+
     @property
     def titulo(self):
         return self.__titulo
