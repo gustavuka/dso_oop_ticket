@@ -44,7 +44,6 @@ class ControladorEvento:
         self.locais.append(novo_local) 
 
     def criar_evento(self):
-        #local precisa ser uma instancia de local e nao uma string qualquer
         dados_evento = self.tela_evento.cadastrar_evento()
         local = self.tela_evento.selecionar_locais(self.locais)
         if local:
