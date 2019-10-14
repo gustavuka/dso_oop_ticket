@@ -8,13 +8,13 @@ class ControladorPrincipal:
     def __init__(self):
         self.tela_principal = TelaControladorPrincipal()
         self.controlador_comprador = ControladorComprador()
-        self.controlador_organizador = ControladorOrganizador()
         self.controlador_evento = ControladorEvento()
+        self.controlador_organizador = ControladorOrganizador(self.controlador_evento)
 
     def inicia(self):
         while True:
             opcao_ini = self.tela_principal.menu_inicial()
-            if opcao_ini == 1:                
+            if opcao_ini == 1:
                 opcao_sec = self.tela_principal.menu_principal()
                 self.abrir_tela_comprador(opcao_sec)
             elif opcao_ini == 2:
@@ -49,7 +49,7 @@ class ControladorPrincipal:
                 self.controlador_organizador.mostra_eventos_organizados()
             elif opcao_cadastrado == 3:
                 print ("Funcao ainda nao foi implementada!")
-                self.controlador_evento.criar_local()    
+                self.controlador_evento.criar_local()
         elif opcao == 2:
             self.controlador_organizador.adicionar_organizador()
         elif opcao == 3:
@@ -60,4 +60,3 @@ class ControladorPrincipal:
             self.controlador_evento.mostrar_todos_eventos()
         elif opcao == 6:
             self.controlador_organizador.mostra_informacoes_evento()
-

@@ -25,23 +25,23 @@ class ControladorEvento:
     @property
     def tela_evento(self):
         return self.__tela_evento
-       
+
     @property
     def locais(self):
         return self.__locais
-    
+
     def busca_evento(self, titulo_evento: str):
         for evento in self.eventos:
             if evento.titulo == titulo_evento:
                 return True
         return False
-    
+
     def cadastra_local(self, nome_local: str, endereco_local: str, capacidade_local: int):
         novo_local = Local(nome_local, endereco_local, capacidade_local)
         for local in self.locais:
             if novo_local.nome == local.nome:
                 raise LocalJaCadastrado
-        self.locais.append(novo_local) 
+        self.locais.append(novo_local)
 
     def criar_evento(self, cnpj: str):
         dados_evento = self.tela_evento.cadastrar_evento(cnpj)
@@ -60,9 +60,9 @@ class ControladorEvento:
                 if evento.titulo == novo_evento.titulo:
                     raise EventoJaCadastrado()
             self.eventos.append(novo_evento)
-            print ("evento criado com sucesso")
+            print ("Evento criado com sucesso")
             return novo_evento
-    
+
     def mostrar_todos_eventos(self):
         self.tela_evento.print_eventos(self.eventos)
 
@@ -102,4 +102,3 @@ class ControladorEvento:
     #             evento.data = nova_data
     #         else:
     #             raise EventoNaoEncontrado
-

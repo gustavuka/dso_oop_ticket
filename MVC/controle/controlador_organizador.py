@@ -5,9 +5,9 @@ from inicia_for_tests import IniciaForTests
 
 
 class ControladorOrganizador:
-    def __init__(self):
+    def __init__(self, controlador_evento):
         self.__tela_organizador = TelaOrganizador()
-        self.__controlador_evento = ControladorEvento()
+        self.__controlador_evento = controlador_evento
         self.__lista_organizadores = []
         self.__lista_eventos_organizados = []
         #Cria alguns organizadores de testes para executar as funcionalidades do programa
@@ -16,7 +16,7 @@ class ControladorOrganizador:
     @property
     def lista_organizadores(self):
         return self.__lista_organizadores
-    
+
     @property
     def tela_organizador(self):
         return self.__tela_organizador
@@ -32,12 +32,12 @@ class ControladorOrganizador:
     @lista_organizadores.setter
     def lista_organizadores(self, lista_organizadores):
         self.__lista_organizadores = lista_organizadores
-    
+
     def confere_cnpj_existe(self, cnpj):
         for organizador in self.lista_organizadores:
             if organizador.cnpj == cnpj:
                 return True
-        return False  
+        return False
 
     def adicionar_organizador(self):
         info_organizador = self.tela_organizador.le_dados()
@@ -53,9 +53,9 @@ class ControladorOrganizador:
         self.tela_organizador.imprime_mensagem(("Novo organizador cadastrado! Bem vindo " + novo_organizador.nome + "!"))
 
     def alterar_dados(self):
-        cnpj = self.tela_organizador.pede_cnpj() 
+        cnpj = self.tela_organizador.pede_cnpj()
         usuario = self.tela_organizador.confere_cnpj_existe(cnpj)
-        
+
         if usuario:
             nova_info_organizador = self.tela_organizador.dados()
             usuario.nome = nova_info_organizador["Nome"]
@@ -68,7 +68,7 @@ class ControladorOrganizador:
             print (self.lista_organizadores)
         else:
             print ("deu ruim")
-    
+
     def mostrar_organizadores_cadastrados(self):
         self.tela_organizador.lista_organizadores_cadastrados(self.lista_organizadores)
 
@@ -79,7 +79,6 @@ class ControladorOrganizador:
         if usuario:
             novo_evento = self.controlador_evento.criar_evento(cnpj)
             self.lista_eventos_organizados.append(novo_evento)
-            print ("evento criado com sucesso!")
         else:
             print ("cnpj nao cadastrado")
             self.cadastrar_evento()
