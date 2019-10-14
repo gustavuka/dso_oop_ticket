@@ -39,6 +39,8 @@ class ControladorPrincipal:
             self.controlador_comprador.mostrar_compradores_cadastrados()
         elif opcao == 5:
             self.controlador_evento.mostrar_todos_eventos()
+        elif opcao == 6:
+            exit()
 
     def abrir_tela_organizador(self, opcao):
         if opcao == 1:
@@ -49,7 +51,9 @@ class ControladorPrincipal:
                 self.controlador_organizador.mostra_eventos_organizados()
             elif opcao_cadastrado == 3:
                 print ("Funcao ainda nao foi implementada!")
-                self.controlador_evento.criar_local()
+                self.controlador_evento.criar_cadastra_local()
+            elif opcao == 4:
+                exit()
         elif opcao == 2:
             self.controlador_organizador.adicionar_organizador()
         elif opcao == 3:
@@ -60,3 +64,5 @@ class ControladorPrincipal:
             self.controlador_evento.mostrar_todos_eventos()
         elif opcao == 6:
             self.controlador_organizador.mostra_informacoes_evento()
+        elif opcao == 7:
+            exit()

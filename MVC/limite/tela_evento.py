@@ -10,7 +10,7 @@ class TelaEvento:
     def ler_titulo_evento(self):
         titulo_evento = input("Digite o titulo do evento: ")
         return titulo_evento
-    
+
     def cadastrar_evento(self, cnpj: str):
         info_evento = {}
         info_evento['cnpj_organizador'] = cnpj
@@ -40,7 +40,7 @@ class TelaEvento:
                                                      nova_capacidade_local)
                 print("Local alterado com sucesso!")
                 return True
-    
+
     def print_eventos(self, lista):
         for item in lista:
             print (item.titulo)
@@ -60,7 +60,10 @@ class TelaEvento:
         #adicionar filtros aqui
         opcao = int(input())
         #tratar opcao para novo local
-        opcao = lista[(opcao-1)]
+        try:
+            opcao = lista[(opcao-1)]
+        except:
+            return "novo_local"
         return opcao
 
     # def alterar_categoria_evento(self):
