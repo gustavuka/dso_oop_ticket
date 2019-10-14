@@ -2,13 +2,8 @@ from excecoes.comando_invalido import ComandoInvalido
 
 
 class TelaEvento:
-
     def __init__(self):
         pass
-
-    @property
-    def controlador(self):
-        return self.__controlador
 
     def buscar_evento(self, titulo_evento: str):
         return self.controlador.busca_evento(titulo_evento)
@@ -50,32 +45,32 @@ class TelaEvento:
         for item in lista:
             print (item.titulo)
 
-    def alterar_categoria_evento(self):
-        titulo_evento = self.ler_titulo_evento()
-        nova_categoria_evento = input("Digite a nova categoria do evento: ")
-        self.controlador.altera_categoria_evento(titulo_evento, nova_categoria_evento)
-        print("Categoria alterada com sucesso!")
+    # def alterar_categoria_evento(self):
+    #     titulo_evento = self.ler_titulo_evento()
+    #     nova_categoria_evento = input("Digite a nova categoria do evento: ")
+    #     self.controlador.altera_categoria_evento(titulo_evento, nova_categoria_evento)
+    #     print("Categoria alterada com sucesso!")
 
-    def alterar_titulo_evento(self):
-        titulo_evento = self.ler_titulo_evento()
-        novo__evento = input("Digite o novo título do evento: ")
-        self.controlador.altera_titulo_evento(titulo_evento, novo__evento)
-        print("Titulo alterado com sucesso!")
+    # def alterar_titulo_evento(self):
+    #     titulo_evento = self.ler_titulo_evento()
+    #     novo__evento = input("Digite o novo título do evento: ")
+    #     self.controlador.altera_titulo_evento(titulo_evento, novo__evento)
+    #     print("Titulo alterado com sucesso!")
 
-    def alterar_valor_evento(self):
-        titulo_evento = self.ler_titulo_evento()
-        novo_valor_evento = float(input("Digite o novo valor do evento: "))
-        if isinstance(novo_valor_evento, float):
-            self.controlador.altera_valor_evento(titulo_evento, novo_valor_evento)
-            print("Valor alterado com sucesso!")
-        else:
-            raise ComandoInvalido.numero_invalido()
+    # def alterar_valor_evento(self):
+    #     titulo_evento = self.ler_titulo_evento()
+    #     novo_valor_evento = float(input("Digite o novo valor do evento: "))
+    #     if isinstance(novo_valor_evento, float):
+    #         self.controlador.altera_valor_evento(titulo_evento, novo_valor_evento)
+    #         print("Valor alterado com sucesso!")
+    #     else:
+    #         raise ComandoInvalido.numero_invalido()
 
-    def alterar_data_evento(self):
-        titulo_evento = self.ler_titulo_evento()
-        nova_data_evento = input("Digite a nova data: ")
-        self.controlador.altera_data_evento(titulo_evento, nova_data_evento)
+    # def alterar_data_evento(self):
+    #     titulo_evento = self.ler_titulo_evento()
+    #     nova_data_evento = input("Digite a nova data: ")
+    #     self.controlador.altera_data_evento(titulo_evento, nova_data_evento)
 
-    def mostrar_eventos(self):
-        for item in self.controlador.eventos:
-            print (item.titulo)
+    # def mostrar_eventos(self):
+    #     for item in self.controlador.eventos:
+    #         print (item.titulo)
