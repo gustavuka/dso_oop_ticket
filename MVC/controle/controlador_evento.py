@@ -5,6 +5,7 @@ from datetime import datetime
 from excecoes.evento_ja_cadastrado import EventoJaCadastrado
 # from excecoes.evento_nao_encontrado import EventoNaoEncontrado
 from excecoes.local_ja_cadastrado import LocalJaCadastrado
+from inicia_for_tests import IniciaForTests
 
 
 class ControladorEvento:
@@ -13,7 +14,8 @@ class ControladorEvento:
         self.__eventos = []
         self.__locais = []
         self.__tela_evento = TelaEvento()
-
+        #Cria alguns eventos de testes para executar as funcionalidades do programa
+        IniciaForTests().eventos_teste(Evento, self.eventos)
 
     @property
     def eventos(self):
@@ -56,6 +58,9 @@ class ControladorEvento:
         self.eventos.append(novo_evento)
         print ("evento criado com sucesso")
         return novo_evento
+    
+    def mostrar_todos_eventos(self):
+        self.tela_evento.print_eventos(self.eventos)
 
     def altera_local_evento(self, titulo_evento: str,
                             novo_nome_local: str,

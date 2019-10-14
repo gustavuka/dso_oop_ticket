@@ -45,6 +45,10 @@ class TelaEvento:
                                                      nova_capacidade_local)
                 print("Local alterado com sucesso!")
                 return True
+    
+    def print_eventos(self, lista):
+        for item in lista:
+            print (item.titulo)
 
     def alterar_categoria_evento(self):
         titulo_evento = self.ler_titulo_evento()

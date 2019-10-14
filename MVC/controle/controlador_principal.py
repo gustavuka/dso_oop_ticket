@@ -1,12 +1,15 @@
 from limite.tela_controlador_principal import TelaControladorPrincipal
 from controle.controlador_comprador import ControladorComprador
 from controle.controlador_organizador import ControladorOrganizador
+from controle.controlador_evento import ControladorEvento
+
 
 class ControladorPrincipal:
     def __init__(self):
         self.tela_principal = TelaControladorPrincipal()
         self.controlador_comprador = ControladorComprador()
         self.controlador_organizador = ControladorOrganizador()
+        self.controlador_evento = ControladorEvento()
 
     def inicia(self):
         while True:
@@ -34,7 +37,8 @@ class ControladorPrincipal:
             self.controlador_comprador.alterar_dados()
         elif opcao == 4:
             self.controlador_comprador.mostrar_compradores_cadastrados()
-
+        elif opcao == 5:
+            self.controlador_evento.mostrar_todos_eventos()
 
     def abrir_tela_organizador(self, opcao):
         if opcao == 1:
@@ -49,3 +53,5 @@ class ControladorPrincipal:
             self.controlador_organizador.alterar_dados()
         elif opcao == 4:
             self.controlador_organizador.mostrar_organizadores_cadastrados()
+        elif opcao == 5:
+            self.controlador_evento.mostrar_todos_eventos()

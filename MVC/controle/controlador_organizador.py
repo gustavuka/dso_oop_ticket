@@ -1,12 +1,16 @@
 from entidade.organizador import Organizador
 from limite.tela_organizador import TelaOrganizador
 from controle.controlador_evento import ControladorEvento
+from inicia_for_tests import IniciaForTests
+
 
 class ControladorOrganizador:
     def __init__(self):
         self.__tela_organizador = TelaOrganizador()
         self.__controlador_evento = ControladorEvento()
         self.__lista_organizadores = []
+        #Cria alguns organizadores de testes para executar as funcionalidades do programa
+        IniciaForTests().organizador_teste(Organizador, self.lista_organizadores)
 
     @property
     def lista_organizadores(self):

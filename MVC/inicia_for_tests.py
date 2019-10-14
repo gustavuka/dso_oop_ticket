@@ -1,60 +1,58 @@
 class IniciaForTests:   
     def comprador_teste(self, Comprador, lista_compradores):
         novo_comprador = Comprador(
-            "Nome",
-            "Endereco",
-            "Telefone",
-            "Email",
-            "cpf",
-            "Idade"
+            "Zé Alguém",
+            "Rua Camargo 253",
+            "(48) 92020-0566",
+            "ze@email.com",
+            "123.456.789-00",
+            "30"
         )
         lista_compradores.append(novo_comprador)
         novo_comprador2 = Comprador(
-            "Nome",
-            "Endereco",
-            "Telefone",
-            "Email",
-            "cpf",
-            "Idade"
+            "João Ninguém",
+            "Av. Acácia 22",
+            "(51) 95458-9632",
+            "joao@email.com",
+            "789.456.123-00",
+            "21"
         )
         lista_compradores.append(novo_comprador2)
 
-    def organizador_teste(self):
-        novo_organizador = Comprador(
-            "Nome",
-            "Endereco",
-            "Telefone",
-            "Email",
-            "cpf",
-            "Idade"
+    def organizador_teste(self, Organizador, lista_organizadores):
+        novo_organizador = Organizador(
+            "Evento Mania",
+            "Rua Eventin 456",
+            "(51) 95458-9632",
+            "evento@email.com",
+            "12.345.678/0001"
         )
-        self.__lista_compradores.append(novo_organizador)
-        novo_comprador2 = Comprador(
-            "Nome",
-            "Endereco",
-            "Telefone",
-            "Email",
-            "cpf",
-            "Idade"
+        lista_organizadores.append(novo_organizador)
+        novo_organizador2 = Organizador(
+            "Shows S/A",
+            "Av. Show 111",
+            "(48) 92020-0566",
+            "shows@gmail.com",
+            "98.765.432/0002"
         )
-        self.__lista_compradores.append(novo_organizador2)
+        lista_organizadores.append(novo_organizador2)
 
-    def eventos_teste(self):
+    def eventos_teste(self, Evento, eventos):
         eventoteste = Evento(
-            'eventoteste',
-            'categoria_evento',
-            'data_evento',
-            'nome_local',
-            'classificacao_indicativa',
-            'valor_ingresso'
+            'Super Show Pirotécnico',
+            'Gratuito',
+            '01/01/2020',
+            'Av.Beira Mar, Florianópolis',
+            '14',
+            '0'
         )
-        self.__eventos.append(eventoteste)
+        eventos.append(eventoteste)
         eventoteste2 = Evento(
-            'eventoteste2',
-            'categoria_evento',
-            'data_evento',
-            'nome_local',
-            'classificacao_indicativa',
-            'valor_ingresso'
+            'Ratos de Porão',
+            'Show',
+            '06/11/2019',
+            'Parador 55',
+            '18',
+            '120'
         )
-        self.__eventos.append(eventoteste2)
+        eventos.append(eventoteste2)

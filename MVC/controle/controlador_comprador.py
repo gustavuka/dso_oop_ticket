@@ -8,7 +8,8 @@ class ControladorComprador:
         self.__tela_comprador = TelaComprador()
         self.__lista_compradores = []
         self.__controlado_evento = ControladorEvento()
-        self.inicia_for_tests = IniciaForTests().comprador_teste(Comprador)
+        #Cria alguns usuários de testes para executar as funcionalidades do programa
+        IniciaForTests().comprador_teste(Comprador, self.lista_compradores)
 
     @property
     def tela_comprador(self):

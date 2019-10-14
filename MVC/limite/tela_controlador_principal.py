@@ -35,13 +35,14 @@ class TelaControladorPrincipal:
             'Cadastrar novo usuário - 2',
             'Editar usuário - 3',
             'Listar usuários - 4',
-            'Sair - 5',
+            'Mostrar todos os eventos cadastrados - 5',
+            'Sair - 6',
             '-------------------------------------'
         ]
         for item in menu_table:
             print (item)
 
-        opcao = self.le_numero_inteiro([1,2,3,4,5])
+        opcao = self.le_numero_inteiro([1,2,3,4,5,6])
         return opcao
     
     def menu_comprador_cadastrado(self):
@@ -61,7 +62,7 @@ class TelaControladorPrincipal:
         menu_castrado = [
             '-------------------------------------',
             'Cadastrar novo evento - 1',
-            'Mostrar histórico de eventos - 2',
+            'Mostrar o seu histórico de eventos - 2',
             '-------------------------------------'
         ]
         for item in menu_castrado:
