@@ -36,10 +36,10 @@ class ControladorEvento:
                 return True
         return False
 
-    def cadastra_local(self, nome_local: str, endereco_local: str, capacidade_local: int):
-        novo_local = Local(nome_local, endereco_local, capacidade_local)
+    def cadastra_local(self):
+        novo_local = self.tela_evento.cadastrar_local()
         for local in self.locais:
-            if novo_local.nome == local.nome:
+            if novo_local['nome'] == local.nome:
                 raise LocalJaCadastrado
         self.locais.append(novo_local)
 
