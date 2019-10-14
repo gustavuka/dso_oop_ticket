@@ -18,7 +18,7 @@ class ControladorComprador:
     @property
     def controlador_evento(self):
         return self.__controlado_evento
-    
+
     @property
     def lista_compradores(self):
         return self.__lista_compradores
@@ -31,7 +31,7 @@ class ControladorComprador:
         for item in self.lista_compradores:
             if item.cpf == cpf:
                 return item
-        return False        
+        return False
 
     def adicionar_comprador(self):
         info_comprador = self.tela_comprador.dados()
@@ -48,7 +48,7 @@ class ControladorComprador:
         print ("Novo comprador cadastrado! Bem vindo " + novo_comprador.nome + "!")
 
     def alterar_dados(self):
-        cpf = self.tela_comprador.pede_cpf()        
+        cpf = self.tela_comprador.pede_cpf()
         usuario = self.confere_cpf_existe(cpf)
 
         if usuario:
@@ -63,7 +63,7 @@ class ControladorComprador:
             print (usuario.nome, usuario.idade)
             print (self.lista_compradores)
         else:
-            print ("deu ruim")
+            print ("Falha na atualização")
 
     def mostrar_compradores_cadastrados(self):
         self.tela_comprador.print_lista(self.lista_compradores)
@@ -72,8 +72,7 @@ class ControladorComprador:
         cpf = self.tela_comprador.pede_cpf()
         usuario = self.confere_cpf_existe(cpf)
         if usuario:
-            #arrumar controaldor_evento
-            self.controlador_evento.mostrar_eventos()
+            self.controlador_evento.mostrar_todos_eventos()
             #alterar para selecionar os eventos da lista
             #validar input
             evento_selecionado = "showzao maneiro"

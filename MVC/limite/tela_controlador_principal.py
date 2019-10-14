@@ -23,7 +23,7 @@ class TelaControladorPrincipal:
             'Sair - 3',
             '-------------------------------------']
         for item in menu_inicial:
-            print (item)       
+            print (item)
 
         opcao = self.le_numero_inteiro([1, 2, 3])
         return opcao
@@ -44,18 +44,19 @@ class TelaControladorPrincipal:
             print(opcao_menu)
         opcao = self.le_numero_inteiro([1, 2, 3, 4, 5, 6, 7])
         return opcao
-    
+
     def menu_comprador_cadastrado(self):
         menu_castrado = [
             '-------------------------------------',
             'Comprar ingresso - 1',
             'Mostrar histórico de ingressos - 2',
+            'Sair - 3',
             '-------------------------------------'
         ]
         for opcao_menu in menu_castrado:
             print(opcao_menu)
-        
-        opcao = self.le_numero_inteiro([1,2])
+
+        opcao = self.le_numero_inteiro([1,2,3])
         return opcao
 
     def menu_organizador_cadastrado(self):
@@ -64,10 +65,11 @@ class TelaControladorPrincipal:
             'Cadastrar novo evento - 1',
             'Mostrar o seu histórico de eventos - 2',
             'Criar novo local para eventos - 3',
+            'Sair - 4',
             '-------------------------------------'
         ]
         for item in menu_castrado:
             print(item)
-        
-        opcao = self.le_numero_inteiro([1, 2, 3])
+
+        opcao = self.le_numero_inteiro([1, 2, 3, 4])
         return opcao
