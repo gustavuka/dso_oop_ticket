@@ -8,6 +8,7 @@ class Comprador(Cliente):
         self.__cpf = cpf
         self.__idade = idade
         self.__lista_ingressos = []
+        self.__email = email
 
     @property
     def cpf(self):
@@ -20,6 +21,10 @@ class Comprador(Cliente):
     @property
     def idade(self):
         return self.__idade
+
+    @property
+    def email(self):
+        return self.__email
 
     @cpf.setter
     def cpf(self, novo_cpf):

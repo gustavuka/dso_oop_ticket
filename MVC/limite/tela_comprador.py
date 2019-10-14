@@ -40,10 +40,9 @@ class TelaComprador:
                 for key, value in item.items():
                     print (key + ': ' + value)
 
-    def print_lista(self, lista):
-        print (lista)
-        for item in lista:
-            print (item.nome)
+    def print_lista(self, lista_compradores):
+        for comprador in lista_compradores:
+            print("Nome: "+comprador.nome+"\n"+"Email: "+comprador.email+"\n")
     
     def usuario_inexistente(self):
         print ("Usuario inexistente, por favor verfique o cpf.")
@@ -52,6 +51,6 @@ class TelaComprador:
         print ("Confirmar a compra para o evento: " + evento)
         print ("Confirmar - 1")
         print ("Cancelar - 2")
-        confirmacao = TelaControladorPrincipal.le_numero_inteiro([1,2])
+        confirmacao = TelaControladorPrincipal.le_numero_inteiro([1, 2])
         if confirmacao == 1:
             return True

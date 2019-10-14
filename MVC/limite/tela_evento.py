@@ -1,15 +1,14 @@
 from excecoes.comando_invalido import ComandoInvalido
 
+from excecoes.nenhum_local_cadastrado import NenhumLocalCadastrado
+
 
 class TelaEvento:
     def __init__(self):
         pass
 
-    def buscar_evento(self, titulo_evento: str):
-        return self.controlador.busca_evento(titulo_evento)
-    
     def ler_titulo_evento(self):
-        titulo_evento = input("Digite o nome do evento: ")
+        titulo_evento = input("Digite o titulo do evento: ")
         return titulo_evento
     
     def cadastrar_evento(self):
@@ -56,9 +55,7 @@ class TelaEvento:
             print ("Criar novo local: " + str(count))
             print ('-------------------------------------')
         else:
-            #criar um raise
-            print ("Nenhum local cadastrado, por favor realize o cadastro")
-            return False
+            raise NenhumLocalCadastrado()
         #adicionar filtros aqui
         opcao = int(input())
         #tratar opcao para novo local

@@ -66,12 +66,10 @@ class ControladorEvento:
         self.tela_evento.print_eventos(self.eventos)
 
     #AINDA NAO ESTá SENDO USADO!
-    # def altera_local_evento(self, titulo_evento: str,
-    #                         novo_nome_local: str,
-    #                         novo_endereco_local: str,
-    #                         nova_capacidade_local: int):
+    # def altera_local_evento(self):
+    #      evento_a_ser_alterado = self.tela_evento.ler_titulo_evento()
     #     for evento in self.eventos:
-    #         if evento.titulo == titulo_evento:
+    #         if evento.titulo == evento_a_ser_alterado:
     #             evento.local = Local(novo_nome_local, novo_endereco_local, nova_capacidade_local)
     #         else:
     #             raise EventoNaoEncontrado()

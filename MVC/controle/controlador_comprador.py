@@ -46,7 +46,6 @@ class ControladorComprador:
         )
         self.lista_compradores.append(novo_comprador)
         print ("Novo comprador cadastrado! Bem vindo " + novo_comprador.nome + "!")
-        print (self.lista_compradores)
 
     def alterar_dados(self):
         cpf = self.tela_comprador.pede_cpf()        
