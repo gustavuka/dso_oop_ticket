@@ -8,7 +8,7 @@ class TelaComprador:
         while True:
             valor_lido = input(message+": ")
             try:
-                if not len(valor_lido) > 1 or not len(valor_lido) < 100:
+                if not len(valor_lido) >= 1 or not len(valor_lido) < 150:
                     raise ValueError
                 return valor_lido
             except ValueError:

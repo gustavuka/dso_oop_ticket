@@ -31,8 +31,7 @@ class ControladorComprador:
         for item in self.lista_compradores:
             if item.cpf == cpf:
                 return item
-            else:
-                return False        
+        return False        
 
     def adicionar_comprador(self):
         info_comprador = self.tela_comprador.dados()

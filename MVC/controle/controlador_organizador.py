@@ -32,8 +32,7 @@ class ControladorOrganizador:
         for item in self.lista_organizadores:
             if item.cnpj == cnpj:
                 return item
-            else:
-                return False  
+        return False  
 
     def adicionar_organizador(self):
         info_organizador = self.tela_organizador.dados()
@@ -77,6 +76,8 @@ class ControladorOrganizador:
             novo_evento = self.controlador_evento.criar_evento()
             usuario.lista_eventos.append(novo_evento)
             print ("evento criado com sucesso2")
+        else:
+            print ("cnpj nao cadastrado")
 
     def lista_eventos_organizados(self, cnpj: str):
         pass

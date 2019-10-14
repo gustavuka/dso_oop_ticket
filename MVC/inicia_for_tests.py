@@ -56,3 +56,17 @@ class IniciaForTests:
             '120'
         )
         eventos.append(eventoteste2)
+
+    def locais_teste(self, Local, locais):
+        localteste = Local(
+            'Casa 48',
+            'Av. Lagoa 123',
+            '560'
+        )
+        locais.append(localteste)
+        localteste2 = Local(
+            'Parador 66',
+            'Rua. Poligot 66',
+            '1000'
+        )
+        locais.append(localteste2)

@@ -47,6 +47,9 @@ class ControladorPrincipal:
                 self.controlador_organizador.cadastrar_evento()
             elif opcao_cadastrado == 2:
                 self.controlador_organizador.mostrar_eventos()
+            elif opcao_cadastrado == 3:
+                print ("Funcao ainda nao foi implementada!")
+                self.controlador_evento.criar_local()    
         elif opcao == 2:
             self.controlador_organizador.adicionar_organizador()
         elif opcao == 3:

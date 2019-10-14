@@ -63,10 +63,11 @@ class TelaControladorPrincipal:
             '-------------------------------------',
             'Cadastrar novo evento - 1',
             'Mostrar o seu histórico de eventos - 2',
+            'Criar novo local para eventos - 3',
             '-------------------------------------'
         ]
         for item in menu_castrado:
             print (item)
         
-        opcao = self.le_numero_inteiro([1,2])
+        opcao = self.le_numero_inteiro([1,2,3])
         return opcao

@@ -17,7 +17,6 @@ class TelaEvento:
         info_evento['titulo_evento'] = self.ler_titulo_evento()
         info_evento['categoria_evento'] = input("Digite a categoria do evento: ")
         info_evento['data_evento'] = input("Digite a data do evento: ")
-        info_evento['local'] = input("Digite o nome do local: ")
         info_evento['classificacao_indicativa'] = (input("Digite a classificação indicativa: "))
         info_evento['valor_ingresso'] = (input("Digite o valor do ingresso: "))
         # if not isinstance(capacidade_local, int) or not isinstance(classificacao_indicativa, int) or not isinstance((valor_ingresso, float)):
@@ -45,6 +44,26 @@ class TelaEvento:
     def print_eventos(self, lista):
         for item in lista:
             print (item.titulo)
+
+    def selecionar_locais(self, lista):
+        if len(lista) > 1:
+            count = 1
+            print ('-------------------------------------')
+            print ("Por favor selecione o local: ")
+            for item in lista:
+                print (item.nome + ": " + str(count))
+                count += 1
+            print ("Criar novo local: " + str(count))
+            print ('-------------------------------------')
+        else:
+            #criar um raise
+            print ("Nenhum local cadastrado, por favor realize o cadastro")
+            return False
+        #adicionar filtros aqui
+        opcao = int(input())
+        #tratar opcao para novo local
+        opcao = lista[(opcao-1)]
+        return opcao
 
     # def alterar_categoria_evento(self):
     #     titulo_evento = self.ler_titulo_evento()

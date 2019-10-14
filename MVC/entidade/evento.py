@@ -2,7 +2,7 @@ from entidade.local import Local
 from datetime import datetime
 
 class Evento:
-
+    #arrumar isso com o local correto
     def __init__(self, titulo: str,
                  categoria: str,
                  data: str,
