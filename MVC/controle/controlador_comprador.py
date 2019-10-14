@@ -4,10 +4,10 @@ from controle.controlador_evento import ControladorEvento
 from inicia_for_tests import IniciaForTests
 
 class ControladorComprador:
-    def __init__(self):
+    def __init__(self, controlador_evento):
         self.__tela_comprador = TelaComprador()
         self.__lista_compradores = []
-        self.__controlado_evento = ControladorEvento()
+        self.__controlado_evento = controlador_evento
         #Cria alguns usuários de testes para executar as funcionalidades do programa
         IniciaForTests().comprador_teste(Comprador, self.lista_compradores)
 
@@ -72,13 +72,15 @@ class ControladorComprador:
         cpf = self.tela_comprador.pede_cpf()
         usuario = self.confere_cpf_existe(cpf)
         if usuario:
-            self.controlador_evento.mostrar_todos_eventos()
-            #alterar para selecionar os eventos da lista
-            #validar input
-            evento_selecionado = "showzao maneiro"
-            confirmacao = self.tela_comprador.confirmacao_de_compra(evento_selecionado)
-            if confirmacao:
-                usuario.lista_ingressos.append(evento_selecionado)
+            eventos = self.controlador_evento.eventos
+            opcao = self.tela_comprador.selecionar_eventos(eventos)
+            if opcao:
+                evento_selecionado = opcao
+                confirmacao = self.tela_comprador.confirmacao_de_compra(evento_selecionado)
+                if confirmacao:
+                    usuario.lista_ingressos.append(evento_selecionado)
+            else:
+                print ("Algum erro ocorrue")
         else:
             self.tela_comprador.usuario_inexistente()
 

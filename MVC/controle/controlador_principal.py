@@ -7,8 +7,8 @@ from controle.controlador_evento import ControladorEvento
 class ControladorPrincipal:
     def __init__(self):
         self.tela_principal = TelaControladorPrincipal()
-        self.controlador_comprador = ControladorComprador()
         self.controlador_evento = ControladorEvento()
+        self.controlador_comprador = ControladorComprador(self.controlador_evento)
         self.controlador_organizador = ControladorOrganizador(self.controlador_evento)
 
     def inicia(self):
