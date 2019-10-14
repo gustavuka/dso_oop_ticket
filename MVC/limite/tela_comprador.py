@@ -1,5 +1,3 @@
-
-# from controle.controlador_comprador import ControladorComprador
 from limite.tela_controlador_principal import TelaControladorPrincipal
 
 class TelaComprador:
