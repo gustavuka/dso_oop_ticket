@@ -36,7 +36,7 @@ class ControladorOrganizador:
                 return False  
 
     def adicionar_organizador(self):
-        info_organizador = (self.tela_organizador.novo_organizador())
+        info_organizador = self.tela_organizador.dados()
 
         novo_organizador = Organizador(
             info_organizador["Nome"],
@@ -54,7 +54,7 @@ class ControladorOrganizador:
         usuario = self.tela_organizador.confere_cnpj_existe(cnpj)
         
         if usuario:
-            nova_info_organizador = self.tela_organizador.alterar_dados()
+            nova_info_organizador = self.tela_organizador.dados()
             usuario.nome = nova_info_organizador["Nome"]
             usuario.endereco = nova_info_organizador["Endereco"]
             usuario.telefone = nova_info_organizador["Telefone"]

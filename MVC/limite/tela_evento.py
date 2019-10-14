@@ -25,6 +25,7 @@ class TelaEvento:
         # else:
         return info_evento
 
+    # Nao mexi aqui, tem que arrumar a funcao para alterar local
     def alterar_local_evento(self):
         titulo_evento = self.ler_titulo_evento()
         novo_nome_local = input("Digite o novo nome do local do evento: ")

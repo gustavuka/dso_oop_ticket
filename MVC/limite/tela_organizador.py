@@ -3,9 +3,21 @@ from excecoes.comando_invalido import ComandoInvalido
 
 
 class TelaOrganizador:
+    
+    def tamanho_min_max(self, message):
+        while True:
+            valor_lido = input(message+": ")
+            try:
+                if not len(valor_lido) > 1 or not len(valor_lido) < 100:
+                    raise ValueError
+                return valor_lido
+            except ValueError:
+                print ("Por favor entre com um valor válido")
+                if valor_lido:
+                    print ("String com de 1 e 150 caracteres")
 
-    def __init__(self):
-        self.__info_cadastro = {
+    def dados(self):
+        info_cadastro = {
             'Nome': '',
             'Endereco': '',
             'Telefone': '',
@@ -13,17 +25,10 @@ class TelaOrganizador:
             'cnpj': ''
         }
 
-    def novo_organizador(self):
-        for item in self.__info_cadastro:
-            self.__info_cadastro[item] = input(item + ": ")
+        for item in info_cadastro:
+            info_cadastro[item] = self.tamanho_min_max(item)
         
-        return self.__info_cadastro
-    
-    def alterar_dados(self):
-        for item in self.__info_cadastro:
-            self.__info_cadastro[item] = input(item + ": ")
-
-        return (self.__info_cadastro)
+        return info_cadastro
 
     def print_lista(self, lista):
         print (lista)
@@ -34,18 +39,9 @@ class TelaOrganizador:
         titulo = input("Digite o nome do evento: ")
         return titulo
 
-    def cadastrar_organizador(self):
-        nome = input("Digite o nome do organizador: ")
-        endereco = input("Digite o endereço: ")
-        telefone = input("Digite o telefone: ")
-        email = input("Digite o email: ")
-        cnpj = input("Digite o cnpj: ")
-        organizador = Organizador(nome, endereco, telefone, email, cnpj)
-        return organizador
-
     def pede_cnpj(self):
         cnpj = input('Qual o cnpj do organizador?\n')
-        return cnpj  
+        return cnpj
 
     # def criar_evento(self):
     #     info_evento = {

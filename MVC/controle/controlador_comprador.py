@@ -35,7 +35,7 @@ class ControladorComprador:
                 return False        
 
     def adicionar_comprador(self):
-        info_comprador = (TelaComprador().novo_comprador())
+        info_comprador = self.tela_comprador.dados()
 
         novo_comprador = Comprador(
             info_comprador["Nome"],
@@ -54,7 +54,7 @@ class ControladorComprador:
         usuario = self.confere_cpf_existe(cpf)
 
         if usuario:
-            nova_info_comprador = self.tela_comprador.alterar_dados()
+            nova_info_comprador = self.tela_comprador.dados()
             usuario.nome = nova_info_comprador["Nome"]
             usuario.endereco = nova_info_comprador["Endereco"]
             usuario.telefone = nova_info_comprador["Telefone"]

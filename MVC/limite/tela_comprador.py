@@ -3,8 +3,21 @@
 from limite.tela_controlador_principal import TelaControladorPrincipal
 
 class TelaComprador:
-    def __init__(self):
-        self.__info_cadastro = {
+
+    def tamanho_min_max(self, message):
+        while True:
+            valor_lido = input(message+": ")
+            try:
+                if not len(valor_lido) > 1 or not len(valor_lido) < 100:
+                    raise ValueError
+                return valor_lido
+            except ValueError:
+                print ("Por favor entre com um valor válido")
+                if valor_lido:
+                    print ("String com de 1 e 150 caracteres")
+
+    def dados(self):
+        info_cadastro = {
             'Nome': '',
             'Endereco': '',
             'Telefone': '',
@@ -12,19 +25,10 @@ class TelaComprador:
             'cpf': '',
             'Idade': ''
         }
+        for item in info_cadastro:
+            info_cadastro[item] = self.tamanho_min_max(item)
 
-
-    def novo_comprador(self):
-        for item in self.__info_cadastro:
-            self.__info_cadastro[item] = input(item + ": ")
-        
-        return self.__info_cadastro
-    
-    def alterar_dados(self):
-        for item in self.__info_cadastro:
-            self.__info_cadastro[item] = input(item + ": ")
-
-        return (self.__info_cadastro)
+        return (info_cadastro)
 
     def pede_cpf(self):
         cpf = input('Qual o cpf do comprador?\n')
