@@ -106,4 +106,4 @@ class ControladorOrganizador:
             titulo = self.tela_organizador.mostrar_informacoes_evento()
             for evento in self.controlador_evento.eventos:
                 if evento.titulo == titulo:
-                    informacoes_evento += 'Titulo do evento: '+evento.titulo+"\nCategoria do evento: "+evento.categoria+"\nData do evento: "+evento.data+"\nLocal do evento: "+evento.local.nome+"\nClassificacao indicativa: "+evento.classificacao_indicativa+"\nValor: R$"+evento.valor
+                    informacoes_evento += 'Titulo do evento: '+evento.titulo+"\nCategoria do evento: "+evento.categoria+"\nData do evento: "+evento.data+"\nLocal do evento: "+evento.local+"\nClassificacao indicativa: "+evento.classificacao_indicativa+"\nValor: R$"+evento.valor

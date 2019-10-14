@@ -64,7 +64,6 @@ class TelaEvento:
             for item in lista:
                 print (item.nome + ": " + str(count))
                 count += 1
-            print ("Criar novo local: " + str(count))
             print ('-------------------------------------')
         else:
             raise NenhumLocalCadastrado()

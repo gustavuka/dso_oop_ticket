@@ -8,11 +8,8 @@ class Evento:
                  categoria: str,
                  data: str,
                  local: str,
-                #  nome_local: str,
-                #  endereco_local: str,
-                #  capacidade_local: str,
                  classificacao_indicativa: int,
-                 valor_ingresso: float):
+                 valor: float):
         self.__cnpj_organizador = cnpj_organizador
         self.__titulo = titulo
         self.__categoria = categoria
@@ -20,7 +17,7 @@ class Evento:
         self.__local = local
         # self.__local = Local(nome_local, endereco_local, capacidade_local)
         self.__classificacao_indicativa = classificacao_indicativa
-        self.__valor_ingresso = valor_ingresso
+        self.__valor = valor
 
     @property
     def cnpj_organizador(self):

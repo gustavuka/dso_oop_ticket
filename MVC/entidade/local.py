@@ -1,6 +1,4 @@
 
-
-
 class Local:
 
     def __init__(self, nome: str, endereco: str, capacidade: int):

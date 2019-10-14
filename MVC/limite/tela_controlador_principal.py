@@ -60,7 +60,7 @@ class TelaControladorPrincipal:
         return opcao
 
     def menu_organizador_cadastrado(self):
-        menu_castrado = [
+        menu_organizador_cadastrado = [
             '-------------------------------------',
             'Cadastrar novo evento - 1',
             'Mostrar o seu histórico de eventos - 2',
@@ -68,8 +68,7 @@ class TelaControladorPrincipal:
             'Sair - 4',
             '-------------------------------------'
         ]
-        for item in menu_castrado:
+        for item in menu_organizador_cadastrado:
             print(item)
-
         opcao = self.le_numero_inteiro([1, 2, 3, 4])
         return opcao
