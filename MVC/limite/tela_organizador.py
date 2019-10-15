@@ -32,15 +32,15 @@ class TelaOrganizador:
         for organizador in lista_organizadores:
             print("Nome do organizador: "+organizador.nome+"\nEmail: "+organizador.email+"\nTelefone: "+organizador.telefone+"\n")
 
-    def ler_nome_evento(self):
-        titulo = input("Digite o nome do evento: ")
-        return titulo
+    def ler_titulo_evento(self):
+        titulo = input("Digite o titulo do evento: ")
+        return titulo.upper()
 
     def pede_cnpj(self):
         cnpj = input('Qual o cnpj do organizador?\n')
         return cnpj
 
-    def imprime_mensagem(self, mensagem):
+    def imprime_mensagem(self, mensagem: str):
         print(mensagem)
 
     def criar_evento(self):
@@ -58,14 +58,13 @@ class TelaOrganizador:
              valor_ingresso = float(input("Digite o valor do ingresso: "))
              if not isinstance(capacidade_local, int) or not isinstance(classificacao_indicativa, int) or not isinstance(
                     (valor_ingresso, float)):
-                 raise ComandoInvalido.numero_invalido()
+                raise ComandoInvalido.numero_invalido()
              else:
-                 return True
-
+                return True
 
     def mostrar_relatorio_compras(self):
         pass
 
     def mostrar_informacoes_evento(self):
-        titulo = input("Digite o título do evento que deseja visualizar as informações: ")
+        titulo = self.ler_titulo_evento()
         return titulo
