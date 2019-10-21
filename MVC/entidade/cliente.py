@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
-class Cliente(ABC):
 
+class Cliente(ABC):
     @abstractmethod
     def __init__(self, nome: str, endereco: str, telefone: str, email: str):
         self.__nome = nome

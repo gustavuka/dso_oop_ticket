@@ -21,7 +21,7 @@ class ControladorPrincipal:
                 opcao_sec = self.tela_principal.menu_principal()
                 self.abrir_tela_organizador(opcao_sec)
             elif opcao_ini == 3:
-                print ("Saindo...")
+                print("Saindo...")
                 exit()
 
     def abrir_tela_comprador(self, opcao):
@@ -50,7 +50,7 @@ class ControladorPrincipal:
             elif opcao_cadastrado == 2:
                 self.controlador_organizador.mostra_eventos_organizados()
             elif opcao_cadastrado == 3:
-                print ("Funcao ainda nao foi implementada!")
+                print("Funcao ainda nao foi implementada!")
                 self.controlador_evento.cadastra_local()
             elif opcao == 4:
                 exit()

@@ -3,12 +3,13 @@ from limite.tela_comprador import TelaComprador
 from controle.controlador_evento import ControladorEvento
 from inicia_for_tests import IniciaForTests
 
+
 class ControladorComprador:
     def __init__(self, controlador_evento):
         self.__tela_comprador = TelaComprador()
         self.__lista_compradores = []
         self.__controlado_evento = controlador_evento
-        #Cria alguns usuários de testes para executar as funcionalidades do programa
+        # Cria alguns usuários de testes para executar as funcionalidades do programa
         IniciaForTests().comprador_teste(Comprador, self.lista_compradores)
 
     @property
@@ -45,7 +46,7 @@ class ControladorComprador:
             info_comprador["Idade"],
         )
         self.lista_compradores.append(novo_comprador)
-        print ("Novo comprador cadastrado! Bem vindo " + novo_comprador.nome + "!")
+        print("Novo comprador cadastrado! Bem vindo " + novo_comprador.nome + "!")
 
     def alterar_dados(self):
         cpf = self.tela_comprador.pede_cpf()
@@ -59,11 +60,11 @@ class ControladorComprador:
             usuario.email = nova_info_comprador["Email"]
             usuario.cpf = nova_info_comprador["cpf"]
             usuario.idade = nova_info_comprador["Idade"]
-            print ("Atualizacao de dados completa!")
-            print (usuario.nome, usuario.idade)
-            print (self.lista_compradores)
+            print("Atualizacao de dados completa!")
+            print(usuario.nome, usuario.idade)
+            print(self.lista_compradores)
         else:
-            print ("Falha na atualização")
+            print("Falha na atualização")
 
     def mostrar_compradores_cadastrados(self):
         self.tela_comprador.print_lista(self.lista_compradores)
@@ -76,11 +77,13 @@ class ControladorComprador:
             opcao = self.tela_comprador.selecionar_eventos(eventos)
             if opcao:
                 evento_selecionado = opcao
-                confirmacao = self.tela_comprador.confirmacao_de_compra(evento_selecionado)
+                confirmacao = self.tela_comprador.confirmacao_de_compra(
+                    evento_selecionado
+                )
                 if confirmacao:
                     usuario.lista_ingressos.append(evento_selecionado)
             else:
-                print ("Algum erro ocorrue")
+                print("Algum erro ocorrue")
         else:
             self.tela_comprador.usuario_inexistente()
 
@@ -89,4 +92,4 @@ class ControladorComprador:
         usuario = self.confere_cpf_existe(cpf)
         if usuario:
             for item in usuario.lista_ingressos:
-                print (item)
+                print(item)

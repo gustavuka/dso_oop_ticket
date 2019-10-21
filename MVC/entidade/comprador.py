@@ -2,8 +2,9 @@ from entidade.cliente import Cliente
 
 
 class Comprador(Cliente):
-
-    def __init__(self, nome: str, endereco: str, telefone: str, email: str, cpf: str, idade: int):
+    def __init__(
+        self, nome: str, endereco: str, telefone: str, email: str, cpf: str, idade: int
+    ):
         super().__init__(nome, endereco, telefone, email)
         self.__cpf = cpf
         self.__idade = idade

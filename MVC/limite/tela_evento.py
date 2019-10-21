@@ -13,10 +13,12 @@ class TelaEvento:
 
     def cadastrar_local(self):
         info_local = {}
-        info_local['nome_local'] = input("Digite o nome do local: ")
-        info_local['endereco_local'] = input("Digite o endereco do local: ")
+        info_local["nome_local"] = input("Digite o nome do local: ")
+        info_local["endereco_local"] = input("Digite o endereco do local: ")
         try:
-            info_local['capacidade_local'] = int(input("Digite a capacidade do local: "))
+            info_local["capacidade_local"] = int(
+                input("Digite a capacidade do local: ")
+            )
         except ValueError:
             print("A capacidade precisa ser um número inteiro!")
             self.cadastrar_local()
@@ -24,12 +26,14 @@ class TelaEvento:
 
     def cadastrar_evento(self, cnpj: str):
         info_evento = {}
-        info_evento['cnpj_organizador'] = cnpj
-        info_evento['titulo_evento'] = self.ler_titulo_evento()
-        info_evento['categoria_evento'] = input("Digite a categoria do evento: ")
-        info_evento['data_evento'] = input("Digite a data do evento: ")
-        info_evento['classificacao_indicativa'] = int(input("Digite a classificação indicativa: "))
-        info_evento['valor_ingresso'] = (input("Digite o valor do ingresso: "))
+        info_evento["cnpj_organizador"] = cnpj
+        info_evento["titulo_evento"] = self.ler_titulo_evento()
+        info_evento["categoria_evento"] = input("Digite a categoria do evento: ")
+        info_evento["data_evento"] = input("Digite a data do evento: ")
+        info_evento["classificacao_indicativa"] = int(
+            input("Digite a classificação indicativa: ")
+        )
+        info_evento["valor_ingresso"] = input("Digite o valor do ingresso: ")
         # if not isinstance(capacidade_local, int) or not isinstance(classificacao_indicativa, int) or not isinstance((valor_ingresso, float)):
         #     raise ComandoInvalido.numero_invalido()
         # else:
@@ -41,37 +45,41 @@ class TelaEvento:
         novo_nome_local = input("Digite o novo nome do local do evento: ")
         novo_endereco_local = input("Digite o novo endereço do evento: ")
         while False:
-            nova_capacidade_local = int(input("Digite a nova capacidade do local do evento: "))
+            nova_capacidade_local = int(
+                input("Digite a nova capacidade do local do evento: ")
+            )
             if not isinstance(nova_capacidade_local, int):
                 raise ComandoInvalido.numero_invalido()
             else:
-                self.controlador.altera_local_evento(titulo_evento,
-                                                     novo_nome_local,
-                                                     novo_endereco_local,
-                                                     nova_capacidade_local)
+                self.controlador.altera_local_evento(
+                    titulo_evento,
+                    novo_nome_local,
+                    novo_endereco_local,
+                    nova_capacidade_local,
+                )
                 print("Local alterado com sucesso!")
                 return True
 
     def print_eventos(self, lista):
         for item in lista:
-            print (item.titulo)
+            print(item.titulo)
 
     def selecionar_locais(self, lista):
         if len(lista) > 1:
             count = 1
-            print ('-------------------------------------')
-            print ("Por favor selecione o local: ")
+            print("-------------------------------------")
+            print("Por favor selecione o local: ")
             for item in lista:
-                print (item.nome + ": " + str(count))
+                print(item.nome + ": " + str(count))
                 count += 1
-            print ('-------------------------------------')
+            print("-------------------------------------")
         else:
             raise NenhumLocalCadastrado()
-        #adicionar filtros aqui
+        # adicionar filtros aqui
         opcao = int(input())
-        #tratar opcao para novo local
+        # tratar opcao para novo local
         try:
-            opcao = lista[(opcao-1)]
+            opcao = lista[(opcao - 1)]
         except:
             return "novo_local"
         return opcao

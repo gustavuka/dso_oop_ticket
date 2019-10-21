@@ -10,7 +10,7 @@ class ControladorOrganizador:
         self.__controlador_evento = controlador_evento
         self.__lista_organizadores = []
         self.__lista_eventos_organizados = []
-        #Cria alguns organizadores de testes para executar as funcionalidades do programa
+        # Cria alguns organizadores de testes para executar as funcionalidades do programa
         IniciaForTests().organizador_teste(Organizador, self.lista_organizadores)
 
     @property
@@ -50,7 +50,9 @@ class ControladorOrganizador:
             info_organizador["cnpj"],
         )
         self.lista_organizadores.append(novo_organizador)
-        self.tela_organizador.imprime_mensagem(("Novo organizador cadastrado! Bem vindo " + novo_organizador.nome + "!"))
+        self.tela_organizador.imprime_mensagem(
+            ("Novo organizador cadastrado! Bem vindo " + novo_organizador.nome + "!")
+        )
 
     def alterar_dados(self):
         cnpj = self.tela_organizador.pede_cnpj()
@@ -63,16 +65,16 @@ class ControladorOrganizador:
             usuario.telefone = nova_info_organizador["Telefone"]
             usuario.email = nova_info_organizador["Email"]
             usuario.cnpj = nova_info_organizador["cnpj"]
-            print ("Atualizacao de dados completa!")
-            print (usuario.nome)
-            print (self.lista_organizadores)
+            print("Atualizacao de dados completa!")
+            print(usuario.nome)
+            print(self.lista_organizadores)
         else:
-            print ("deu ruim")
+            print("deu ruim")
 
     def mostrar_organizadores_cadastrados(self):
         self.tela_organizador.lista_organizadores_cadastrados(self.lista_organizadores)
 
-    #não consegui adicionar aos eventos gerais, só na lista do organizador
+    # não consegui adicionar aos eventos gerais, só na lista do organizador
     def cadastrar_evento(self):
         cnpj = self.tela_organizador.pede_cnpj()
         usuario = self.confere_cnpj_existe(cnpj)
@@ -80,30 +82,43 @@ class ControladorOrganizador:
             novo_evento = self.controlador_evento.criar_evento(cnpj)
             self.lista_eventos_organizados.append(novo_evento)
         else:
-            print ("cnpj nao cadastrado")
+            print("cnpj nao cadastrado")
             self.cadastrar_evento()
 
-    #está funcionando, se quiser testar mais vezes, mas está buscando o evento por cnpj
+    # está funcionando, se quiser testar mais vezes, mas está buscando o evento por cnpj
     def mostra_eventos_organizados(self):
         cnpj = self.tela_organizador.pede_cnpj()
         organizador_existe = self.confere_cnpj_existe(cnpj)
-        lista = 'Lista de eventos organizados: \n'
+        lista = "Lista de eventos organizados: \n"
         if organizador_existe:
             for evento in self.controlador_evento.eventos:
                 if evento.cnpj_organizador == cnpj:
-                    lista += "Titulo do evento: "+evento.titulo
+                    lista += "Titulo do evento: " + evento.titulo
         self.tela_organizador.imprime_mensagem(lista)
 
     def mostra_relatorio_compras(self):
         pass
 
-    #tentei fazer tudo mas faltou a parte do local
+    # tentei fazer tudo mas faltou a parte do local
     def mostra_informacoes_evento(self):
         cnpj = self.tela_organizador.pede_cnpj()
         organizador_existe = self.confere_cnpj_existe(cnpj)
-        informacoes_evento = 'Informações do evento: '
+        informacoes_evento = "Informações do evento: "
         if organizador_existe:
             titulo = self.tela_organizador.mostrar_informacoes_evento()
             for evento in self.controlador_evento.eventos:
                 if evento.titulo == titulo:
-                    informacoes_evento += 'Titulo do evento: '+evento.titulo+"\nCategoria do evento: "+evento.categoria+"\nData do evento: "+evento.data+"\nLocal do evento: "+evento.local+"\nClassificacao indicativa: "+evento.classificacao_indicativa+"\nValor: R$"+evento.valor
+                    informacoes_evento += (
+                        "Titulo do evento: "
+                        + evento.titulo
+                        + "\nCategoria do evento: "
+                        + evento.categoria
+                        + "\nData do evento: "
+                        + evento.data
+                        + "\nLocal do evento: "
+                        + evento.local
+                        + "\nClassificacao indicativa: "
+                        + evento.classificacao_indicativa
+                        + "\nValor: R$"
+                        + evento.valor
+                    )
