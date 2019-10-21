@@ -44,7 +44,7 @@ class ControladorEvento:
             info_local["capacidade_local"],
         )
         for local in self.locais:
-            if novo_local.nome == local.nome:
+            if novo_local.nome == local.nome.upper():
                 raise LocalJaCadastrado
         self.locais.append(novo_local)
 
@@ -58,11 +58,16 @@ class ControladorEvento:
                 dados_evento["categoria_evento"],
                 dados_evento["data_evento"],
                 local,
+<<<<<<< HEAD
                 dados_evento["classificacao_indicativa"],
                 dados_evento["valor_ingresso"],
+=======
+                dados_evento['classificacao_indicativa'],
+                dados_evento['valor_ingresso']
+>>>>>>> dd47952fe56023f2120d6fdd574c4255c4e8741e
             )
             for evento in self.eventos:
-                if evento.titulo == novo_evento.titulo:
+                if evento.titulo.upper() == novo_evento.titulo:
                     raise EventoJaCadastrado()
             self.eventos.append(novo_evento)
             print("Evento criado com sucesso")
