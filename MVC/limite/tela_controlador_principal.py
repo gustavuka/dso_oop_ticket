@@ -20,13 +20,13 @@ class TelaControladorPrincipal:
             "-------------------------------------",
             "Comprador - 1",
             "Organizador - 2",
-            "Sair - 3",
+            "Administrador - 3",
+            "Sair - 4",
             "-------------------------------------",
         ]
         for item in menu_inicial:
             print(item)
-
-        opcao = self.le_numero_inteiro([1, 2, 3])
+        opcao = self.le_numero_inteiro([1, 2, 3, 4])
         return opcao
 
     def menu_principal(self):
@@ -35,15 +35,14 @@ class TelaControladorPrincipal:
             "Entrar com um usuário existente - 1",
             "Cadastrar novo usuário - 2",
             "Editar usuário - 3",
-            "Listar usuários - 4",
-            "Mostrar todos os eventos cadastrados - 5",
-            "Mostrar informações do evento - 6",
-            "Sair - 7",
+            "Mostrar todos os eventos cadastrados - 4",
+            "Mostrar informações do evento - 5",
+            "Sair - 6",
             "-------------------------------------",
         ]
         for opcao_menu in menu_table:
             print(opcao_menu)
-        opcao = self.le_numero_inteiro([1, 2, 3, 4, 5, 6, 7])
+        opcao = self.le_numero_inteiro([1, 2, 3, 4, 5, 6])
         return opcao
 
     def menu_comprador_cadastrado(self):
@@ -72,4 +71,17 @@ class TelaControladorPrincipal:
         for item in menu_organizador_cadastrado:
             print(item)
         opcao = self.le_numero_inteiro([1, 2, 3, 4])
+        return opcao
+
+    def menu_administrador(self):
+        menu_administrador = [
+            "-------------------------------------",
+            "Listar organizadores cadastrados - 1",
+            "Listar compradores cadastrados - 2",
+            "Sair - 3",
+            "-------------------------------------",
+        ]
+        for item in menu_administrador:
+            print(item)
+        opcao = self.le_numero_inteiro([1, 2, 3])
         return opcao

@@ -13,13 +13,8 @@ class TelaEvento:
 
     def cadastrar_local(self):
         info_local = {}
-<<<<<<< HEAD
         info_local["nome_local"] = input("Digite o nome do local: ")
         info_local["endereco_local"] = input("Digite o endereco do local: ")
-=======
-        info_local['nome_local'] = input("Digite o nome do local: ").upper()
-        info_local['endereco_local'] = input("Digite o endereco do local: ").upper()
->>>>>>> dd47952fe56023f2120d6fdd574c4255c4e8741e
         try:
             info_local["capacidade_local"] = int(
                 input("Digite a capacidade do local: ")
@@ -31,7 +26,6 @@ class TelaEvento:
 
     def cadastrar_evento(self, cnpj: str):
         info_evento = {}
-<<<<<<< HEAD
         info_evento["cnpj_organizador"] = cnpj
         info_evento["titulo_evento"] = self.ler_titulo_evento()
         info_evento["categoria_evento"] = input("Digite a categoria do evento: ")
@@ -40,14 +34,12 @@ class TelaEvento:
             input("Digite a classificação indicativa: ")
         )
         info_evento["valor_ingresso"] = input("Digite o valor do ingresso: ")
-=======
         info_evento['cnpj_organizador'] = cnpj
         info_evento['titulo_evento'] = self.ler_titulo_evento()
         info_evento['categoria_evento'] = input("Digite a categoria do evento: ")
         info_evento['data_evento'] = input("Digite a data do evento: ")
         info_evento['classificacao_indicativa'] = int(input("Digite a classificação indicativa: "))
         info_evento['valor_ingresso'] = float(input("Digite o valor do ingresso: "))
->>>>>>> dd47952fe56023f2120d6fdd574c4255c4e8741e
         # if not isinstance(capacidade_local, int) or not isinstance(classificacao_indicativa, int) or not isinstance((valor_ingresso, float)):
         #     raise ComandoInvalido.numero_invalido()
         # else:
