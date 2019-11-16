@@ -8,7 +8,7 @@ class ControladorComprador:
     def __init__(self, controlador_evento):
         self.__tela_comprador = TelaComprador()
         self.__lista_compradores = []
-        self.__controlado_evento = controlador_evento
+        self.__controlador_evento = controlador_evento
         # Cria alguns usuários de testes para executar as funcionalidades do programa
         IniciaForTests().comprador_teste(Comprador, self.lista_compradores)
 
@@ -18,7 +18,7 @@ class ControladorComprador:
 
     @property
     def controlador_evento(self):
-        return self.__controlado_evento
+        return self.__controlador_evento
 
     @property
     def lista_compradores(self):
@@ -83,7 +83,7 @@ class ControladorComprador:
                 if confirmacao:
                     usuario.lista_ingressos.append(evento_selecionado)
             else:
-                print("Algum erro ocorrue")
+                print("Algum erro ocorreu")
         else:
             self.tela_comprador.usuario_inexistente()
 

@@ -10,11 +10,11 @@ class ControladorPrincipal:
     def __init__(self):
         self.__tela_principal = TelaControladorPrincipal()
         self.__tela_administrador = TelaAdministrador
-        self.__controlador_evento = ControladorEvento
-        self.__controlador_comprador = ControladorComprador(self.__controlador_evento)
-        self.__controlador_organizador = ControladorOrganizador(self.__controlador_evento)
-        self.__controlador_administrador = ControladorAdministrador(self.controlador_organizador, self.controlador_comprador)
-
+        self.__controlador_evento = ControladorEvento()
+        self.__controlador_comprador = ControladorComprador(self.controlador_evento)
+        self.__controlador_organizador = ControladorOrganizador(self.controlador_evento)
+        self.__controlador_administrador = ControladorAdministrador(self.controlador_organizador,
+                                                                    self.controlador_comprador)
     @property
     def tela_principal(self):
         return self.__tela_principal
@@ -40,20 +40,28 @@ class ControladorPrincipal:
         return self.__controlador_administrador
 
     def inicia(self):
-        while True:
-            opcao_ini = self.tela_principal.menu_inicial()
-            if opcao_ini == 1:
+        opcao_ini = self.tela_principal.menu_inicial()
+        if opcao_ini == 1:
+            while True:
                 opcao_sec = self.tela_principal.menu_principal()
+                if opcao_sec == 6:
+                    self.inicia()
                 self.abrir_tela_comprador(opcao_sec)
-            elif opcao_ini == 2:
+        elif opcao_ini == 2:
+            while True:
                 opcao_sec = self.tela_principal.menu_principal()
+                if opcao_sec == 6:
+                    self.inicia()
                 self.abrir_tela_organizador(opcao_sec)
-            elif opcao_ini == 3:
+        elif opcao_ini == 3:
+            while True:
                 opcao_sec = self.tela_principal.menu_administrador()
+                if opcao_sec == 3:
+                    self.inicia()
                 self.abrir_tela_administrador(opcao_sec)
-            elif opcao_ini == 4:
-                print("Saindo...")
-                exit()
+        elif opcao_ini == 4:
+            print("Saindo...")
+            exit()
 
     def abrir_tela_comprador(self, opcao):
         if opcao == 1:
@@ -87,7 +95,7 @@ class ControladorPrincipal:
         elif opcao == 3:
             self.controlador_organizador.alterar_dados()
         elif opcao == 4:
-            self.controlador_evento.mostrar_todos_eventos()
+            self.controlador_organizador.mostra_eventos_organizados()
         elif opcao == 5:
             self.controlador_organizador.mostra_informacoes_evento()
         elif opcao == 6:

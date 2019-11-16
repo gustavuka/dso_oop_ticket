@@ -5,7 +5,8 @@ from inicia_for_tests import IniciaForTests
 
 
 class ControladorOrganizador:
-    def __init__(self, controlador_evento):
+
+    def __init__(self, controlador_evento: ControladorEvento):
         self.__tela_organizador = TelaOrganizador()
         self.__controlador_evento = controlador_evento
         self.__lista_organizadores = []

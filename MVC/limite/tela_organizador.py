@@ -1,8 +1,12 @@
-from entidade.organizador import Organizador
+
 from excecoes.comando_invalido import ComandoInvalido
 
 
-class TelaOrganizador:
+class TelaOrganizador():
+
+    def __init__(self):
+        pass
+
     def tamanho_min_max(self, message):
         while True:
             valor_lido = input(message + ": ")
@@ -97,3 +101,4 @@ class TelaOrganizador:
         )
         titulo = self.ler_titulo_evento()
         return titulo
+
