@@ -58,13 +58,8 @@ class ControladorEvento:
                 dados_evento["categoria_evento"],
                 dados_evento["data_evento"],
                 local,
-<<<<<<< HEAD
                 dados_evento["classificacao_indicativa"],
                 dados_evento["valor_ingresso"],
-=======
-                dados_evento['classificacao_indicativa'],
-                dados_evento['valor_ingresso']
->>>>>>> dd47952fe56023f2120d6fdd574c4255c4e8741e
             )
             for evento in self.eventos:
                 if evento.titulo.upper() == novo_evento.titulo:

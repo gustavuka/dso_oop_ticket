@@ -107,23 +107,6 @@ class ControladorOrganizador:
         if organizador_existe:
             titulo = self.tela_organizador.mostrar_informacoes_evento()
             for evento in self.controlador_evento.eventos:
-<<<<<<< HEAD
-                if evento.titulo == titulo:
-                    informacoes_evento += (
-                        "Titulo do evento: "
-                        + evento.titulo
-                        + "\nCategoria do evento: "
-                        + evento.categoria
-                        + "\nData do evento: "
-                        + evento.data
-                        + "\nLocal do evento: "
-                        + evento.local
-                        + "\nClassificacao indicativa: "
-                        + evento.classificacao_indicativa
-                        + "\nValor: R$"
-                        + evento.valor
-                    )
-=======
                 if evento.titulo.upper() == titulo:
                     informacoes_evento += 'Titulo do evento: {}\n' \
                                           'Categoria do evento: {}\n' \
@@ -140,4 +123,3 @@ class ControladorOrganizador:
                     return True
             self.tela_organizador.imprime_mensagem("Evento não encontrado!")
             self.mostra_informacoes_evento()
->>>>>>> dd47952fe56023f2120d6fdd574c4255c4e8741e
