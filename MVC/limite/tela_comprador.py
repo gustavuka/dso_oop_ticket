@@ -52,8 +52,7 @@ class TelaComprador:
                     print(key + ": " + value)
 
     def print_lista(self, lista_compradores):
-        for comprador in lista_compradores:
-            print("Nome: " + comprador.nome + "\n" + "Email: " + comprador.email + "\n")
+        print(lista_compradores)
 
     def usuario_inexistente(self):
         print("Usuario inexistente, por favor verfique o cpf.")
