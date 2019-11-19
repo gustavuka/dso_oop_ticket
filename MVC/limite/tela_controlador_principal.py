@@ -1,18 +1,18 @@
 import PySimpleGUI as sg
-
+from MVC.limite.tela_menu_principal import MenuPrincipal
 
 class TelaControladorPrincipal:
     #print("Bem vindo ao dso ticket!")
     def __init__(self):
         self.__window = None
-        self.init_components()
-
-    def init_components(self):
-        layout = [
+        self.init_components([
             [sg.InputCombo(('Comprador', 'Organizador', 'Administrador', 'Sair'), size=(100, 50))],
-            [sg.Submit()]
-        ]
-        self.__window = sg.Window('Bem vindo ao DSO Ticket! Escolha o perfil com o qual deseja acessar: ').Layout(layout)
+            [sg.Submit('Selecionar')]
+        ])
+
+    def init_components(self, layout):
+        self.__window = sg.Window('Bem vindo ao DSO Ticket! Escolha o perfil com o qual deseja acessar: ').Layout(
+            layout)
 
     def abrir_tela(self):
         button, values = self.__window.Read()
@@ -39,8 +39,6 @@ class TelaControladorPrincipal:
 
     def menu_inicial(self):
         button, values = self.abrir_tela()
-        print(button)
-        print(values)
         while True:
             if button is None:
                 return
@@ -52,7 +50,7 @@ class TelaControladorPrincipal:
                 return 3
         #print("Como gostaria de utilizar o sistema?")
         #menu_inicial = [
-        #    "-------------------------------------",
+        #    "---------------   ----------------------",
         #    "Comprador - 1",
         #    "Organizador - 2",
         #    "Administrador - 3",
@@ -63,21 +61,6 @@ class TelaControladorPrincipal:
         #    print(item)
         #opcao = self.le_numero_inteiro([1, 2, 3, 4])
 
-    def menu_principal(self):
-        menu_table = [
-            "-------------------------------------",
-            "Entrar com um usuário existente - 1",
-            "Cadastrar novo usuário - 2",
-            "Editar usuário - 3",
-            "Mostrar todos os eventos cadastrados - 4",
-            "Mostrar informações do evento - 5",
-            "Sair - 6",
-            "-------------------------------------",
-        ]
-        for opcao_menu in menu_table:
-            print(opcao_menu)
-        opcao = self.le_numero_inteiro([1, 2, 3, 4, 5, 6])
-        return opcao
 
     def menu_comprador_cadastrado(self):
         menu_castrado = [
@@ -113,7 +96,7 @@ class TelaControladorPrincipal:
             "Listar organizadores cadastrados - 1",
             "Listar compradores cadastrados - 2",
             "Sair - 3",
-            "-------------------------------------",
+            "-----layout--------------------------------",
         ]
         for item in menu_administrador:
             print(item)

@@ -38,3 +38,6 @@ class Comprador(Cliente):
     @lista_ingressos.setter
     def lista_ingressos(self, nova_lista_ingressos):
         self.__lista_ingressos = nova_lista_ingressos
+
+    def __repr__(self):
+        return self.__cpf

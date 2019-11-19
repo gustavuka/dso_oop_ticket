@@ -4,7 +4,7 @@ from controle.controlador_organizador import ControladorOrganizador
 from controle.controlador_evento import ControladorEvento
 from MVC.controle.controlador_administrador import ControladorAdministrador
 from MVC.limite.tela_administrador import TelaAdministrador
-
+from MVC.limite.tela_menu_principal import MenuPrincipal
 
 class ControladorPrincipal:
     def __init__(self):
@@ -15,6 +15,8 @@ class ControladorPrincipal:
         self.__controlador_organizador = ControladorOrganizador(self.controlador_evento)
         self.__controlador_administrador = ControladorAdministrador(self.controlador_organizador,
                                                                     self.controlador_comprador)
+        self.__tela_menu_principal = MenuPrincipal()
+
     @property
     def tela_principal(self):
         return self.__tela_principal
@@ -39,11 +41,15 @@ class ControladorPrincipal:
     def controlador_administrador(self):
         return self.__controlador_administrador
 
+    @property
+    def tela_menu_principal(self):
+        return self.__tela_menu_principal
+
     def inicia(self):
         opcao_ini = self.tela_principal.menu_inicial()
         if opcao_ini == 1:
             while True:
-                opcao_sec = self.tela_principal.menu_principal()
+                opcao_sec = self.tela_menu_principal.abrir_tela()
                 if opcao_sec == 6:
                     self.inicia()
                 self.abrir_tela_comprador(opcao_sec)
