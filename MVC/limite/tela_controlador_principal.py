@@ -1,5 +1,28 @@
+import PySimpleGUI as sg
+
+
 class TelaControladorPrincipal:
-    print("Bem vindo ao dso ticket!")
+    #print("Bem vindo ao dso ticket!")
+    def __init__(self):
+        self.__window = None
+        self.init_components()
+
+    def init_components(self):
+        layout = [
+            [sg.InputCombo(('Comprador', 'Organizador', 'Administrador', 'Sair'), size=(100, 50))],
+            [sg.Submit()]
+        ]
+        self.__window = sg.Window('Bem vindo ao DSO Ticket! Escolha o perfil com o qual deseja acessar: ').Layout(layout)
+
+    def abrir_tela(self):
+        button, values = self.__window.Read()
+        return button, values
+
+    def fechar_tela(self):
+        self.__window.Close()
+
+    def mostrar_mensagem(self, titulo: str, mensagem: str):
+        sg.Popup(titulo, mensagem)
 
     def le_numero_inteiro(self, inteiros_validos=None):
         while True:
@@ -15,19 +38,30 @@ class TelaControladorPrincipal:
                     print("Valores validos: ", inteiros_validos)
 
     def menu_inicial(self):
-        print("Como gostaria de utilizar o sistema?")
-        menu_inicial = [
-            "-------------------------------------",
-            "Comprador - 1",
-            "Organizador - 2",
-            "Administrador - 3",
-            "Sair - 4",
-            "-------------------------------------",
-        ]
-        for item in menu_inicial:
-            print(item)
-        opcao = self.le_numero_inteiro([1, 2, 3, 4])
-        return opcao
+        button, values = self.abrir_tela()
+        print(button)
+        print(values)
+        while True:
+            if button is None:
+                return
+            if values[0] == 'Comprador':
+                return 1
+            elif values[0] == 'Organizador':
+                return 2
+            elif values[0] == 'Administrador':
+                return 3
+        #print("Como gostaria de utilizar o sistema?")
+        #menu_inicial = [
+        #    "-------------------------------------",
+        #    "Comprador - 1",
+        #    "Organizador - 2",
+        #    "Administrador - 3",
+        #    "Sair - 4",
+        #    "-------------------------------------",
+        #]
+        #for item in menu_inicial:
+        #    print(item)
+        #opcao = self.le_numero_inteiro([1, 2, 3, 4])
 
     def menu_principal(self):
         menu_table = [
