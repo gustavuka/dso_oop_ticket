@@ -63,14 +63,14 @@ class TelaControladorPrincipal:
 
 
     def menu_comprador_cadastrado(self):
-        menu_castrado = [
+        menu_cadastrado = [
             "-------------------------------------",
             "Comprar ingresso - 1",
             "Mostrar histórico de ingressos - 2",
             "Sair - 3",
             "-------------------------------------",
         ]
-        for opcao_menu in menu_castrado:
+        for opcao_menu in menu_cadastrado:
             print(opcao_menu)
 
         opcao = self.le_numero_inteiro([1, 2, 3])

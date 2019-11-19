@@ -22,6 +22,10 @@ class ControladorComprador:
     def controlador_evento(self):
         return self.__controlador_evento
 
+    @property
+    def lista_compradores(self):
+        return self.__lista_compradores
+
     #@property
     #def comprador_dao(self):
     #    return self.__comprador_dao.get_all()
@@ -31,7 +35,7 @@ class ControladorComprador:
     #    return self.__comprador_dao
 
     def confere_cpf_existe(self, cpf):
-        for item in self.comprador_dao:
+        for item in self.lista_compradores:
             if item.cpf == cpf:
                 return item
         return False
@@ -68,7 +72,7 @@ class ControladorComprador:
             print("Falha na atualização")
 
     def mostrar_compradores_cadastrados(self):
-        self.tela_comprador.print_lista(self.comprador_dao)
+        self.tela_comprador.print_lista(self.lista_compradores)
 
     def comprar_ingressos(self):
         cpf = self.tela_comprador.pede_cpf()

@@ -4,7 +4,11 @@ from controle.controlador_organizador import ControladorOrganizador
 from controle.controlador_evento import ControladorEvento
 from MVC.controle.controlador_administrador import ControladorAdministrador
 from MVC.limite.tela_administrador import TelaAdministrador
+from MVC.limite.tela_comprador import TelaComprador
+from MVC.limite.tela_comprador_cadastrado import TelaCompradorCadastrado
 from MVC.limite.tela_menu_principal import MenuPrincipal
+from MVC.limite.tela_pede_cpf import TelaPedeCPF
+
 
 class ControladorPrincipal:
     def __init__(self):
@@ -16,6 +20,9 @@ class ControladorPrincipal:
         self.__controlador_administrador = ControladorAdministrador(self.controlador_organizador,
                                                                     self.controlador_comprador)
         self.__tela_menu_principal = MenuPrincipal()
+        self.__tela_comprador = TelaComprador()
+        self.__tela_comprador_cadastrado = TelaCompradorCadastrado()
+        self.__tela_pede_cpf = TelaPedeCPF()
 
     @property
     def tela_principal(self):
@@ -45,17 +52,29 @@ class ControladorPrincipal:
     def tela_menu_principal(self):
         return self.__tela_menu_principal
 
+    @property
+    def tela_comprador(self):
+        return self.__tela_comprador
+
+    @property
+    def tela_comprador_cadastrado(self):
+        return self.__tela_comprador_cadastrado
+
+    @property
+    def tela_pede_cpf(self):
+        return self.__tela_pede_cpf
+
     def inicia(self):
         opcao_ini = self.tela_principal.menu_inicial()
         if opcao_ini == 1:
             while True:
-                opcao_sec = self.tela_menu_principal.abrir_tela()
+                opcao_sec = self.tela_menu_principal.menu_cliente()
                 if opcao_sec == 6:
                     self.inicia()
                 self.abrir_tela_comprador(opcao_sec)
         elif opcao_ini == 2:
             while True:
-                opcao_sec = self.tela_principal.menu_principal()
+                opcao_sec = self.tela_menu_principal.menu_cliente()
                 if opcao_sec == 6:
                     self.inicia()
                 self.abrir_tela_organizador(opcao_sec)
@@ -71,11 +90,17 @@ class ControladorPrincipal:
 
     def abrir_tela_comprador(self, opcao):
         if opcao == 1:
-            opcao_cadastrado = self.tela_principal.menu_comprador_cadastrado()
-            if opcao_cadastrado == 1:
-                self.controlador_comprador.comprar_ingressos()
-            elif opcao_cadastrado == 2:
-                self.controlador_comprador.mostrar_ingressos()
+            cpf = self.tela_pede_cpf.pede_cpf()
+            cpf_existe = self.controlador_comprador.confere_cpf_existe(cpf)
+            if cpf_existe:
+                opcao_cadastrado = self.tela_comprador_cadastrado.menu_comprador_cadastrado()
+                if opcao_cadastrado == 1:
+                    self.controlador_comprador.comprar_ingressos()
+                elif opcao_cadastrado == 2:
+                    self.controlador_comprador.mostrar_ingressos()
+            else:
+                self.tela_pede_cpf.mostrar_mensagem('Aviso!', 'CPF inexistente! Digite novamente.')
+                self.abrir_tela_comprador(1)
         elif opcao == 2:
             self.controlador_comprador.adicionar_comprador()
         elif opcao == 3:
