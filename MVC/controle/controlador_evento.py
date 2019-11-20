@@ -71,7 +71,7 @@ class ControladorEvento:
             return novo_evento
 
     def mostrar_todos_eventos(self):
-        self.tela_evento.print_eventos(self.eventos)
+        self.tela_evento.mostrar_eventos(self.eventos)
 
     # AINDA NAO ESTá SENDO USADO!
     # def altera_local_evento(self):

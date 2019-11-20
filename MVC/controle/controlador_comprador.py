@@ -3,6 +3,8 @@ from limite.tela_comprador import TelaComprador
 from inicia_for_tests import IniciaForTests
 from MVC.entidade.comprador_dao import CompradorDAO
 from MVC.entidade.dao import DAO
+from MVC.limite.tela_cadastro_comprador import TelaCadastroComprador
+from MVC.limite.tela_mostrar_eventos import TelaMostrarEventos
 
 
 class ControladorComprador:
@@ -11,6 +13,8 @@ class ControladorComprador:
         self.__lista_compradores = []
         self.__controlador_evento = controlador_evento
         self.__comprador_dao = CompradorDAO()
+        self.__tela_cadastro_comprador = TelaCadastroComprador()
+        #self.__tela_mostrar_eventos = TelaMostrarEventos()
         # Cria alguns usuários de testes para executar as funcionalidades do programa
         IniciaForTests().comprador_teste(Comprador, self.__lista_compradores)
 
@@ -19,12 +23,20 @@ class ControladorComprador:
         return self.__tela_comprador
 
     @property
+    def tela_cadastro_comprador(self):
+        return self.__tela_cadastro_comprador
+
+    @property
     def controlador_evento(self):
         return self.__controlador_evento
 
     @property
     def lista_compradores(self):
         return self.__lista_compradores
+
+    #@property
+    #def tela_mostrar_eventos(self):
+     #   return self.__tela_mostrar_eventos
 
     #@property
     #def comprador_dao(self):
@@ -40,36 +52,28 @@ class ControladorComprador:
                 return item
         return False
 
-    def adicionar_comprador(self):
-        info_comprador = self.tela_comprador.dados()
+    def adicionar_comprador(self, info_comprador):
         novo_comprador = Comprador(
-            info_comprador["Nome"],
-            info_comprador["Endereco"],
-            info_comprador["Telefone"],
-            info_comprador["Email"],
-            info_comprador["cpf"],
-            info_comprador["Idade"],
+            info_comprador[0],
+            info_comprador[1],
+            info_comprador[2],
+            info_comprador[3],
+            info_comprador[4],
+            info_comprador[5],
         )
-        self.__comprador_dao.add(novo_comprador)
+        #self.__comprador_dao.add(novo_comprador)
         #self.comprador_dao.add(novo_comprador.cpf, novo_comprador)
-        print("Novo comprador cadastrado! Bem vindo " + novo_comprador.nome + "!")
+        self.lista_compradores.append(novo_comprador)
 
-    def alterar_dados(self):
-        cpf = self.tela_comprador.pede_cpf()
-        usuario = self.confere_cpf_existe(cpf)
-        if usuario:
-            nova_info_comprador = self.tela_comprador.dados()
-            usuario.nome = nova_info_comprador["Nome"]
-            usuario.endereco = nova_info_comprador["Endereco"]
-            usuario.telefone = nova_info_comprador["Telefone"]
-            usuario.email = nova_info_comprador["Email"]
-            usuario.cpf = nova_info_comprador["cpf"]
-            usuario.idade = nova_info_comprador["Idade"]
-            print("Atualizacao de dados completa!")
-            print(usuario.nome, usuario.idade)
-            print(self.__comprador_dao)
-        else:
-            print("Falha na atualização")
+    def alterar_dados(self, comprador):
+        nova_info_comprador = self.tela_cadastro_comprador.info_comprador()
+        comprador.nome = nova_info_comprador[0]
+        comprador.endereco = nova_info_comprador[1]
+        comprador.telefone = nova_info_comprador[2]
+        comprador.email = nova_info_comprador[3]
+        comprador.cpf = nova_info_comprador[4]
+        comprador.idade = nova_info_comprador[5]
+
 
     def mostrar_compradores_cadastrados(self):
         self.tela_comprador.print_lista(self.lista_compradores)

@@ -35,6 +35,10 @@ class Comprador(Cliente):
     def idade(self, nova_idade):
         self.__idade = nova_idade
 
+    @email.setter
+    def email(self, novo_email):
+        self.__email = novo_email
+
     @lista_ingressos.setter
     def lista_ingressos(self, nova_lista_ingressos):
         self.__lista_ingressos = nova_lista_ingressos

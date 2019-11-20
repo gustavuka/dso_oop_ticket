@@ -1,6 +1,7 @@
 from excecoes.comando_invalido import ComandoInvalido
 
 from excecoes.nenhum_local_cadastrado import NenhumLocalCadastrado
+import PySimpleGUI as sg
 
 
 class TelaEvento:
@@ -66,9 +67,11 @@ class TelaEvento:
                 print("Local alterado com sucesso!")
                 return True
 
-    def print_eventos(self, lista):
-        for item in lista:
-            print(item.titulo)
+    def mostrar_eventos(self, lista_eventos):
+        eventos = ''
+        for evento in lista_eventos:
+            eventos += 'Titulo: \n{}\n- Data: {}\n- Local: {}\n'.format(evento.titulo, evento.data, evento.local)
+        sg.Popup('Eventos cadastrados: ', eventos)
 
     def selecionar_locais(self, lista):
         if len(lista) > 1:

@@ -4,6 +4,7 @@ from controle.controlador_organizador import ControladorOrganizador
 from controle.controlador_evento import ControladorEvento
 from MVC.controle.controlador_administrador import ControladorAdministrador
 from MVC.limite.tela_administrador import TelaAdministrador
+from MVC.limite.tela_cadastro_comprador import TelaCadastroComprador
 from MVC.limite.tela_comprador import TelaComprador
 from MVC.limite.tela_comprador_cadastrado import TelaCompradorCadastrado
 from MVC.limite.tela_menu_principal import MenuPrincipal
@@ -23,6 +24,7 @@ class ControladorPrincipal:
         self.__tela_comprador = TelaComprador()
         self.__tela_comprador_cadastrado = TelaCompradorCadastrado()
         self.__tela_pede_cpf = TelaPedeCPF()
+        self.__tela_cadastro_comprador = TelaCadastroComprador()
 
     @property
     def tela_principal(self):
@@ -59,6 +61,10 @@ class ControladorPrincipal:
     @property
     def tela_comprador_cadastrado(self):
         return self.__tela_comprador_cadastrado
+
+    @property
+    def tela_cadastro_comprador(self):
+        return self.__tela_cadastro_comprador
 
     @property
     def tela_pede_cpf(self):
@@ -102,9 +108,24 @@ class ControladorPrincipal:
                 self.tela_pede_cpf.mostrar_mensagem('Aviso!', 'CPF inexistente! Digite novamente.')
                 self.abrir_tela_comprador(1)
         elif opcao == 2:
-            self.controlador_comprador.adicionar_comprador()
+            comprador = self.tela_cadastro_comprador.info_comprador()
+            cpf_existe = self.controlador_comprador.confere_cpf_existe(comprador[4])
+            if not cpf_existe:
+                self.controlador_comprador.adicionar_comprador(comprador)
+                self.tela_cadastro_comprador.mostrar_mensagem('Sucesso!',
+                                                              'Bem vindo {}!'.format(self.tela_cadastro_comprador.info_comprador()[0]))
+            else:
+                self.tela_cadastro_comprador.mostrar_mensagem('Erro!', 'Comprador já cadastrado! Tente com outro CPF')
+                self.abrir_tela_comprador(2)
         elif opcao == 3:
-            self.controlador_comprador.alterar_dados()
+            cpf = self.tela_pede_cpf.pede_cpf()
+            comprador_existe = self.controlador_comprador.confere_cpf_existe(cpf)
+            if comprador_existe:
+                self.controlador_comprador.alterar_dados(comprador_existe)
+                self.tela_cadastro_comprador.mostrar_mensagem('Sucesso!', 'Alterado com sucesso\n{}'.format(comprador_existe))
+            else:
+                self.tela_pede_cpf.mostrar_mensagem('Aviso!', 'CPF inexistente! Digite novamente.')
+                self.abrir_tela_comprador(3)
         elif opcao == 4:
             self.controlador_evento.mostrar_todos_eventos()
         elif opcao == 5:
