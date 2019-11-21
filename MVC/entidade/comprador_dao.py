@@ -1,5 +1,5 @@
-from MVC.entidade.comprador import Comprador
-from MVC.entidade.dao import DAO
+from entidade.comprador import Comprador
+from entidade.dao import DAO
 
 
 class CompradorDAO(DAO):

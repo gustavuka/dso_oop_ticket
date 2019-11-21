@@ -1,8 +1,8 @@
-from MVC.controle.controlador_administrador import ControladorAdministrador
-from MVC.controle.controlador_comprador import ControladorComprador
-from MVC.controle.controlador_organizador import ControladorOrganizador
-from MVC.limite.tela_comprador import TelaComprador
-from MVC.limite.tela_organizador import TelaOrganizador
+from controle.controlador_administrador import ControladorAdministrador
+from controle.controlador_comprador import ControladorComprador
+from controle.controlador_organizador import ControladorOrganizador
+from limite.tela_comprador import TelaComprador
+from limite.tela_organizador import TelaOrganizador
 
 
 class TelaAdministrador:

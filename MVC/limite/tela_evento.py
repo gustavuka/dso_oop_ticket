@@ -35,12 +35,6 @@ class TelaEvento:
             input("Digite a classificação indicativa: ")
         )
         info_evento["valor_ingresso"] = input("Digite o valor do ingresso: ")
-        info_evento['cnpj_organizador'] = cnpj
-        info_evento['titulo_evento'] = self.ler_titulo_evento()
-        info_evento['categoria_evento'] = input("Digite a categoria do evento: ")
-        info_evento['data_evento'] = input("Digite a data do evento: ")
-        info_evento['classificacao_indicativa'] = int(input("Digite a classificação indicativa: "))
-        info_evento['valor_ingresso'] = float(input("Digite o valor do ingresso: "))
         # if not isinstance(capacidade_local, int) or not isinstance(classificacao_indicativa, int) or not isinstance((valor_ingresso, float)):
         #     raise ComandoInvalido.numero_invalido()
         # else:

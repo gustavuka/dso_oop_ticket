@@ -1,5 +1,5 @@
-from MVC.controle.controlador_comprador import ControladorComprador
-from MVC.controle.controlador_organizador import ControladorOrganizador
+from controle.controlador_comprador import ControladorComprador
+from controle.controlador_organizador import ControladorOrganizador
 
 class ControladorAdministrador:
 

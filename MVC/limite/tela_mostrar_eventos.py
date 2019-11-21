@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
 
-from MVC.controle.controlador_evento import ControladorEvento
+from controle.controlador_evento import ControladorEvento
 
 
 class TelaMostrarEventos:

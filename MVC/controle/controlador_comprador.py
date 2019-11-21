@@ -1,10 +1,10 @@
 from entidade.comprador import Comprador
 from limite.tela_comprador import TelaComprador
 from inicia_for_tests import IniciaForTests
-from MVC.entidade.comprador_dao import CompradorDAO
-from MVC.entidade.dao import DAO
-from MVC.limite.tela_cadastro_comprador import TelaCadastroComprador
-from MVC.limite.tela_mostrar_eventos import TelaMostrarEventos
+from entidade.comprador_dao import CompradorDAO
+from entidade.dao import DAO
+from limite.tela_cadastro_comprador import TelaCadastroComprador
+from limite.tela_mostrar_eventos import TelaMostrarEventos
 
 
 class ControladorComprador:

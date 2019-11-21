@@ -1,5 +1,5 @@
 import PySimpleGUI as sg
-from MVC.limite.tela_menu_principal import MenuPrincipal
+from limite.tela_menu_principal import MenuPrincipal
 
 class TelaControladorPrincipal:
     #print("Bem vindo ao dso ticket!")
@@ -96,7 +96,7 @@ class TelaControladorPrincipal:
             "Listar organizadores cadastrados - 1",
             "Listar compradores cadastrados - 2",
             "Sair - 3",
-            "-----layout--------------------------------",
+            "-------------------------------------",
         ]
         for item in menu_administrador:
             print(item)

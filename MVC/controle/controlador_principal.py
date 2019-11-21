@@ -2,13 +2,13 @@ from limite.tela_controlador_principal import TelaControladorPrincipal
 from controle.controlador_comprador import ControladorComprador
 from controle.controlador_organizador import ControladorOrganizador
 from controle.controlador_evento import ControladorEvento
-from MVC.controle.controlador_administrador import ControladorAdministrador
-from MVC.limite.tela_administrador import TelaAdministrador
-from MVC.limite.tela_cadastro_comprador import TelaCadastroComprador
-from MVC.limite.tela_comprador import TelaComprador
-from MVC.limite.tela_comprador_cadastrado import TelaCompradorCadastrado
-from MVC.limite.tela_menu_principal import MenuPrincipal
-from MVC.limite.tela_pede_cpf import TelaPedeCPF
+from controle.controlador_administrador import ControladorAdministrador
+from limite.tela_administrador import TelaAdministrador
+from limite.tela_cadastro_comprador import TelaCadastroComprador
+from limite.tela_comprador import TelaComprador
+from limite.tela_comprador_cadastrado import TelaCompradorCadastrado
+from limite.tela_menu_principal import MenuPrincipal
+from limite.tela_pede_cpf import TelaPedeCPF
 
 
 class ControladorPrincipal:
