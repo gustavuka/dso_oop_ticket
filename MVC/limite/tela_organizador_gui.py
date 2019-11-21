@@ -3,18 +3,19 @@ import PySimpleGUI as sg
 
 class AbstractTela:
     def __init__(self):
-        sg.change_look_and_feel("DarkAmber")
+        sg.change_look_and_feel("DarkBlue")
         sg.set_options(font=(12), text_justification="center")
 
 
-class TelaCadastroOrganizador:
+class TelaCadastroOrganizador(AbstractTela):
     def __init__(self):
+        super().__init__()
         layout = [
-            [sg.In(size=(30, 3), key="nome")],
-            [sg.In(size=(30, 3), key="telefone")],
-            [sg.In(size=(30, 3), key="cnpj")],
-            [sg.In(size=(30, 3), key="email")],
-            [sg.In(size=(30, 3), key="endereco")],
+            [sg.InputText("Nome", size=(30, 3), key="nome")],
+            [sg.InputText("Telefone", size=(30, 3), key="telefone")],
+            [sg.InputText("CNPJ", size=(30, 3), key="cnpj")],
+            [sg.InputText("Email", size=(30, 3), key="email")],
+            [sg.InputText("Endereco", size=(30, 3), key="endereco")],
             [
                 sg.ReadButton("Cadastrar", bind_return_key=True),
                 sg.Button("Sair", bind_return_key=True),
@@ -35,6 +36,8 @@ class TelaCadastroOrganizador:
                     email = values["email"]
                     endereco = values["endereco"]
                     print(name, telefone, cnpj, email, endereco)
+                    window.close()
+                    TelaInicialOganizador()
                 except:
                     print("ajsdnkj")
             else:
@@ -161,6 +164,8 @@ class TelaCadastroLocal:
                     endereco = values["endereco"]
                     capacidade = values["capacidade"]
                     print(nome, endereco, capacidade)
+                    window.close()
+                    TelaCadastroEvento()
                 except:
                     print("ajsdnkj")
             elif button == "Voltar":
@@ -171,4 +176,4 @@ class TelaCadastroLocal:
         window.close()
 
 
-TelaInicialOganizador()
+TelaCadastroOrganizador()
