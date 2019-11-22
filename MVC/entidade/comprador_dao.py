@@ -1,5 +1,5 @@
 from entidade.comprador import Comprador
-from entidade.DAO import DAO
+from entidade.dao import DAO
 
 
 class CompradorDAO(DAO):

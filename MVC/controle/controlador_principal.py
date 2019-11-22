@@ -110,7 +110,7 @@ class ControladorPrincipal:
                     if opcao == "historico":
                         lista = self.controlador_comprador.mostrar_ingressos(cpf)
                         if len(lista) == 0:
-                            TelaPopUp("Não há ingressos!")
+                            TelaPopUp("Nao ha ingressos!")
                         else:
                             lista = [item.titulo for item in lista]
                             TelaLista(lista)
@@ -128,56 +128,6 @@ class ControladorPrincipal:
                 else:
                     print("cnpj nao cadastrado")
                     TelaPopUp("Usuário inexistente")
-
-        if opcao == 1:
-            cpf = self.tela_pede_cpf.pede_cpf()
-            cpf_existe = self.controlador_comprador.confere_cpf_existe(cpf)
-            if cpf_existe:
-                opcao_cadastrado = (
-                    self.tela_comprador_cadastrado.menu_comprador_cadastrado()
-                )
-                if opcao_cadastrado == 1:
-                    self.controlador_comprador.comprar_ingressos()
-                elif opcao_cadastrado == 2:
-                    self.controlador_comprador.mostrar_ingressos()
-            else:
-                self.tela_pede_cpf.mostrar_mensagem(
-                    "Aviso!", "CPF inexistente! Digite novamente."
-                )
-                self.abrir_tela_comprador(1)
-        elif opcao == 2:
-            comprador = self.tela_cadastro_comprador.info_comprador()
-            cpf_existe = self.controlador_comprador.confere_cpf_existe(comprador[4])
-            if not cpf_existe:
-                self.controlador_comprador.adicionar_comprador(comprador)
-                self.tela_cadastro_comprador.mostrar_mensagem(
-                    "Sucesso!",
-                    "Bem vindo {}!".format(
-                        self.tela_cadastro_comprador.info_comprador()[0]
-                    ),
-                )
-            else:
-                self.tela_cadastro_comprador.mostrar_mensagem(
-                    "Erro!", "Comprador já cadastrado! Tente com outro CPF"
-                )
-                self.abrir_tela_comprador(2)
-        elif opcao == 3:
-            cpf = self.tela_pede_cpf.pede_cpf()
-            comprador_existe = self.controlador_comprador.confere_cpf_existe(cpf)
-            if comprador_existe:
-                self.controlador_comprador.alterar_dados(comprador_existe)
-                self.tela_cadastro_comprador.mostrar_mensagem(
-                    "Sucesso!", "Alterado com sucesso\n{}".format(comprador_existe)
-                )
-            else:
-                self.tela_pede_cpf.mostrar_mensagem(
-                    "Aviso!", "CPF inexistente! Digite novamente."
-                )
-                self.abrir_tela_comprador(3)
-        elif opcao == 4:
-            self.controlador_evento.mostrar_todos_eventos()
-        elif opcao == 5:
-            exit()
 
     def abrir_tela_organizador(self):
         while True:

@@ -2,17 +2,17 @@ from entidade.evento import Evento
 from entidade.dao import DAO
 
 
-class EventoDAO(DAO):
+class LocalDAO(DAO):
     def __init__(self):
-        super().__init__("eventos.pkl")
+        super().__init__("local.pkl")
 
-    def add(self, evento: Evento):
+    def add(self, local: Local):
         if (
-            isinstance(evento.titulo, str)
+            isinstance(local.titulo, str)
             and (evento is not None)
-            and isinstance(evento, Evento)
+            and isinstance(local, Local)
         ):
-            super().add(evento.titulo, evento)
+            super().add(local.titulo, local)
     
     def get(self, key: str):
         if isinstance(key, str):

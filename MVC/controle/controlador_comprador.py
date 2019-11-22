@@ -11,13 +11,13 @@ from limite.tela_organizador_gui import TelaPopUp
 class ControladorComprador:
     def __init__(self, controlador_evento):
         self.__tela_comprador = TelaComprador()
-        # self.__lista_compradores = []
+        self.__lista_compradores = []
         self.__controlador_evento = controlador_evento
         self.__comprador_dao = CompradorDAO()
         self.__tela_cadastro_comprador = TelaCadastroComprador()
         # self.__tela_mostrar_eventos = TelaMostrarEventos()
         # Cria alguns usuários de testes para executar as funcionalidades do programa
-        IniciaForTests().comprador_teste(Comprador, self.__lista_compradores)
+        # IniciaForTests().comprador_teste(Comprador, self.__lista_compradores)
 
     @property
     def tela_comprador(self):

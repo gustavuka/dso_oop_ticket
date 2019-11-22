@@ -28,7 +28,7 @@ class DAO(ABC):
             pass
     
     def get_all(self):
-        return self.object_cache.values()
+        return list(self.object_cache.values())
 
     def remove(self, key):
         try:
