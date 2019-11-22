@@ -49,19 +49,21 @@ class ControladorOrganizador:
         return self.__organizador_dao.get(novo_organizador.cnpj).cnpj
 
     def alterar_dados(self, cnpj, dados):
-        usuario = self.confere_cnpj_existe(cnpj)
 
-        if usuario:
-            usuario.nome = dados[0]
-            usuario.endereco = dados[4]
-            usuario.telefone = dados[1]
-            usuario.email = dados[3]
-            usuario.cnpj = cnpj
-            print("Atualizacao de dados completa!")
-            print(usuario.nome)
+        usuarios = self.__organizador_dao.get_all()
+        for usuario in usuarios:
+            if usuario.cnpj == cnpj:
+                usuario.nome = dados[0]
+                usuario.endereco = dados[4]
+                usuario.telefone = dados[1]
+                usuario.email = dados[3]
+                usuario.cnpj = cnpj
+                print("Atualizacao de dados completa!")
+                print(usuario.nome)
+                print(usuario.endereco)
+                return usuario
         else:
             print("Error")
-        return usuario
 
     def mostrar_organizadores_cadastrados(self):
         self.tela_organizador.lista_organizadores_cadastrados(self.lista_organizadores)

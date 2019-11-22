@@ -82,7 +82,7 @@ class TelaCadastroOrganizador(AbstractTela):
             [
                 sg.ReadButton("Cadastrar", bind_return_key=True),
                 sg.Button("Sair", bind_return_key=True),
-            ],
+            ]
         ]
 
     def screen(self):

@@ -169,8 +169,7 @@ class ControladorPrincipal:
                 if self.controlador_organizador.confere_cnpj_existe(cnpj):
                     TelaInicialOganizador().screen()
                 else:
-                    print("cnpj nao cadastrado")
-                    TelaPopUp()
+                    TelaPopUp('CNPJ não cadastrado!')
 
     def abrir_tela_administrador(self):
         while True:

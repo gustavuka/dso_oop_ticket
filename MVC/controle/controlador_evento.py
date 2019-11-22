@@ -1,13 +1,10 @@
 from entidade.evento import Evento
 from entidade.local import Local
 from limite.tela_evento import TelaEvento
-from datetime import datetime
 from excecoes.evento_ja_cadastrado import EventoJaCadastrado
 from entidade.evento_dao import EventoDAO
 
-# from excecoes.evento_nao_encontrado import EventoNaoEncontrado
 from excecoes.local_ja_cadastrado import LocalJaCadastrado
-# from inicia_for_tests import IniciaForTests
 
 
 class ControladorEvento:
@@ -16,9 +13,6 @@ class ControladorEvento:
         self.__locais = []
         self.__tela_evento = TelaEvento()
         self.__evento_dao = EventoDAO()
-        # Cria alguns eventos de testes para executar as funcionalidades do programa
-        # IniciaForTests().eventos_teste(Evento, self.eventos)
-        # IniciaForTests().locais_teste(Local, self.locais)
 
     @property
     def eventos(self):
