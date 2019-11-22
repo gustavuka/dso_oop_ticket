@@ -5,7 +5,6 @@ from inicia_for_tests import IniciaForTests
 
 
 class ControladorOrganizador:
-
     def __init__(self, controlador_evento: ControladorEvento):
         self.__tela_organizador = TelaOrganizador()
         self.__controlador_evento = controlador_evento
@@ -37,7 +36,7 @@ class ControladorOrganizador:
     def confere_cnpj_existe(self, cnpj):
         for organizador in self.lista_organizadores:
             if organizador.cnpj == cnpj:
-                return True
+                return organizador
         return False
 
     def adicionar_organizador(self, dados):
@@ -50,35 +49,27 @@ class ControladorOrganizador:
         #     info_organizador["cnpj"],
         # )
 
-        novo_organizador = Organizador(
-            dados[0],
-            dados[4],
-            dados[1],
-            dados[3],
-            dados[2],
-        )
+        novo_organizador = Organizador(dados[0], dados[4], dados[1], dados[3], dados[2])
         self.lista_organizadores.append(novo_organizador)
         self.tela_organizador.imprime_mensagem(
             ("Novo organizador cadastrado! Bem vindo " + novo_organizador.nome + "!")
         )
         return novo_organizador.cnpj
 
-    def alterar_dados(self):
-        cnpj = self.tela_organizador.pede_cnpj()
-        usuario = self.tela_organizador.confere_cnpj_existe(cnpj)
+    def alterar_dados(self, cnpj, dados):
+        usuario = self.confere_cnpj_existe(cnpj)
 
         if usuario:
-            nova_info_organizador = self.tela_organizador.dados()
-            usuario.nome = nova_info_organizador["Nome"]
-            usuario.endereco = nova_info_organizador["Endereco"]
-            usuario.telefone = nova_info_organizador["Telefone"]
-            usuario.email = nova_info_organizador["Email"]
-            usuario.cnpj = nova_info_organizador["cnpj"]
+            usuario.nome = dados[0]
+            usuario.endereco = dados[4]
+            usuario.telefone = dados[1]
+            usuario.email = dados[3]
+            usuario.cnpj = cnpj
             print("Atualizacao de dados completa!")
             print(usuario.nome)
-            print(self.lista_organizadores)
         else:
-            print("deu ruim")
+            print("Error")
+        return usuario
 
     def mostrar_organizadores_cadastrados(self):
         self.tela_organizador.lista_organizadores_cadastrados(self.lista_organizadores)
@@ -133,17 +124,21 @@ class ControladorOrganizador:
                         + evento.valor
                     )
                 if evento.titulo.upper() == titulo:
-                    informacoes_evento += 'Titulo do evento: {}\n' \
-                                          'Categoria do evento: {}\n' \
-                                          'Data do evento: {}\n' \
-                                          'Local do evento: {}\n' \
-                                          'Classificacao indicativa: {}\n' \
-                                          'Valor: R${}'.format(evento.titulo,
-                                                               evento.categoria,
-                                                               evento.data,
-                                                               evento.local,
-                                                               evento.classificacao_indicativa,
-                                                               evento.valor)
+                    informacoes_evento += (
+                        "Titulo do evento: {}\n"
+                        "Categoria do evento: {}\n"
+                        "Data do evento: {}\n"
+                        "Local do evento: {}\n"
+                        "Classificacao indicativa: {}\n"
+                        "Valor: R${}".format(
+                            evento.titulo,
+                            evento.categoria,
+                            evento.data,
+                            evento.local,
+                            evento.classificacao_indicativa,
+                            evento.valor,
+                        )
+                    )
                     self.tela_organizador.imprime_mensagem(informacoes_evento)
                     return True
             self.tela_organizador.imprime_mensagem("Evento não encontrado!")

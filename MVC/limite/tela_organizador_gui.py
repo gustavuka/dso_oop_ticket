@@ -6,6 +6,7 @@ class AbstractTela:
         sg.change_look_and_feel("DarkBlue")
         sg.set_options(font=(12), text_justification="center")
 
+
 class TelaInicial(AbstractTela):
     def __init__(self):
         super().__init__()
@@ -37,6 +38,7 @@ class TelaInicial(AbstractTela):
         window.close()
         exit(0)
 
+
 class TelaLogin(AbstractTela):
     def __init__(self):
         super().__init__()
@@ -62,10 +64,11 @@ class TelaLogin(AbstractTela):
                 window.close()
                 return "cadastrar"
             else:
-                return ("sair")
+                return "sair"
                 break
         window.close()
         exit(0)
+
 
 class TelaCadastroOrganizador(AbstractTela):
     def __init__(self):
@@ -81,7 +84,7 @@ class TelaCadastroOrganizador(AbstractTela):
                 sg.Button("Sair", bind_return_key=True),
             ],
         ]
-    
+
     def screen(self):
         window = sg.Window(
             "Organizador", self.layout, size=(400, 400), element_justification="center"
@@ -105,6 +108,7 @@ class TelaCadastroOrganizador(AbstractTela):
         window.close()
         exit(0)
 
+
 class TelaInicialOganizador(AbstractTela):
     def __init__(self):
         super().__init__()
@@ -113,6 +117,7 @@ class TelaInicialOganizador(AbstractTela):
             [sg.Button("Cadastrar Evento", size=(30, 2))],
             [sg.Button("Histórico de Eventos", size=(30, 2))],
             [sg.Button("Criar Local", size=(30, 2))],
+            [sg.Button("Editar Dados", size=(30, 2))],
             [sg.Button("Sair", size=(30, 2))],
         ]
 
@@ -137,10 +142,14 @@ class TelaInicialOganizador(AbstractTela):
             elif event == "Criar Local":
                 window.close()
                 return "criar"
+            elif event == "Editar Dados":
+                window.close()
+                return "editar"
             elif event == "Sair":
                 window.close()
                 break
         window.close()
+
 
 class TelaLista:
     """Abre uma tela que lista itens, ao clicar ok volta para a tela selecionada"""
@@ -148,7 +157,6 @@ class TelaLista:
     def __init__(self, lista=[]):
         self.lista = lista
         sg.PopupScrolled(*self.lista, title="Lista")
-
 
 
 class TelaCadastroEvento:
@@ -160,10 +168,7 @@ class TelaCadastroEvento:
             [sg.InputText("Data", key="data", size=(35, 4))],
             [
                 sg.InputCombo(
-                    self.locais,
-                    default_value="Local",
-                    size=(29, 4),
-                    key="local",
+                    self.locais, default_value="Local", size=(29, 4), key="local"
                 ),
                 sg.Button("+", bind_return_key=True),
             ],
@@ -196,10 +201,10 @@ class TelaCadastroEvento:
                     print("Erro")
             elif button == "+":
                 window.close()
-                TelaCadastroLocal()
+                return "plus"
             elif button == "Voltar":
-                window.Close()
-                TelaInicialOganizador()
+                window.close()
+                break
             elif button == None:
                 break
         window.close()
@@ -242,7 +247,7 @@ class TelaCadastroLocal:
         window.close()
         exit(0)
 
-class TelaPopUp:
-    def __init__(self):
-        sg.Popup('Usuário inexistente')
 
+class TelaPopUp:
+    def __init__(self, message):
+        sg.Popup(message)

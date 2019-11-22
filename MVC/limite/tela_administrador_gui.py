@@ -1,9 +1,11 @@
 import PySimpleGUI as sg
 
+
 class AbstractTela:
     def __init__(self):
         sg.change_look_and_feel("DarkBlue")
         sg.set_options(font=(12), text_justification="center")
+
 
 class TelaAdministrador(AbstractTela):
     def __init__(self):

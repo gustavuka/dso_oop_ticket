@@ -6,7 +6,6 @@ from limite.tela_organizador import TelaOrganizador
 
 
 class TelaAdministrador:
-
     def __init__(self, controlador_administrador: ControladorAdministrador):
         self.__controlador_administrador = controlador_administrador
 

@@ -21,6 +21,7 @@ from limite.tela_organizador_gui import (
     TelaPopUp,
 )
 from limite.tela_administrador_gui import TelaAdministrador
+from limite.tela_comprador_gui import TelaCadastroComprador, TelaInicialComprador
 
 
 class ControladorPrincipal:
@@ -87,11 +88,7 @@ class ControladorPrincipal:
         opcao_ini = TelaInicial().screen()
         if opcao_ini == 1:
             while True:
-                cpf = self.tela_login.screen()
-                opcao_sec = self.tela_menu_principal.menu_cliente()
-                if opcao_sec == 6:
-                    self.inicia()
-                self.abrir_tela_comprador(opcao_sec)
+                self.abrir_tela_comprador()
         elif opcao_ini == 2:
             while True:
                 self.abrir_tela_organizador()
@@ -102,7 +99,36 @@ class ControladorPrincipal:
             print("Saindo...")
             exit()
 
-    def abrir_tela_comprador(self, opcao):
+    def abrir_tela_comprador(self):
+        while True:
+            cpf = TelaLogin().screen()
+            if cpf == "cadastrar":
+                dados = TelaCadastroComprador().screen()
+                cpf = self.controlador_comprador.adicionar_comprador(dados)
+                while True:
+                    opcao = TelaInicialComprador().screen()
+                    if opcao == "historico":
+                        lista = self.controlador_comprador.mostrar_ingressos(cpf)
+                        if len(lista) == 0:
+                            TelaPopUp("Não há ingressos!")
+                        else:
+                            lista = [item.titulo for item in lista]
+                            TelaLista(lista)
+                    elif opcao == "comprar":
+                        self.controlador_comprador.comprar_ingressos(cpf)
+                    elif opcao == "editar":
+                        dados = TelaCadastroComprador().screen()
+                        usuario = self.controlador_comprador.alterar_dados(cpf, dados)
+                        TelaPopUp(usuario.nome)
+            elif cpf == "sair":
+                exit(0)
+            else:
+                if self.controlador_comprador.confere_cpf_existe(cpf):
+                    TelaInicialComprador().screen()
+                else:
+                    print("cnpj nao cadastrado")
+                    TelaPopUp("Usuário inexistente")
+
         if opcao == 1:
             cpf = self.tela_pede_cpf.pede_cpf()
             cpf_existe = self.controlador_comprador.confere_cpf_existe(cpf)
@@ -165,16 +191,28 @@ class ControladorPrincipal:
                         lista = self.controlador_organizador.mostra_eventos_organizados(
                             cnpj
                         )
-                        TelaLista(lista)
+                        if len(lista) == 0:
+                            TelaPopUp("Não há eventos!")
+                        else:
+                            TelaLista(lista)
                     elif opcao == "cadastrar":
                         locais = self.controlador_evento.locais
                         # cadastrando só o nome do local e nao o obj
                         dados = TelaCadastroEvento(locais).screen()
-                        self.controlador_evento.criar_evento(cnpj, dados)
+                        if dados == "plus":
+                            dados = TelaCadastroLocal().screen()
+                            self.controlador_evento.cadastra_local(dados)
+                        else:
+                            self.controlador_evento.criar_evento(cnpj, dados)
                     elif opcao == "criar":
                         dados = TelaCadastroLocal().screen()
-                        print(dados)
                         self.controlador_evento.cadastra_local(dados)
+                    elif opcao == "editar":
+                        dados = TelaCadastroOrganizador().screen()
+                        usuario = self.controlador_organizador.alterar_dados(
+                            cnpj, dados
+                        )
+                        TelaPopUp(usuario.nome + "\n Atualizacao de dados completa!")
             elif cnpj == "sair":
                 exit(0)
             else:
@@ -209,9 +247,8 @@ class ControladorPrincipal:
         while True:
             opcao = TelaAdministrador().screen()
             if opcao == "compradores":
-                #Compradores nao estao funcionando normalmente
-                #Está retornando cpfs ao inves de objs
                 lista = self.controlador_comprador.lista_compradores
+                lista = [item.nome for item in lista]
                 TelaLista(lista)
             elif opcao == "organizadores":
                 lista = self.controlador_organizador.lista_organizadores
@@ -225,4 +262,3 @@ class ControladorPrincipal:
                 lista = self.controlador_evento.locais
                 lista = [item.nome for item in lista]
                 TelaLista(lista)
-

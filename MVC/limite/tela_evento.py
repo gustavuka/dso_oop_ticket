@@ -62,10 +62,12 @@ class TelaEvento:
                 return True
 
     def mostrar_eventos(self, lista_eventos):
-        eventos = ''
+        eventos = ""
         for evento in lista_eventos:
-            eventos += 'Titulo: \n{}\n- Data: {}\n- Local: {}\n'.format(evento.titulo, evento.data, evento.local)
-        sg.Popup('Eventos cadastrados: ', eventos)
+            eventos += "Titulo: \n{}\n- Data: {}\n- Local: {}\n".format(
+                evento.titulo, evento.data, evento.local
+            )
+        sg.Popup("Eventos cadastrados: ", eventos)
 
     def selecionar_locais(self, lista):
         if len(lista) > 1:

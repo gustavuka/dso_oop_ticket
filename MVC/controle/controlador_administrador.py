@@ -1,9 +1,13 @@
 from controle.controlador_comprador import ControladorComprador
 from controle.controlador_organizador import ControladorOrganizador
 
-class ControladorAdministrador:
 
-    def __init__(self, controlador_organizador: ControladorOrganizador, controlador_comprador: ControladorComprador):
+class ControladorAdministrador:
+    def __init__(
+        self,
+        controlador_organizador: ControladorOrganizador,
+        controlador_comprador: ControladorComprador,
+    ):
         self.__controlador_organizador = controlador_organizador
         self.__controlador_comprador = controlador_comprador
 

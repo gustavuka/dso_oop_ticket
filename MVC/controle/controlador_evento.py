@@ -37,11 +37,7 @@ class ControladorEvento:
         return False
 
     def cadastra_local(self, dados):
-        novo_local = Local(
-            dados[0],
-            dados[1],
-            dados[2]
-        )
+        novo_local = Local(dados[0], dados[1], dados[2])
         # novo_local = Local(
         #     info_local["nome_local"],
         #     info_local["endereco_local"],
@@ -51,21 +47,15 @@ class ControladorEvento:
             if novo_local.nome == local.nome.upper():
                 raise LocalJaCadastrado
         self.locais.append(novo_local)
-        print ("Novo local cadastrado")
+        print("Novo local cadastrado")
         return novo_local
 
     def criar_evento(self, cnpj: str, dados):
-        #LOCAL PRECISA SER UM OBJ
+        # LOCAL PRECISA SER UM OBJ
         # local = self.tela_evento.selecionar_locais(self.locais)
 
         novo_evento = Evento(
-            cnpj,
-            dados[0],
-            dados[1],
-            dados[2],
-            dados[3],
-            dados[5],
-            dados[4],
+            cnpj, dados[0], dados[1], dados[2], dados[3], dados[5], dados[4]
         )
 
         # if local:

@@ -3,8 +3,7 @@ import pickle
 
 
 class DAO(ABC):
-
-    def __init__(self, datasource=''):
+    def __init__(self, datasource=""):
         self.datasource = datasource
         self.object_cache = {}
         try:
@@ -12,20 +11,20 @@ class DAO(ABC):
         except FileNotFoundError:
             self.__dump()
 
-    #def object_cache(self):
+    # def object_cache(self):
     #    return self.object_cache
 
-    #def datasource(self):
-        #return self.__datasource
+    # def datasource(self):
+    # return self.__datasource
 
-    #def datasource(self, datasource):
-     #   self.datasource = datasource
+    # def datasource(self, datasource):
+    #   self.datasource = datasource
 
     def __dump(self):
-        pickle.dump(self.object_cache, open(self.datasource, 'wb'))
+        pickle.dump(self.object_cache, open(self.datasource, "wb"))
 
     def __load(self):
-        self.object_cache = pickle.load(open(self.datasource, 'rb'))
+        self.object_cache = pickle.load(open(self.datasource, "rb"))
 
     def add(self, key, obj):
         self.object_cache[key] = obj

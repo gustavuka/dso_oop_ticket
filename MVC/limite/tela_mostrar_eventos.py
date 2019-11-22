@@ -13,5 +13,4 @@ class TelaMostrarEventos:
         return self.__controlador_evento
 
     def abrir_tela(self):
-        sg.Popup('Eventos cadastrados',
-                 'The values are', values)
+        sg.Popup("Eventos cadastrados", "The values are", values)

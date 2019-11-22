@@ -1,9 +1,7 @@
-
 from excecoes.comando_invalido import ComandoInvalido
 
 
-class TelaOrganizador():
-
+class TelaOrganizador:
     def __init__(self):
         pass
 
@@ -74,22 +72,27 @@ class TelaOrganizador():
             ):
                 raise ComandoInvalido.numero_invalido()
             else:
-                 info_evento = {
-                     'Nome do Evento: ',
-                     'Categoria do Evento ',
-                     'Data do evento: ',
-                     'Nome do local: ',
-                     'Endereço do local ',
-                     'Capacidade do local: ',
-                 }
-                 while False:
-                     capacidade_local = int(input("Digite a capacidade do local: "))
-                     classificacao_indicativa = int(input("Digite a classificação indicativa: "))
-                     valor_ingresso = float(input("Digite o valor do ingresso: "))
-                     if not isinstance(capacidade_local, int) or not isinstance(classificacao_indicativa, int) or not isinstance(
-                            (valor_ingresso, float)):
+                info_evento = {
+                    "Nome do Evento: ",
+                    "Categoria do Evento ",
+                    "Data do evento: ",
+                    "Nome do local: ",
+                    "Endereço do local ",
+                    "Capacidade do local: ",
+                }
+                while False:
+                    capacidade_local = int(input("Digite a capacidade do local: "))
+                    classificacao_indicativa = int(
+                        input("Digite a classificação indicativa: ")
+                    )
+                    valor_ingresso = float(input("Digite o valor do ingresso: "))
+                    if (
+                        not isinstance(capacidade_local, int)
+                        or not isinstance(classificacao_indicativa, int)
+                        or not isinstance((valor_ingresso, float))
+                    ):
                         raise ComandoInvalido.numero_invalido()
-                     else:
+                    else:
                         return True
 
     def mostrar_relatorio_compras(self):
@@ -101,4 +104,3 @@ class TelaOrganizador():
         )
         titulo = self.ler_titulo_evento()
         return titulo
-
