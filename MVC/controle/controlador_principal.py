@@ -222,27 +222,6 @@ class ControladorPrincipal:
                     print("cnpj nao cadastrado")
                     TelaPopUp()
 
-        # if opcao == 1:
-        #     opcao_cadastrado = self.tela_principal.menu_organizador_cadastrado()
-        #     if opcao_cadastrado == 1:
-        #         self.controlador_organizador.cadastrar_evento()
-        #     elif opcao_cadastrado == 2:
-        #         self.controlador_organizador.mostra_eventos_organizados()
-        #     elif opcao_cadastrado == 3:
-        #         self.controlador_evento.cadastra_local()
-        #     elif opcao == 4:
-        #         exit()
-        # elif opcao == 2:
-        #     self.controlador_organizador.adicionar_organizador()
-        # elif opcao == 3:
-        #     self.controlador_organizador.alterar_dados()
-        # elif opcao == 4:
-        #     self.controlador_organizador.mostra_eventos_organizados()
-        # elif opcao == 5:
-        #     self.controlador_organizador.mostra_informacoes_evento()
-        # elif opcao == 6:
-        #     exit()
-
     def abrir_tela_administrador(self):
         while True:
             opcao = TelaAdministrador().screen()

@@ -2,7 +2,6 @@ from entidade.comprador import Comprador
 from limite.tela_comprador import TelaComprador
 from inicia_for_tests import IniciaForTests
 from entidade.comprador_dao import CompradorDAO
-from entidade.dao import DAO
 from limite.tela_cadastro_comprador import TelaCadastroComprador
 from limite.tela_mostrar_eventos import TelaMostrarEventos
 from limite.tela_comprador_gui import TelaCompraEventos, TelaConfirmacao
@@ -12,7 +11,7 @@ from limite.tela_organizador_gui import TelaPopUp
 class ControladorComprador:
     def __init__(self, controlador_evento):
         self.__tela_comprador = TelaComprador()
-        self.__lista_compradores = []
+        # self.__lista_compradores = []
         self.__controlador_evento = controlador_evento
         self.__comprador_dao = CompradorDAO()
         self.__tela_cadastro_comprador = TelaCadastroComprador()
@@ -34,19 +33,9 @@ class ControladorComprador:
 
     @property
     def lista_compradores(self):
-        return self.__lista_compradores
+        # return self.__lista_compradores
+        return self.__comprador_dao.get_all()
 
-    # @property
-    # def tela_mostrar_eventos(self):
-    #   return self.__tela_mostrar_eventos
-
-    # @property
-    # def comprador_dao(self):
-    #    return self.__comprador_dao.get_all()
-
-    # @property
-    # def comprador_dao(self):
-    #    return self.__comprador_dao
 
     def confere_cpf_existe(self, cpf):
         for comprador in self.lista_compradores:
@@ -58,11 +47,12 @@ class ControladorComprador:
         novo_comprador = Comprador(
             dados[0], dados[5], dados[1], dados[3], dados[2], dados[4]
         )
-        # self.__comprador_dao.add(novo_comprador)
-        # self.comprador_dao.add(novo_comprador.cpf, novo_comprador)
-        self.lista_compradores.append(novo_comprador)
-        return novo_comprador.cpf
+        # self.lista_compradores.append(novo_comprador)
+        # return novo_comprador.cpf
+        self.__comprador_dao.add(novo_comprador)
+        return self.__comprador_dao.get(novo_comprador.cpf).cpf
 
+    #FAZER
     def alterar_dados(self, cpf, dados):
         comprador = self.confere_cpf_existe(cpf)
 
@@ -79,9 +69,6 @@ class ControladorComprador:
             print("Error")
         print(comprador)
         return comprador
-
-    def mostrar_compradores_cadastrados(self):
-        self.tela_comprador.print_lista(self.lista_compradores)
 
     def comprar_ingressos(self, cpf):
         usuario = self.confere_cpf_existe(cpf)

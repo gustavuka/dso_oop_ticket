@@ -11,15 +11,6 @@ class DAO(ABC):
         except FileNotFoundError:
             self.__dump()
 
-    # def object_cache(self):
-    #    return self.object_cache
-
-    # def datasource(self):
-    # return self.__datasource
-
-    # def datasource(self, datasource):
-    #   self.datasource = datasource
-
     def __dump(self):
         pickle.dump(self.object_cache, open(self.datasource, "wb"))
 
@@ -35,6 +26,9 @@ class DAO(ABC):
             return self.object_cache[key]
         except KeyError:
             pass
+    
+    def get_all(self):
+        return self.object_cache.values()
 
     def remove(self, key):
         try:
@@ -43,5 +37,4 @@ class DAO(ABC):
         except KeyError:
             pass
 
-    def get_all(self):
-        return self.object_cache.values()
+

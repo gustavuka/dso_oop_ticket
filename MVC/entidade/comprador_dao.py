@@ -1,5 +1,5 @@
 from entidade.comprador import Comprador
-from entidade.dao import DAO
+from entidade.DAO import DAO
 
 
 class CompradorDAO(DAO):
@@ -13,3 +13,11 @@ class CompradorDAO(DAO):
             and isinstance(comprador, Comprador)
         ):
             super().add(comprador.cpf, comprador)
+    
+    def get(self, key: str):
+        if isinstance(key, str):
+            return super().get(key)
+
+    def remove(self, key: int):
+        if isinstance(key, int):
+            return super().remove(key)
