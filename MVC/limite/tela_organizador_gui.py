@@ -6,11 +6,68 @@ class AbstractTela:
         sg.change_look_and_feel("DarkBlue")
         sg.set_options(font=(12), text_justification="center")
 
+class TelaInicial(AbstractTela):
+    def __init__(self):
+        super().__init__()
+        self.layout = [
+            [sg.Button("Comprador", size=(30, 2))],
+            [sg.Button("Organizador", size=(30, 2))],
+            [sg.Button("Administrador", size=(30, 2))],
+            [sg.Button("Sair", size=(30, 2))],
+        ]
+
+    def screen(self):
+        window = sg.Window(
+            "Login", self.layout, size=(400, 400), element_justification="center"
+        )
+
+        while True:
+            button, values = window.read()
+            if button == "Comprador":
+                window.close()
+                return 1
+            elif button == "Organizador":
+                window.close()
+                return 2
+            elif button == "Administrador":
+                window.close()
+                return 3
+            else:
+                break
+        window.close()
+
+class TelaLogin(AbstractTela):
+    def __init__(self):
+        super().__init__()
+        self.layout = [
+            [sg.InputText("cpf/cnpj", size=(30, 3), key="identidade")],
+            [sg.Button("Login", size=(30, 2))],
+            [sg.Button("Cadastrar", size=(30, 2))],
+            [sg.Button("Sair", size=(30, 2))],
+        ]
+
+    def screen(self):
+        window = sg.Window(
+            "Login", self.layout, size=(400, 400), element_justification="center"
+        )
+
+        while True:
+            button, values = window.read()
+            if button == "Login":
+                id = values["identidade"]
+                return id
+            elif button == "Cadastrar":
+                window.close()
+                return "cadastrar"
+            else:
+                return ("sair")
+                break
+        window.close()
 
 class TelaCadastroOrganizador(AbstractTela):
     def __init__(self):
         super().__init__()
-        layout = [
+        self.layout = [
             [sg.InputText("Nome", size=(30, 3), key="nome")],
             [sg.InputText("Telefone", size=(30, 3), key="telefone")],
             [sg.InputText("CNPJ", size=(30, 3), key="cnpj")],
@@ -21,9 +78,10 @@ class TelaCadastroOrganizador(AbstractTela):
                 sg.Button("Sair", bind_return_key=True),
             ],
         ]
-
+    
+    def screen(self):
         window = sg.Window(
-            "Organizador", layout, size=(400, 400), element_justification="center"
+            "Organizador", self.layout, size=(400, 400), element_justification="center"
         )
 
         while True:
@@ -35,11 +93,10 @@ class TelaCadastroOrganizador(AbstractTela):
                     cnpj = values["cnpj"]
                     email = values["email"]
                     endereco = values["endereco"]
-                    print(name, telefone, cnpj, email, endereco)
                     window.close()
-                    TelaInicialOganizador()
+                    return [name, telefone, cnpj, email, endereco]
                 except:
-                    print("ajsdnkj")
+                    print("Error")
             else:
                 break
         window.close()
@@ -48,7 +105,7 @@ class TelaCadastroOrganizador(AbstractTela):
 class TelaInicialOganizador(AbstractTela):
     def __init__(self):
         super().__init__()
-        layout = [
+        self.layout = [
             [sg.Text("Painel do Organizador", size=(30, 2))],
             [sg.Button("Cadastrar Evento", size=(30, 2))],
             [sg.Button("Histórico de Eventos", size=(30, 2))],
@@ -56,13 +113,13 @@ class TelaInicialOganizador(AbstractTela):
             [sg.Button("Voltar", size=(30, 2))],
         ]
 
+    def screen(self):
         window = sg.Window(
-            "Organizador", layout, size=(400, 400), element_justification="center"
+            "Organizador", self.layout, size=(400, 400), element_justification="center"
         )
 
         while True:
             event, value = window.read()
-            print(event)
             if event in (None,):
                 break
             elif event == "Histórico de Eventos":
@@ -174,6 +231,3 @@ class TelaCadastroLocal:
             else:
                 break
         window.close()
-
-
-TelaCadastroOrganizador()

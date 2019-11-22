@@ -40,20 +40,28 @@ class ControladorOrganizador:
                 return True
         return False
 
-    def adicionar_organizador(self):
-        info_organizador = self.tela_organizador.le_dados()
+    def adicionar_organizador(self, dados):
+
+        # novo_organizador = Organizador(
+        #     info_organizador["Nome"],
+        #     info_organizador["Endereco"],
+        #     info_organizador["Telefone"],
+        #     info_organizador["Email"],
+        #     info_organizador["cnpj"],
+        # )
 
         novo_organizador = Organizador(
-            info_organizador["Nome"],
-            info_organizador["Endereco"],
-            info_organizador["Telefone"],
-            info_organizador["Email"],
-            info_organizador["cnpj"],
+            dados[0],
+            dados[4],
+            dados[1],
+            dados[3],
+            dados[2],
         )
         self.lista_organizadores.append(novo_organizador)
         self.tela_organizador.imprime_mensagem(
             ("Novo organizador cadastrado! Bem vindo " + novo_organizador.nome + "!")
         )
+        return novo_organizador
 
     def alterar_dados(self):
         cnpj = self.tela_organizador.pede_cnpj()
