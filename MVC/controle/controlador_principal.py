@@ -15,7 +15,12 @@ from limite.tela_organizador_gui import (
     TelaInicialOganizador,
     TelaLogin,
     TelaCadastroOrganizador,
+    TelaLista,
+    TelaCadastroEvento,
+    TelaCadastroLocal,
+    TelaPopUp,
 )
+from limite.tela_administrador_gui import TelaAdministrador
 
 
 class ControladorPrincipal:
@@ -33,11 +38,6 @@ class ControladorPrincipal:
         self.__tela_comprador_cadastrado = TelaCompradorCadastrado()
         self.__tela_pede_cpf = TelaPedeCPF()
         self.__tela_cadastro_comprador = TelaCadastroComprador()
-
-        self.tela_inicial = TelaInicial()
-        self.tela_organizador = TelaInicialOganizador()
-        self.tela_login = TelaLogin()
-        self.cadastro_organizador = TelaCadastroOrganizador()
 
     @property
     def tela_principal(self):
@@ -84,7 +84,7 @@ class ControladorPrincipal:
         return self.__tela_pede_cpf
 
     def inicia(self):
-        opcao_ini = self.tela_inicial.screen()
+        opcao_ini = TelaInicial().screen()
         if opcao_ini == 1:
             while True:
                 cpf = self.tela_login.screen()
@@ -94,16 +94,10 @@ class ControladorPrincipal:
                 self.abrir_tela_comprador(opcao_sec)
         elif opcao_ini == 2:
             while True:
-                self.abrir_tela_organizador()            
-                if opcao_sec == 6:
-                    self.inicia()
-                self.abrir_tela_organizador(opcao_sec)
+                self.abrir_tela_organizador()
         elif opcao_ini == 3:
             while True:
-                opcao_sec = self.tela_principal.menu_administrador()
-                if opcao_sec == 3:
-                    self.inicia()
-                self.abrir_tela_administrador(opcao_sec)
+                self.abrir_tela_administrador()
         elif opcao_ini == 4:
             print("Saindo...")
             exit()
@@ -159,45 +153,76 @@ class ControladorPrincipal:
         elif opcao == 5:
             exit()
 
-    def abrir_tela_organizador(self):        
-        cnpj = self.tela_login.screen()
-        if cnpj == "cadastrar":
-            dados = self.cadastro_organizador.screen()            
-            organizador = self.controlador_organizador.adicionar_organizador(dados)
-            self.tela_organizador.screen()
-        elif cnpj == "sair":
-            exit()
-        else:
-            if self.controlador_organizador.confere_cnpj_existe(cnpj):
-                
+    def abrir_tela_organizador(self):
+        while True:
+            cnpj = TelaLogin().screen()
+            if cnpj == "cadastrar":
+                dados = TelaCadastroOrganizador().screen()
+                cnpj = self.controlador_organizador.adicionar_organizador(dados)
+                while True:
+                    opcao = TelaInicialOganizador().screen()
+                    if opcao == "historico":
+                        lista = self.controlador_organizador.mostra_eventos_organizados(
+                            cnpj
+                        )
+                        TelaLista(lista)
+                    elif opcao == "cadastrar":
+                        locais = self.controlador_evento.locais
+                        # cadastrando só o nome do local e nao o obj
+                        dados = TelaCadastroEvento(locais).screen()
+                        self.controlador_evento.criar_evento(cnpj, dados)
+                    elif opcao == "criar":
+                        dados = TelaCadastroLocal().screen()
+                        print(dados)
+                        self.controlador_evento.cadastra_local(dados)
+            elif cnpj == "sair":
+                exit(0)
+            else:
+                if self.controlador_organizador.confere_cnpj_existe(cnpj):
+                    TelaInicialOganizador().screen()
+                else:
+                    print("cnpj nao cadastrado")
+                    TelaPopUp()
 
+        # if opcao == 1:
+        #     opcao_cadastrado = self.tela_principal.menu_organizador_cadastrado()
+        #     if opcao_cadastrado == 1:
+        #         self.controlador_organizador.cadastrar_evento()
+        #     elif opcao_cadastrado == 2:
+        #         self.controlador_organizador.mostra_eventos_organizados()
+        #     elif opcao_cadastrado == 3:
+        #         self.controlador_evento.cadastra_local()
+        #     elif opcao == 4:
+        #         exit()
+        # elif opcao == 2:
+        #     self.controlador_organizador.adicionar_organizador()
+        # elif opcao == 3:
+        #     self.controlador_organizador.alterar_dados()
+        # elif opcao == 4:
+        #     self.controlador_organizador.mostra_eventos_organizados()
+        # elif opcao == 5:
+        #     self.controlador_organizador.mostra_informacoes_evento()
+        # elif opcao == 6:
+        #     exit()
 
+    def abrir_tela_administrador(self):
+        while True:
+            opcao = TelaAdministrador().screen()
+            if opcao == "compradores":
+                #Compradores nao estao funcionando normalmente
+                #Está retornando cpfs ao inves de objs
+                lista = self.controlador_comprador.lista_compradores
+                TelaLista(lista)
+            elif opcao == "organizadores":
+                lista = self.controlador_organizador.lista_organizadores
+                lista = [item.nome for item in lista]
+                TelaLista(lista)
+            elif opcao == "eventos":
+                lista = self.controlador_evento.eventos
+                lista = [item.titulo for item in lista]
+                TelaLista(lista)
+            elif opcao == "locais":
+                lista = self.controlador_evento.locais
+                lista = [item.nome for item in lista]
+                TelaLista(lista)
 
-
-
-        if opcao == 1:
-            opcao_cadastrado = self.tela_principal.menu_organizador_cadastrado()
-            if opcao_cadastrado == 1:
-                self.controlador_organizador.cadastrar_evento()
-            elif opcao_cadastrado == 2:
-                self.controlador_organizador.mostra_eventos_organizados()
-            elif opcao_cadastrado == 3:
-                self.controlador_evento.cadastra_local()
-            elif opcao == 4:
-                exit()
-        elif opcao == 2:
-            self.controlador_organizador.adicionar_organizador()
-        elif opcao == 3:
-            self.controlador_organizador.alterar_dados()
-        elif opcao == 4:
-            self.controlador_organizador.mostra_eventos_organizados()
-        elif opcao == 5:
-            self.controlador_organizador.mostra_informacoes_evento()
-        elif opcao == 6:
-            exit()
-
-    def abrir_tela_administrador(self, opcao):
-        if opcao == 1:
-            self.controlador_administrador.mostra_organizadores_cadastrados()
-        elif opcao == 2:
-            self.controlador_administrador.mostra_compradores_cadastrados()

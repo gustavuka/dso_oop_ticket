@@ -35,6 +35,7 @@ class TelaInicial(AbstractTela):
             else:
                 break
         window.close()
+        exit(0)
 
 class TelaLogin(AbstractTela):
     def __init__(self):
@@ -55,6 +56,7 @@ class TelaLogin(AbstractTela):
             button, values = window.read()
             if button == "Login":
                 id = values["identidade"]
+                window.close()
                 return id
             elif button == "Cadastrar":
                 window.close()
@@ -63,6 +65,7 @@ class TelaLogin(AbstractTela):
                 return ("sair")
                 break
         window.close()
+        exit(0)
 
 class TelaCadastroOrganizador(AbstractTela):
     def __init__(self):
@@ -100,7 +103,7 @@ class TelaCadastroOrganizador(AbstractTela):
             else:
                 break
         window.close()
-
+        exit(0)
 
 class TelaInicialOganizador(AbstractTela):
     def __init__(self):
@@ -110,7 +113,7 @@ class TelaInicialOganizador(AbstractTela):
             [sg.Button("Cadastrar Evento", size=(30, 2))],
             [sg.Button("Histórico de Eventos", size=(30, 2))],
             [sg.Button("Criar Local", size=(30, 2))],
-            [sg.Button("Voltar", size=(30, 2))],
+            [sg.Button("Sair", size=(30, 2))],
         ]
 
     def screen(self):
@@ -121,40 +124,43 @@ class TelaInicialOganizador(AbstractTela):
         while True:
             event, value = window.read()
             if event in (None,):
+                window.close()
+                exit(0)
                 break
             elif event == "Histórico de Eventos":
-                a = ["Evento 1", "Evento 1", "Evento 1", "Evento 1"]
                 window.close()
+                return "historico"
                 new = TelaLista(a, TelaInicialOganizador)
             elif event == "Cadastrar Evento":
                 window.close()
-                TelaCadastroEvento()
+                return "cadastrar"
             elif event == "Criar Local":
                 window.close()
-                TelaCadastroLocal()
+                return "criar"
+            elif event == "Sair":
+                window.close()
+                break
         window.close()
-
 
 class TelaLista:
     """Abre uma tela que lista itens, ao clicar ok volta para a tela selecionada"""
 
-    def __init__(self, lista, voltar=""):
+    def __init__(self, lista=[]):
         self.lista = lista
-        self.voltar = voltar
         sg.PopupScrolled(*self.lista, title="Lista")
-        if voltar != "":
-            voltar()
+
 
 
 class TelaCadastroEvento:
-    def __init__(self):
-        layout = [
+    def __init__(self, locais):
+        self.locais = [local.nome for local in locais]
+        self.layout = [
             [sg.InputText("Título", key="titulo", size=(35, 150))],
             [sg.InputText("Categoria", key="categoria", size=(35, 4))],
             [sg.InputText("Data", key="data", size=(35, 4))],
             [
                 sg.InputCombo(
-                    ["Locais", "locaiscs"],
+                    self.locais,
                     default_value="Local",
                     size=(29, 4),
                     key="local",
@@ -169,8 +175,9 @@ class TelaCadastroEvento:
             ],
         ]
 
+    def screen(self):
         window = sg.Window(
-            "Organizador", layout, size=(400, 400), element_justification="center"
+            "Organizador", self.layout, size=(400, 400), element_justification="center"
         )
 
         while True:
@@ -183,23 +190,25 @@ class TelaCadastroEvento:
                     local = values["local"]
                     valor = values["valor"]
                     classificacao = values["classificacao"]
-                    print(titulo, categoria, data, local, valor, classificacao)
+                    window.close()
+                    return [titulo, categoria, data, local, valor, classificacao]
                 except:
-                    print("ajsdnkj")
+                    print("Erro")
             elif button == "+":
                 window.close()
                 TelaCadastroLocal()
             elif button == "Voltar":
                 window.Close()
                 TelaInicialOganizador()
-            else:
+            elif button == None:
                 break
         window.close()
+        exit(0)
 
 
 class TelaCadastroLocal:
     def __init__(self):
-        layout = [
+        self.layout = [
             [sg.InputText("Nome do Local", key="nome", size=(35, 150))],
             [sg.InputText("Endereço", key="endereco", size=(35, 4))],
             [sg.InputText("Capacidade", key="capacidade", size=(35, 4))],
@@ -209,8 +218,9 @@ class TelaCadastroLocal:
             ],
         ]
 
+    def screen(self):
         window = sg.Window(
-            "Organizador", layout, size=(400, 400), element_justification="center"
+            "Organizador", self.layout, size=(400, 400), element_justification="center"
         )
 
         while True:
@@ -220,14 +230,19 @@ class TelaCadastroLocal:
                     nome = values["nome"]
                     endereco = values["endereco"]
                     capacidade = values["capacidade"]
-                    print(nome, endereco, capacidade)
+                    return [nome, endereco, capacidade]
                     window.close()
-                    TelaCadastroEvento()
                 except:
-                    print("ajsdnkj")
+                    print("Error")
             elif button == "Voltar":
                 window.Close()
-                TelaInicialOganizador()
+                break
             else:
                 break
         window.close()
+        exit(0)
+
+class TelaPopUp:
+    def __init__(self):
+        sg.Popup('Usuário inexistente')
+

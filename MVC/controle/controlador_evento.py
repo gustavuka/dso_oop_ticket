@@ -36,39 +36,55 @@ class ControladorEvento:
                 return True
         return False
 
-    def cadastra_local(self):
-        info_local = self.tela_evento.cadastrar_local()
+    def cadastra_local(self, dados):
         novo_local = Local(
-            info_local["nome_local"],
-            info_local["endereco_local"],
-            info_local["capacidade_local"],
+            dados[0],
+            dados[1],
+            dados[2]
         )
+        # novo_local = Local(
+        #     info_local["nome_local"],
+        #     info_local["endereco_local"],
+        #     info_local["capacidade_local"],
+        # )
         for local in self.locais:
             if novo_local.nome == local.nome.upper():
                 raise LocalJaCadastrado
         self.locais.append(novo_local)
+        print ("Novo local cadastrado")
+        return novo_local
 
-    def criar_evento(self, cnpj: str):
-        dados_evento = self.tela_evento.cadastrar_evento(cnpj)
-        local = self.tela_evento.selecionar_locais(self.locais)
-        if local:
-            novo_evento = Evento(
-                dados_evento["cnpj_organizador"],
-                dados_evento["titulo_evento"],
-                dados_evento["categoria_evento"],
-                dados_evento["data_evento"],
-                local,
-                dados_evento["classificacao_indicativa"],
-                dados_evento["valor_ingresso"],
-                dados_evento['classificacao_indicativa'],
-                dados_evento['valor_ingresso']
-            )
-            for evento in self.eventos:
-                if evento.titulo.upper() == novo_evento.titulo:
-                    raise EventoJaCadastrado()
-            self.eventos.append(novo_evento)
-            print("Evento criado com sucesso")
-            return novo_evento
+    def criar_evento(self, cnpj: str, dados):
+        #LOCAL PRECISA SER UM OBJ
+        # local = self.tela_evento.selecionar_locais(self.locais)
+
+        novo_evento = Evento(
+            cnpj,
+            dados[0],
+            dados[1],
+            dados[2],
+            dados[3],
+            dados[5],
+            dados[4],
+        )
+
+        # if local:
+        #     novo_evento = Evento(
+        #         dados_evento["cnpj_organizador"],
+        #         dados_evento["titulo_evento"],
+        #         dados_evento["categoria_evento"],
+        #         dados_evento["data_evento"],
+        #         local,
+        #         dados_evento["classificacao_indicativa"],
+        #         dados_evento["valor_ingresso"],
+        #     )
+
+        for evento in self.eventos:
+            if evento.titulo.upper() == novo_evento.titulo:
+                raise EventoJaCadastrado()
+        self.eventos.append(novo_evento)
+        print("Evento criado com sucesso")
+        return novo_evento
 
     def mostrar_todos_eventos(self):
         self.tela_evento.mostrar_eventos(self.eventos)

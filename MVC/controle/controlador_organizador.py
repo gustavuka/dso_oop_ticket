@@ -61,7 +61,7 @@ class ControladorOrganizador:
         self.tela_organizador.imprime_mensagem(
             ("Novo organizador cadastrado! Bem vindo " + novo_organizador.nome + "!")
         )
-        return novo_organizador
+        return novo_organizador.cnpj
 
     def alterar_dados(self):
         cnpj = self.tela_organizador.pede_cnpj()
@@ -95,15 +95,16 @@ class ControladorOrganizador:
             self.cadastrar_evento()
 
     # está funcionando, se quiser testar mais vezes, mas está buscando o evento por cnpj
-    def mostra_eventos_organizados(self):
-        cnpj = self.tela_organizador.pede_cnpj()
+    def mostra_eventos_organizados(self, cnpj):
         organizador_existe = self.confere_cnpj_existe(cnpj)
-        lista = "Lista de eventos organizados: \n"
+        lista = ["Lista de eventos organizados: "]
         if organizador_existe:
             for evento in self.controlador_evento.eventos:
                 if evento.cnpj_organizador == cnpj:
-                    lista += "Titulo do evento: " + evento.titulo
+                    lista.append(["Evento: " + evento.titulo])
         self.tela_organizador.imprime_mensagem(lista)
+
+        return lista
 
     def mostra_relatorio_compras(self):
         pass

@@ -61,6 +61,7 @@ class ControladorComprador:
             info_comprador[4],
             info_comprador[5],
         )
+        print (novo_comprador)
         #self.__comprador_dao.add(novo_comprador)
         #self.comprador_dao.add(novo_comprador.cpf, novo_comprador)
         self.lista_compradores.append(novo_comprador)
