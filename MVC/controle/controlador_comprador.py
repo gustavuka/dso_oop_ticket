@@ -33,9 +33,7 @@ class ControladorComprador:
 
     @property
     def lista_compradores(self):
-        # return self.__lista_compradores
         return self.__comprador_dao.get_all()
-
 
     def confere_cpf_existe(self, cpf):
         for comprador in self.lista_compradores:
@@ -47,8 +45,6 @@ class ControladorComprador:
         novo_comprador = Comprador(
             dados[0], dados[5], dados[1], dados[3], dados[2], dados[4]
         )
-        # self.lista_compradores.append(novo_comprador)
-        # return novo_comprador.cpf
         self.__comprador_dao.add(novo_comprador)
         return self.__comprador_dao.get(novo_comprador.cpf).cpf
 

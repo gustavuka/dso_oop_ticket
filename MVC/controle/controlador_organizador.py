@@ -3,6 +3,8 @@ from limite.tela_organizador import TelaOrganizador
 from controle.controlador_evento import ControladorEvento
 from inicia_for_tests import IniciaForTests
 
+from entidade.organizador_dao import OrganizadorDAO
+
 
 class ControladorOrganizador:
     def __init__(self, controlador_evento: ControladorEvento):
@@ -10,12 +12,13 @@ class ControladorOrganizador:
         self.__controlador_evento = controlador_evento
         self.__lista_organizadores = []
         self.__lista_eventos_organizados = []
+        self.__organizador_dao = OrganizadorDAO()
         # Cria alguns organizadores de testes para executar as funcionalidades do programa
-        IniciaForTests().organizador_teste(Organizador, self.lista_organizadores)
+        #IniciaForTests().organizador_teste(Organizador, self.lista_organizadores)
 
     @property
     def lista_organizadores(self):
-        return self.__lista_organizadores
+        return self.__organizador_dao.get_all()
 
     @property
     def tela_organizador(self):
@@ -41,20 +44,9 @@ class ControladorOrganizador:
 
     def adicionar_organizador(self, dados):
 
-        # novo_organizador = Organizador(
-        #     info_organizador["Nome"],
-        #     info_organizador["Endereco"],
-        #     info_organizador["Telefone"],
-        #     info_organizador["Email"],
-        #     info_organizador["cnpj"],
-        # )
-
         novo_organizador = Organizador(dados[0], dados[4], dados[1], dados[3], dados[2])
-        self.lista_organizadores.append(novo_organizador)
-        self.tela_organizador.imprime_mensagem(
-            ("Novo organizador cadastrado! Bem vindo " + novo_organizador.nome + "!")
-        )
-        return novo_organizador.cnpj
+        self.__organizador_dao.add(novo_organizador)
+        return self.__organizador_dao.get(novo_organizador.cnpj).cnpj
 
     def alterar_dados(self, cnpj, dados):
         usuario = self.confere_cnpj_existe(cnpj)
